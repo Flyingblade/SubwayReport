@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+    <title>Subway Data</title>
+    <meta name="description" content="">
+    <meta name="author" content="templatemo">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700' rel='stylesheet' type='text/css'>
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/templatemo-style.css" rel="stylesheet">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="js/echarts.js"></script>
+    <style>
+        .templatemo-site-header{height:27px}  
+    </style>
+  </head>
+  <body>  
+    <!-- Left column -->
+    <div class="templatemo-flex-row">
+      <div class="templatemo-sidebar">
+        <header class="templatemo-site-header">
+          <i class="fa fa-subway fa-2x" aria-hidden="true" style="color:white;margin-right:20px"></i><h1 style="margin-bottom:15px">SUBWAY</h1>
+        </header>
+        <div class="profile-photo-container">
+          <img src="images/bg.jpeg" alt="Profile Photo" class="img-responsive">  
+          <div class="profile-photo-overlay"></div>
+        </div>      
+        <!-- Search box -->
+        <form class="templatemo-search-form" role="search">
+          <div class="input-group">
+              <button type="submit" class="fa fa-search"></button>
+              <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">           
+          </div>
+        </form>
+        <div class="mobile-menu-icon">
+            <i class="fa fa-bars"></i>
+        </div>
+        <nav class="templatemo-left-nav">          
+          <ul>
+            <li><a href="guangzhou.html"><i class="fa fa-home fa-fw fa-lg"></i>主页</a></li>
+            <li><a href="g-inandout.html"><i class="fa fa-area-chart fa-lg"></i>进出站客流趋势</a></li>
+            <li><a href="g-stations.html"><i class="fa fa-bar-chart fa-lg"></i>进出站客流对比</a></li>
+            <li><a href="g-lines.html"><i class="fa fa-line-chart fa-lg"></i>地铁线路日客流</a></li>
+            <li><a href="g-startend.html"><i class="fa fa-dot-circle-o fa-lg"></i>起终点客流分析</a></li>       
+            <li><a href="g-hotstation.html"><i class="fa fa-fire fa-lg"></i>热门站点及线路展示</a></li>    
+            <li><a href="g-ticket.html"  class="active"><i class="fa fa-pie-chart fa-lg"></i>购票方式</a></li>           
+            <li><a href="g-routes.html"><i class="fa fa-street-view fa-lg"></i>乘客群体画像</a></li>
+            <li><a href="index.html" target="_blank"><i class="fa fa-clock-o fa-lg" ></i>实时客流预警</a></li>
+            <li><a href="mailto:somebody@qq.com"><i class="fa fa-envelope fa-lg"></i>联系我们</a></li>
+          </ul>  
+        </nav>
+      </div>
+        
+      <!-- Main content --> 
+      <div class="templatemo-content col-1 light-gray-bg" style="background:#2F4F4F">
+        <div class="templatemo-top-nav-container">
+          <div class="row">
+            <nav class="templatemo-top-nav col-lg-6 col-md-12">
+                  <ul class="text-uppercase">
+                    <li><a href="guangzhou.html" class="active">广州</a></li>
+                    <li><a href="changsha.html">长沙</a></li>
+                 </ul>
+            </nav>
+                 <ul class="nav navbar-top-links navbar-right">
+                        <a href="#"><i class="fa fa-facebook-official fa-lg" aria-hidden="true" style="margin-right:20px;color:black"></i></a>
+                        <a href="#"><i class="fa fa-twitter-square fa-lg" aria-hidden="true" style="margin-right:20px;color:black"></i></a>
+                        <a href="#"><i class="fa fa-wechat fa-lg" aria-hidden="true" style="margin-right:20px;color:black"></i></a>
+                        <a href="#"><i class="fa fa-weibo fa-lg" aria-hidden="true" style="margin-right:20px;color:black"></i></a>
+                 </ul>
+          </div>
+        </div>
+          
+        <div class="templatemo-content-container">
+           <div>
+            <h1 style="color:white">Subway Data</h1><br/>
+            <h4 style="color:white">广州地铁购票方式及转化率</h4><hr>
+           </div>
+               
+           <div class="col-md-12" style="margin-top:16px">
+               <div class="templatemo-content-widget blue-bg">
+                   <i class="fa fa-times"></i>
+                   <div class="square"></div>
+                   <h2 class="templatemo-inline-block" style="color:darkcyan">购票方式</h2><hr>
+                   <div class="templatemo-flex-row">
+                   <div id="pic1" class="col-1 hidden-xs" style="height:400px;"></div>
+                   <div id="pic1xs" class="col-1 visible-xs" style="height:450px;"></div>
+                   </div>
+               </div>
+               <div class="templatemo-content-widget blue-bg">
+                   <i class="fa fa-times"></i>
+                   <div class="square"></div>
+                   <h2 class="templatemo-inline-block" style="color:darkcyan">转化率</h2><hr>
+                   <div class="templatemo-flex-row">
+                   <div id="pic2" class="col-1 hidden-xs" style="height:330px;"></div>
+                   <div id="pic2xs" class="col-1 visible-xs" style="height:350px;"></div>
+                   </div>
+               </div>
+           </div>
+        </div> 
+          
+          <center>
+          <footer>
+            <p style="color:white">Copyright &copy; 2084 Company Name 
+            | Designed by <a href="http://www.templatemo.com" target="_parent">templatemo</a></p>
+          </footer>         
+          </center>         
+        
+      </div>
+    </div>
+    
+    <!-- JS -->
+    <script src="js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
+    <script src="js/jquery-migrate-1.2.1.min.js"></script> <!--  jQuery Migrate Plugin -->
+    <script type="text/javascript" src="js/templatemo-script.js"></script>      <!-- Templatemo Script -->
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                type: 'GET',
+                url: 'http://10.108.120.225:5000/api/bought_method',
+                dataType: 'jsonp', //希望服务器返回json格式的数据
+                data:{  'city' : "广州", 
+                        'month_start':'2017-3',
+	                    'month_end':'2017-03'   
+                     },
+                jsonp: "callback",
+                jsonpCallback: "successCallback",//回调方法
+                success: function (data) {
+                    var Chart1,Chart2,Chart3,Chart4;
+                    var method = [];
+                    var value = [];
+                    var sum = 0;
+                    var itemstyle = [];
+                    var color = ['#ffb980','#ff715e','#edafda','#f7f494','#40e0d0'];
+                    for(var i = 0;i < data.data.length;i++)
+                    {  
+                        method.push(data.data[i].method);
+                        value.push(data.data[i].UserCount);
+                        sum += value[i];
+                    }
+                    for(var i=0;i<method.length;i++)
+                    {
+                        value[i]=(value[i]/sum).toFixed(5);
+                        itemstyle[i] = {normal:{color:color[i]}};
+                    }
+                    var labelBottom = {
+                        normal : {
+                            color: '#ccc',
+                            label : {
+                                show : true,
+                                position : 'center'
+                            },
+                            labelLine : {
+                                show : false
+                            }
+                        },
+                        emphasis: {
+                            color: 'rgba(0,0,0,0)'
+                        }
+                    };
+                    Chart1 = echarts.init(document.getElementById('pic1'));
+                    var labelFromatter = [];
+                    var labelTop = [];
+                    for(var i=0;i<5;i++)
+                    {  
+                        labelFromatter[i] = {
+                        normal : {
+                            label : {
+                                formatter : function (params){
+                                    return ((1 - params.value)*100).toFixed(3)+'%';
+                                },
+                                textStyle: {
+                                    baseline : 'top',
+                                    color : color[i],
+                                    fontSize : 18 }
+                                }
+                            }
+                         };
+                        labelTop[i] = {
+                        normal : {
+                            color : color[i],
+                            label : {
+                                show : true,
+                                position : 'center',
+                                formatter : '{b}',
+                                textStyle: {
+                                    baseline : 'bottom',
+                                    color : '#FFFFF0',
+                                    fontSize : 14
+                                }
+                            },
+                            labelLine : {
+                                show : false
+                            }
+                          }
+                        };  
+                    }
+                    var option1 = {
+                        title: {
+                            text: '三月广州地铁购票方式分布',
+                            textStyle:{color:'#2f4f4f'},
+                            left:'center'
+                        },
+                        toolbox: {
+                            show: true,
+                            iconStyle:{
+                                normal:{ 
+                                    borderColor: ['#2F4F4F'],      // 工具箱边框颜色color
+                                    borderWidth: 1.5
+                                }
+                            },
+                            feature: {
+                                dataView: {readOnly: false },  //数据视图
+                                restore: {},     //还原
+                                saveAsImage: {}  //保存图片
+                            }
+                        },
+                        legend: {
+                            x : 'center',
+                            y : '50%',
+                            data : method
+                        },
+                        tooltip: {trigger: 'item',
+                              formatter: "{b} : ({d}%)"},
+                        series: [
+                            {       
+                            type : 'pie',
+                            radius : ['30%', '38%'],
+                            center : ['20%', '28%'],
+                            itemStyle : labelFromatter[0],
+                            data : [
+                                {name:'others',value:1-value[0],itemStyle : labelBottom},
+                                {name:method[0], value:value[0],itemStyle : labelTop[0]}]
+                            },
+                            {       
+                            type : 'pie',
+                            radius : ['30%', '38%'],
+                            center : ['50%', '28%'],
+                            itemStyle : labelFromatter[1],
+                            data : [
+                                {name:'others',value:1-value[1],itemStyle : labelBottom},
+                                {name:method[1], value:value[1],itemStyle : labelTop[1]}]
+                            },
+                            {       
+                            type : 'pie',
+                            radius : ['30%', '38%'],
+                            center : ['80%', '28%'],
+                            itemStyle : labelFromatter[2],
+                            data : [
+                                {name:'others',value:1-value[2],itemStyle : labelBottom},
+                                {name:method[2], value:value[2],itemStyle : labelTop[2]}]
+                            },
+                            {       
+                            type : 'pie',
+                            radius : ['30%', '38%'],
+                            center : ['20%', '78%'],
+                            itemStyle : labelFromatter[3],
+                            data : [
+                                {name:'others',value:1-value[3],itemStyle : labelBottom},
+                                {name:method[3], value:value[3],itemStyle : labelTop[3]}]
+                            },
+                            {       
+                            type : 'pie',
+                            radius : ['30%', '38%'],
+                            center : ['50%', '78%'],
+                            itemStyle : labelFromatter[4],
+                            data : [
+                                {name:'others',value:1-value[4],itemStyle : labelBottom},
+                                {name:method[4], value:value[4],itemStyle : labelTop[4]}]
+                            },
+                            {
+                                name: '购票方式',
+                                type : 'pie',
+                                radius : '38%',
+                                center : ['80%', '78%'],
+                                label : {normal: {show: false}},
+                                data: [
+                                    {name: method[0], value: value[0], itemStyle: itemstyle[0]},
+                                    {name: method[1], value: value[1], itemStyle: itemstyle[1]},
+                                    {name: method[2], value: value[2], itemStyle: itemstyle[2]},
+                                    {name: method[3], value: value[3], itemStyle: itemstyle[3]},
+                                    {name: method[4], value: value[4], itemStyle: itemstyle[4]} 
+                                ]    
+                            }
+                        ]
+                    };
+                    Chart1.setOption(option1);                   
+                    Chart2 = echarts.init(document.getElementById('pic1xs'));
+                    var labelFromatter1 = [];
+                    var labelTop1 = [];
+                    for(var i=0;i<5;i++)
+                    {  
+                        labelFromatter1[i] = {
+                        normal : {
+                            label : {
+                                formatter : function (params){
+                                    return ((1 - params.value)*100).toFixed(3)+'%';
+                                },
+                                textStyle: {
+                                    baseline : 'top',
+                                    color : color[i],
+                                    fontSize : 14 }
+                                }
+                            }
+                         };
+                        labelTop1[i] = {
+                        normal : {
+                            color : color[i],
+                            label : {
+                                show : true,
+                                position : 'center',
+                                formatter : '{b}',
+                                textStyle: {
+                                    baseline : 'bottom',
+                                    color : '#FFFFF0',
+                                    fontSize : 10
+                                }
+                            },
+                            labelLine : {
+                                show : false
+                            }
+                          }
+                        };  
+                    }
+                    var option2 = {
+                        title: {
+                                text: '三月广州地铁购票方式分布',
+                                textStyle:{color:'#2f4f4f'},
+                                left:'center'
+                        },
+                        toolbox: {
+                                show: true,
+                                iconStyle:{normal:{ 
+                                                    borderColor: ['#2F4F4F'],      // 工具箱边框颜色color
+                                                    borderWidth: 1.5
+                                                   }},
+                                feature: {
+                                    dataView: {readOnly: false },  //数据视图
+                                    restore: {},     //还原
+                                    saveAsImage: {}  //保存图片
+                                },
+                                top: '27px',
+                                left: 'center'
+                        },
+                        legend: {
+                            x : 'center',
+                            y : '58px',
+                            data : method
+                        },
+                        tooltip: {trigger: 'item',
+                                  formatter: "{b} : ({d}%)"},
+                        series: [
+                            {       
+                            type : 'pie',
+                            radius : ['26%', '34%'],
+                            center : ['27%', '38%'],
+                            itemStyle : labelFromatter1[0],
+                            data : [
+                                {name:'others',value:1-value[0],itemStyle : labelBottom},
+                                {name:method[0], value:value[0],itemStyle : labelTop1[0]}]
+                            },
+                            {       
+                            type : 'pie',
+                            radius : ['26%', '34%'],
+                            center : ['73%', '38%'],
+                            itemStyle : labelFromatter1[1],
+                            data : [
+                                {name:'others',value:1-value[1],itemStyle : labelBottom},
+                                {name:method[1], value:value[1],itemStyle : labelTop1[1]}]
+                            },
+                            {       
+                            type : 'pie',
+                            radius : ['26%', '34%'],
+                            center : ['27%', '63%'],
+                            itemStyle : labelFromatter1[2],
+                            data : [
+                                {name:'others',value:1-value[2],itemStyle : labelBottom},
+                                {name:method[2], value:value[2],itemStyle : labelTop1[2]}]
+                            },
+                            {       
+                            type : 'pie',
+                            radius : ['26%', '34%'],
+                            center : ['73%', '63%'],
+                            itemStyle : labelFromatter1[3],
+                            data : [
+                                {name:'others',value:1-value[3],itemStyle : labelBottom},
+                                {name:method[3], value:value[3],itemStyle : labelTop1[3]}]
+                            },
+                            {       
+                            type : 'pie',
+                            radius : ['26%', '34%'],
+                            center : ['27%', '88%'],
+                            itemStyle : labelFromatter1[4],
+                            data : [
+                                {name:'others',value:1-value[4],itemStyle : labelBottom},
+                                {name:method[4], value:value[4],itemStyle : labelTop1[4]}]
+                            },
+                            {
+                            name: '购票方式',
+                            type : 'pie',
+                            radius : '34%',
+                            center : ['73%', '88%'],
+                            label : {normal: {show: false}},
+                            data: [
+                                        {name: method[0], value: value[0], itemStyle: itemstyle[0]},
+                                        {name: method[1], value: value[1], itemStyle: itemstyle[1]},
+                                        {name: method[2], value: value[2], itemStyle: itemstyle[2]},
+                                        {name: method[3], value: value[3], itemStyle: itemstyle[3]},
+                                        {name: method[4], value: value[4], itemStyle: itemstyle[4]} 
+                            ]    
+                            }
+                        ]
+                    };
+                    Chart2.setOption(option2);
+                    $.ajax({
+                        type: 'GET',
+                        url: 'http://10.108.120.225:5000/api/convert_rates',
+                        dataType: 'jsonp', //希望服务器返回json格式的数据
+                        data:{  
+                            'city':'广州',
+	                        'month_start':'2017-3',
+	                        'month_end':'2017-03'  
+                             },
+                        jsonp: "callback",
+                        jsonpCallback: "successCallback",//回调方法
+                        success: function (data) {
+                            Chart3 = echarts.init(document.getElementById('pic2'));  
+                            var option3 = {
+                                title: {
+                                    text: '三月广州地铁转化率',
+                                    textStyle:{color:'#2f4f4f'},
+                                    left:'center'
+                                },
+                                legend: {
+                                     x: 'center',
+                                    top: '30px',
+                                    data: ['成功','失败']
+                                },
+                                tooltip: {trigger:'item',
+                                         formatter: "{a} {b} : ({d}%)" },
+                                toolbox: {
+                                        show: true,
+                                        iconStyle:{normal:{ 
+                                                            borderColor: ['#2F4F4F'],      // 工具箱边框颜色color
+                                                            borderWidth: 1.5
+                                                           }},
+                                        feature: {
+                                            dataView: {readOnly: false },  //数据视图
+                                            restore: {},     //还原
+                                            saveAsImage: {}  //保存图片
+                                        }
+                                },
+                                series: [
+                                    {
+                                        name: '订单转化率',
+                                        type: 'pie',
+                                        center: ['28%', '50%'],
+                                        radius: '50%',
+                                        data: [
+                                            {name: '成功', value: data.data[0].order_suc, itemStyle: itemstyle[0]},
+                                            {name: '失败', value: data.data[0].order_sum-data.data[0].order_suc, itemStyle: itemstyle[3]},
+                                        ],
+                                        z: 100,
+                                        itemStyle:{normal:{label:{show: true, 
+                                                                  formatter: '{a} {b} : ({d}%)'}} 
+                                        },
+                                        labelLine :{normal: {lineStyle: {
+                                                                  show: true,
+                                                                  color: '#2f4f4f'}}},
+                                        label: {normal:{textStyle: {color: '#2f4f4f',
+                                                                    fontWeight: 'bold',
+                                                                    fontSize: 14}}}
+                                    },
+                                    {
+                                        name: '购票转化率',
+                                        type: 'pie',
+                                        center: ['72%', '50%'],
+                                        radius: '50%',
+                                        data: [{name: '成功', value: data.data[0].ticket_suc, itemStyle: itemstyle[0]},
+                                            {name: '失败', value: data.data[0].ticket_sum-data.data[0].ticket_suc, itemStyle: itemstyle[3]}],
+                                        z: 100,
+                                        itemStyle:{normal:{label:{show: true, 
+                                                                  formatter: '{a} {b} : ({d}%)'}} 
+                                        },
+                                        labelLine :{normal: {lineStyle: {
+                                                                  show: true,
+                                                                  color: '#2f4f4f'}}},
+                                        label: {normal:{textStyle: {color: '#2f4f4f',
+                                                                    fontWeight: 'bold',
+                                                                    fontSize: 14}}}
+                                    }
+                                ]
+                        };
+                            Chart3.setOption(option3);
+                            Chart4 = echarts.init(document.getElementById('pic2xs')); 
+                            var option4 = {
+                                title: {
+                                    text: '三月广州地铁转化率',
+                                    textStyle:{color:'#2f4f4f'},
+                                    left:'center'
+                                },
+                                legend: {
+                                     x: 'center',
+                                    top: '58px',
+                                    data: ['成功','失败']
+                                },
+                                tooltip: {trigger:'item',
+                                         formatter: "{a} {b} : ({d}%)" },
+                                toolbox: {
+                                        show: true,
+                                        iconStyle:{normal:{ 
+                                                            borderColor: ['#2F4F4F'],      // 工具箱边框颜色color
+                                                            borderWidth: 1.5
+                                                           }},
+                                        feature: {
+                                            dataView: {readOnly: false },  //数据视图
+                                            restore: {},     //还原
+                                            saveAsImage: {}  //保存图片
+                                        },
+                                        top: '27px',
+                                        left: 'center'
+                                },
+                                series: [
+                                    {
+                                        name: '订单转化率',
+                                        type: 'pie',
+                                        center: ['50%', '45%'],
+                                        radius: '34%',
+                                        data: [
+                                            {name: '成功', value: data.data[0].order_suc, itemStyle: itemstyle[0]},
+                                            {name: '失败', value: data.data[0].order_sum-data.data[0].order_suc, itemStyle: itemstyle[3]},
+                                        ],
+                                        z: 100,
+                                        itemStyle:{normal:{label:{show: true, 
+                                                                  formatter: '{b} : ({d}%)'}} 
+                                        },
+                                        labelLine :{normal: {lineStyle: {
+                                                                  show: true,
+                                                                  color: '#2f4f4f'}}},
+                                        label: {normal:{textStyle: {color: '#2f4f4f',
+                                                                    fontWeight: 'bold',
+                                                                    fontSize: 10}}}
+                                    },
+                                    {
+                                        name: '购票转化率',
+                                        type: 'pie',
+                                        center: ['50%', '78%'],
+                                        radius: '34%',
+                                        data: [{name: '成功', value: data.data[0].ticket_suc, itemStyle: itemstyle[0]},
+                                            {name: '失败', value: data.data[0].ticket_sum-data.data[0].ticket_suc, itemStyle: itemstyle[3]}],
+                                        z: 100,
+                                        itemStyle:{normal:{label:{show: true, 
+                                                                  formatter: '{b} : ({d}%)'}} 
+                                        },
+                                        labelLine :{normal: {lineStyle: {
+                                                                  show: true,
+                                                                  color: '#2f4f4f'}}},
+                                        label: {normal:{textStyle: {color: '#2f4f4f',
+                                                                    fontWeight: 'bold',
+                                                                    fontSize: 10}}}
+                                    }
+                                ]
+                        };
+                            Chart4.setOption(option4);
+                        }
+                    });
+                    window.onresize = function () 
+                    {
+                        Chart1.resize();
+                        Chart2.resize();
+                        Chart3.resize();
+                        Chart4.resize();
+                    }
+                }
+            });  
+        });
+    </script>
+  </body>
+</html>

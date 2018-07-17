@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+    <title>Subway Data</title>
+    <meta name="description" content="">
+    <meta name="author" content="templatemo">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700' rel='stylesheet' type='text/css'>
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/templatemo-style.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="js/echarts.js"></script>
+    <style>
+        .templatemo-site-header{height:27px}  
+    </style>
+  </head>
+  <body>  
+    <!-- Left column -->
+    <div class="templatemo-flex-row">
+      <div class="templatemo-sidebar">
+        <header class="templatemo-site-header">
+          <i class="fa fa-subway fa-2x" aria-hidden="true" style="color:white;margin-right:20px"></i><h1 style="margin-bottom:15px">SUBWAY</h1>
+        </header>
+        <div class="profile-photo-container">
+          <img src="images/bg.jpeg" alt="Profile Photo" class="img-responsive">  
+          <div class="profile-photo-overlay"></div>
+        </div>      
+        <!-- Search box -->
+        <form class="templatemo-search-form" role="search">
+          <div class="input-group">
+              <button type="submit" class="fa fa-search"></button>
+              <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">           
+          </div>
+        </form>
+        <div class="mobile-menu-icon">
+            <i class="fa fa-bars"></i>
+        </div>
+        <nav class="templatemo-left-nav">          
+          <ul>
+            <li><a href="changsha.html"><i class="fa fa-home fa-fw fa-lg"></i>主页</a></li>
+            <li><a href="c-ticket.html"><i class="fa fa-ticket fa-lg"></i>地铁充值</a></li>
+            <li><a href="c-method.html" class="active"><i class="fa fa-credit-card fa-lg"></i>用卡类型</a></li>
+            <li><a href="mailto:somebody@qq.com"><i class="fa fa-envelope fa-lg"></i>联系我们</a></li>
+          </ul>  
+        </nav>
+      </div>
+        
+      <!-- Main content --> 
+      <div class="templatemo-content col-1 light-gray-bg" style="background:#2F4F4F">
+        <div class="templatemo-top-nav-container">
+          <div class="row">
+            <nav class="templatemo-top-nav col-lg-6 col-md-12">
+                  <ul class="text-uppercase">
+                    <li><a href="guangzhou.html">广州</a></li>
+                    <li><a href="changsha.html" class="active">长沙</a></li>
+                 </ul>
+            </nav>
+                 <ul class="nav navbar-top-links navbar-right">
+                        <a href="#"><i class="fa fa-facebook-official fa-lg" aria-hidden="true" style="margin-right:20px;color:black"></i></a>
+                        <a href="#"><i class="fa fa-twitter-square fa-lg" aria-hidden="true" style="margin-right:20px;color:black"></i></a>
+                        <a href="#"><i class="fa fa-wechat fa-lg" aria-hidden="true" style="margin-right:20px;color:black"></i></a>
+                        <a href="#"><i class="fa fa-weibo fa-lg" aria-hidden="true" style="margin-right:20px;color:black"></i></a>
+                 </ul>
+          </div>
+        </div>
+          
+        <div class="templatemo-content-container">
+           <div>
+            <h1 style="color:white">Subway Data</h1><br/>
+            <h4 style="color:white">长沙地铁用卡类型<hr></h4>
+           </div>
+               
+           <div class="col-md-12" style="margin-top:16px">
+            <div class="row">
+            <div class="form-group col-md-10">
+                <label class="col-md-2 control-label" style="color:white;line-height:30px">请选择日期：</label>
+                <div class="input-group date form_date col-md-4" data-date="" data-date-format="yyyy-mm-dd">
+                <input id="time" class="form-control" size="16" type="text" value="2017-03-10" readonly>
+                <span class="input-group-addon"><span class="fa fa-calendar" style="color:white"></span></span>
+                </div>
+            </div>
+            <button class="btn btn-primary" id="submit" style="margin-left:45px"> 生成图表</button>
+            </div>
+            <div class="templatemo-flex-row flex-content-row">
+                <div class="templatemo-content-widget white-bg col-1 ">
+                  <i class="fa fa-times"></i>
+                  <div class="square"></div>
+                  <h2 class="templatemo-inline-block" style="color:darkcyan">用卡类型</h2><hr>
+                  <div class="templatemo-flex-row"><div id="first" class="col-1" style="height:450px;"></div></div>
+                </div>
+            </div>         
+           </div>
+        </div> 
+          
+          <center>
+          <footer>
+            <p style="color:white">Copyright &copy; 2084 Company Name 
+            | Designed by <a href="http://www.templatemo.com" target="_parent">templatemo</a></p>
+          </footer>         
+          </center>         
+        
+      </div>
+    </div>
+    
+    <!-- JS -->
+    <script src="js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
+    <script src="js/jquery-migrate-1.2.1.min.js"></script> <!--  jQuery Migrate Plugin -->
+    <script type="text/javascript" src="js/templatemo-script.js"></script>      <!-- Templatemo Script -->
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>  
+    <script type="text/javascript">
+    $('.form_date').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
+    });
+    </script>
+    <script>
+        var Chart1 = echarts.init(document.getElementById('first'));
+        $(document).ready(function(){
+            $.ajax({
+                        type: 'GET',
+                        url: 'http://10.108.120.225:5000/api/card_type_days',
+                        dataType: 'jsonp', //希望服务器返回json格式的数据
+                        data:{  'city' : "长沙", 
+                                'time': '2017-03-10' 
+                             },
+                        jsonp: "callback",
+                        jsonpCallback: "successCallback",//回调方法
+                        success: function (data) {
+                            //console.log(data);
+                            var color = ['#efa18d','#919e8b','#d7ab82','#61a0a8','#cc7e63'];
+                            var cardtype = [];
+                            var nums = [];
+                            var itemstyle = [];
+                            for(var i=0;i<data.data.length;i++)
+                                {
+                                    cardtype.push(data.data[i].cardtype);
+                                    nums.push(data.data[i].UserCount);
+                                    itemstyle[i] = {normal:{color:color[i]}};
+                                }
+                            var option = {
+                                            title: {
+                                                text: '长沙地铁用卡类型分布',
+                                                textStyle:{color:'#2F4F4F'},
+                                                left:'center',
+                                                top: '30px'
+                                            },
+                                            legend: {
+                                                x: 'center',
+                                                top: '62px',
+                                                data: cardtype,
+                                            },
+                                            tooltip: {trigger: 'item'},
+                                            toolbox: {
+                                                    show: true,
+                                                    iconStyle:{normal:{ 
+                                                                        borderColor: ['#2F4F4F'],      // 工具箱边框颜色color
+                                                                        borderWidth: 1.5
+                                                                       }},
+                                                    feature: {
+                                                        dataView: {readOnly: false },  //数据视图
+                                                        restore: {},     //还原
+                                                        saveAsImage: {}  //保存图片
+                                                    }
+                                            },
+                                            series: [
+                                                {
+                                                    name: '用卡类型',
+                                                    type: 'pie',
+                                                    center: ['50%', '60%'],
+                                                    radius: '60%',
+                                                    data: [
+                                                        {name: cardtype[0], value: nums[0], itemStyle: itemstyle[0]},
+                                                        {name: cardtype[1], value: nums[1], itemStyle: itemstyle[1]},
+                                                        {name: cardtype[2], value: nums[2], itemStyle: itemstyle[2]},
+                                                        {name: cardtype[3], value: nums[3], itemStyle: itemstyle[3]},
+                                                        {name: cardtype[4], value: nums[4], itemStyle: itemstyle[4]}
+                                                    ],
+                                                    itemStyle:{normal:{label:{show: true, 
+                                                                              formatter: '({d}%)'}} 
+                                                    },
+                                                    labelLine :{normal: {lineStyle: {show: true}}},
+                                                    label: {normal:{textStyle: {fontWeight: 'bold',
+                                                                                fontSize: 14}}}
+                                                }
+                                            ]
+                                        };                        
+                            Chart1.setOption(option);
+                            window.onresize = function () {Chart1.resize();}
+                        }
+                });
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('#submit').click(function(){
+                if($('#time').val().length==0)alert("请选择日期");
+                else
+                {
+                $.ajax({
+                        type: 'GET',
+                        url: 'http://10.108.120.225:5000/api/card_type_days',
+                        dataType: 'jsonp', //希望服务器返回json格式的数据
+                        data:{  'city' : "长沙", 
+                                'time': $('#time').val() 
+                             },
+                        jsonp: "callback",
+                        jsonpCallback: "successCallback",//回调方法
+                        success: function (data) {
+                            //console.log(data);
+                            var color = ['#efa18d','#919e8b','#d7ab82','#61a0a8','#cc7e63'];
+                            var cardtype = [];
+                            var nums = [];
+                            var itemstyle = [];
+                            for(var i=0;i<data.data.length;i++)
+                                {
+                                    cardtype.push(data.data[i].cardtype);
+                                    nums.push(data.data[i].UserCount);
+                                    itemstyle[i] = {normal:{color:color[i]}};
+                                }
+                            var option = {
+                                            title: {
+                                                text: '长沙地铁用卡类型分布',
+                                                textStyle:{color:'#2F4F4F'},
+                                                left:'center',
+                                                top: '30px'
+                                            },
+                                            legend: {
+                                                x: 'center',
+                                                top: '62px',
+                                                data: cardtype,
+                                            },
+                                            tooltip: {trigger: 'item'},
+                                            toolbox: {
+                                                    show: true,
+                                                    iconStyle:{normal:{ 
+                                                                        borderColor: ['#2F4F4F'],      // 工具箱边框颜色color
+                                                                        borderWidth: 1.5
+                                                                       }},
+                                                    feature: {
+                                                        dataZoom: {     //数据缩放视图
+                                                            yAxisIndex: 'none'
+                                                        },
+                                                        dataView: {readOnly: false },  //数据视图
+                                                        restore: {},     //还原
+                                                        saveAsImage: {}  //保存图片
+                                                    }
+                                            },
+                                            series: [
+                                                {
+                                                    name: '用卡类型',
+                                                    type: 'pie',
+                                                    center: ['50%', '60%'],
+                                                    radius: '60%',
+                                                    data: [
+                                                        {name: cardtype[0], value: nums[0], itemStyle: itemstyle[0]},
+                                                        {name: cardtype[1], value: nums[1], itemStyle: itemstyle[1]},
+                                                        {name: cardtype[2], value: nums[2], itemStyle: itemstyle[2]},
+                                                        {name: cardtype[3], value: nums[3], itemStyle: itemstyle[3]},
+                                                        {name: cardtype[4], value: nums[4], itemStyle: itemstyle[4]}
+                                                    ],
+                                                    itemStyle:{normal:{label:{show: true, 
+                                                                              formatter: '({d}%)'}} 
+                                                    },
+                                                    labelLine :{normal: {lineStyle: {show: true}}},
+                                                    label: {normal:{textStyle: {fontWeight: 'bold',
+                                                                                fontSize: 14}}}
+                                                }
+                                            ]
+                                        };                        
+                            Chart1.setOption(option);
+                            window.onresize = function () {Chart1.resize();}
+                        }
+                });
+                }
+            });
+        });
+    </script>
+  </body>
+</html>
