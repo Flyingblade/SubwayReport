@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+    <title>Subway Data</title>
+    <meta name="description" content="">
+    <meta name="author" content="templatemo">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700' rel='stylesheet' type='text/css'>
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/templatemo-style.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="js/echarts.js"></script>
+    <style>
+        .templatemo-site-header{height:27px}  
+    </style>   
+  </head>
+  <body>  
+    <!-- Left column -->
+    <div class="templatemo-flex-row">
+      <div class="templatemo-sidebar">
+        <header class="templatemo-site-header">
+          <i class="fa fa-subway fa-2x" aria-hidden="true" style="color:white;margin-right:20px"></i><h1 style="margin-bottom:15px">SUBWAY</h1>
+        </header>
+        <div class="profile-photo-container">
+          <img src="images/bg.jpeg" alt="Profile Photo" class="img-responsive">  
+          <div class="profile-photo-overlay"></div>
+        </div>      
+        <!-- Search box -->
+        <form class="templatemo-search-form" role="search">
+          <div class="input-group">
+              <button type="submit" class="fa fa-search"></button>
+              <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">           
+          </div>
+        </form>
+        <div class="mobile-menu-icon">
+            <i class="fa fa-bars"></i>
+        </div>
+        <nav class="templatemo-left-nav">          
+          <ul>
+            <li><a href="changsha.html"><i class="fa fa-home fa-fw fa-lg"></i>主页</a></li>
+            <li><a href="c-ticket.html" class="active"><i class="fa fa-ticket fa-lg"></i>地铁充值</a></li>
+            <li><a href="c-method.html"><i class="fa fa-credit-card fa-lg"></i>用卡类型</a></li>
+            <li><a href="mailto:somebody@qq.com"><i class="fa fa-envelope fa-lg"></i>联系我们</a></li>
+          </ul>  
+        </nav>
+      </div>
+        
+      <!-- Main content --> 
+      <div class="templatemo-content col-1 light-gray-bg" style="background:#2F4F4F">
+        <div class="templatemo-top-nav-container">
+          <div class="row">
+            <nav class="templatemo-top-nav col-lg-6 col-md-12">
+                  <ul class="text-uppercase">
+                    <li><a href="guangzhou.html">广州</a></li>
+                    <li><a href="changsha.html" class="active">长沙</a></li>
+                 </ul>
+            </nav>
+                 <ul class="nav navbar-top-links navbar-right">
+                        <a href="#"><i class="fa fa-facebook-official fa-lg" aria-hidden="true" style="margin-right:20px;color:black"></i></a>
+                        <a href="#"><i class="fa fa-twitter-square fa-lg" aria-hidden="true" style="margin-right:20px;color:black"></i></a>
+                        <a href="#"><i class="fa fa-wechat fa-lg" aria-hidden="true" style="margin-right:20px;color:black"></i></a>
+                        <a href="#"><i class="fa fa-weibo fa-lg" aria-hidden="true" style="margin-right:20px;color:black"></i></a>
+                 </ul>
+          </div>
+        </div>
+          
+        <div class="templatemo-content-container">
+           <div>
+            <h1 style="color:white">Subway Data</h1><br/><hr> 
+           </div>
+               
+           <div class="col-md-12" style="margin-top:16px">
+            <div class="row">
+                <div class="form-group col-md-5">
+                    <label class="col-md-5 control-label" style="color:white;line-height:30px">开始日期：</label>
+                    <div class="input-group date form_date col-md-6" data-date="" data-date-format="yyyy-mm-dd">
+                    <input id="time_start" class="form-control" size="16" type="text" value="2017-03-08" readonly>
+                    <span class="input-group-addon"><span class="fa fa-calendar" style="color:white"></span></span>
+                    </div>
+                </div>
+                <div class="form-group col-md-5">
+                    <label class="col-md-5 control-label" style="color:white;line-height:30px">结束日期：</label>
+                    <div class="input-group date form_date col-md-6" data-date="" data-date-format="yyyy-mm-dd">
+                    <input id="time_end" class="form-control" size="16" type="text" value="2017-03-25" readonly>
+                    <span class="input-group-addon"><span class="fa fa-calendar" style="color:white"></span></span>
+                    </div>
+                </div>
+                <div class="col-md-2"><button class="btn btn-primary" id="submit"> 生成图表</button></div>
+            </div>
+            <div class="templatemo-content-widget white-bg">
+              <i class="fa fa-times"></i>
+              <div class="square"></div>
+              <h2 class="templatemo-inline-block" style="color:darkcyan">订单金额</h2><hr>
+              <div class="templatemo-flex-row">
+                  <div id="first" class="col-1" style="height:400px;"></div>
+              </div>     
+            </div>
+            <div class="templatemo-content-widget white-bg">
+              <i class="fa fa-times"></i>
+              <div class="square"></div>
+              <h2 class="templatemo-inline-block" style="color:darkcyan">订单数</h2><hr>
+              <div class="templatemo-flex-row">
+                  <div id="second" class="col-1" style="height:400px;"></div>
+              </div>
+            </div>
+           </div>
+        </div> 
+          
+          <center>
+          <footer>
+            <p style="color:white">Copyright &copy; 2084 Company Name 
+            | Designed by <a href="http://www.templatemo.com" target="_parent">templatemo</a></p>
+          </footer>         
+          </center>         
+        
+      </div>
+    </div>
+    
+    <!-- JS -->
+    <script src="js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
+    <script src="js/jquery-migrate-1.2.1.min.js"></script> <!--  jQuery Migrate Plugin -->
+    <script type="text/javascript" src="js/templatemo-script.js"></script>      <!-- Templatemo Script -->
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>  
+    <script type="text/javascript">
+    $('.form_date').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
+    });
+    </script>
+    <script>
+        var Chart1 = echarts.init(document.getElementById('first'));
+        var Chart2 = echarts.init(document.getElementById('second'));
+        $(document).ready(function(){
+            $.ajax({
+                    type: 'GET',
+                    url: 'http://10.108.120.225:5000/api/recharge_day',
+                    dataType: 'jsonp', //希望服务器返回json格式的数据
+                    data:{  'city' : "长沙", 
+                            'time_start':'2017-03-08',
+                            'time_end':'2017-03-25'  
+                         },
+                    jsonp: "callback",
+                    jsonpCallback: "successCallback",//回调方法
+                    success: function (data) {
+                        var color = ['#ffb980','#ff715e'];
+                        var date = [];
+                        var order_sum = [];
+                        var order_suc = [];
+                        var recharge_sum = [];
+                        var recharge_suc = [];
+                        for(var i=0;i<data.data.length;i++)
+                            {
+                                var spt = data.data[i].date.split("-");
+                                date.push(spt[1]+"-"+spt[2]);
+                                order_sum.push(data.data[i].order_sum);
+                                order_suc.push(data.data[i].order_suc);
+                                recharge_sum.push(data.data[i].recharge_sum/100);
+                                recharge_suc.push(data.data[i].recharge_suc/100);
+                            }
+                        var option1 = {
+                                title: {
+                                    text: '长沙地铁订单金额对比',
+                                    textStyle:{color:'#2f4f4f'},
+                                    left:'center',
+                                    top:'30px'
+                                },
+                                legend: {
+                                    x: 'center',
+                                    top: '62px',
+                                    data: ['订单金额','支付金额'],
+                                },
+                                tooltip: {trigger: 'axis',
+                                          axisPointer: {type: 'cross',
+                                                        label: {textStyle: {color: 'rgba(255,255,255,1)'},
+                                                                backgroundColor: '#2F4F4F'}}
+                                },
+                                toolbox: {
+                                        show: true,
+                                        iconStyle:{normal:{ 
+                                                            borderColor: ['#2F4F4F'],      // 工具箱边框颜色color
+                                                            borderWidth: 1.5
+                                                           }},
+                                        feature: {
+                                            dataView: {readOnly: false },  //数据视图
+                                            magicType: {type: ['line', 'bar']},
+                                            restore: {},     //还原
+                                            saveAsImage: {}  //保存图片
+                                        }
+                                },
+                                grid: {left: '11%',
+                                       right: '7%',
+                                       top: '27%'
+                                },
+                                xAxis: {
+                                    data: date,
+                                    boundaryGap: false
+                                },
+                                yAxis: {splitArea: {show: true,
+                                                    areaStyle: {color: ['rgba(250,250,250,0.3)','rgba(200,200,200,0)']}},
+                                        axisLabel: {interval: 0},
+                                        name:"（万元）"
+                                },
+                                series: [
+                                    {
+                                        name: '订单金额',
+                                        type: 'line',
+                                        data: recharge_sum,
+                                        smooth: true,
+                                        symbol: 'diamond',
+                                        symbolSize: 10,
+                                        markPoint: {
+                                            data: [
+                                                {type: 'max', name: '最大值'},
+                                                {type: 'min', name: '最小值'}
+                                            ]
+                                        },
+                                        itemStyle:{normal:{color: color[0]}},
+                                        label: {normal: {show: true,
+                                                         position: 'bottom'}},
+                                        lineStyle:{normal:{width:3}},
+                                    },
+                                    {
+                                        name: '支付金额',
+                                        type: 'line',
+                                        data: recharge_suc,
+                                        smooth: true,
+                                        symbol: 'triangle',
+                                        symbolSize: 10,
+                                        markPoint: {
+                                            data: [
+                                                {type: 'max', name: '最大值'},
+                                                {type: 'min', name: '最小值'}
+                                            ]
+                                        },
+                                        itemStyle:{normal:{color: color[1]}},
+                                        label: {normal: {show: true,
+                                                         position: 'bottom'}},
+                                        lineStyle:{normal:{width:3}},
+                                    }
+                                ]
+                            };
+                        var option2 = {
+                                title: {
+                                    text: '长沙地铁订单数对比',
+                                    textStyle:{color:'#2f4f4f'},
+                                    left:'center',
+                                    top:'30px'
+                                },
+                                legend: {
+                                    x: 'center',
+                                    top: '62px',
+                                    data: ['充值订单数','支付订单数'],
+                                },
+                                tooltip: {trigger: 'axis',
+                                                  axisPointer: {type: 'cross',
+                                                                label: {textStyle: {color: 'rgba(255,255,255,1)'},
+                                                                        backgroundColor: '#2F4F4F'}}
+                                },
+                                toolbox: {
+                                        show: true,
+                                        iconStyle:{normal:{ 
+                                                            borderColor: ['#2F4F4F'],      // 工具箱边框颜色color
+                                                            borderWidth: 1.5
+                                                           }},
+                                        feature: {
+                                            dataView: {readOnly: false },  //数据视图
+                                            magicType: {type: ['line', 'bar']},  //动态类型切换
+                                            restore: {},     //还原
+                                            saveAsImage: {}  //保存图片
+                                        }
+                                },
+                                grid: {left: '14%',
+                                       right: '9%',
+                                       top: '27%'
+                                },
+                                xAxis: {
+                                    data: date,
+                                    boundaryGap: false
+                                },
+                                yAxis: {splitArea: {show: true,
+                                                    areaStyle: {color: ['rgba(250,250,250,0.3)','rgba(200,200,200,0)']}},
+                                        axisLabel: {interval: 0},
+                                        name: '（个）'
+                                },
+                                series: [
+                                    {
+                                        name: '充值订单数',
+                                        type: 'line',
+                                        data: order_sum, 
+                                        smooth: true,
+                                        symbol: 'diamond',
+                                        symbolSize: 10,
+                                        markPoint: {
+                                            data: [
+                                                {type: 'max', name: '最大值'},
+                                                {type: 'min', name: '最小值'}
+                                            ]
+                                        },
+                                        itemStyle:{normal:{color: color[0]}},
+                                        label: {normal: {show: true,
+                                                         position: 'bottom'}},
+                                        lineStyle:{normal:{width:3}},
+                                    },
+                                    {
+                                        name: '支付订单数',
+                                        type: 'line',
+                                        data: order_suc,
+                                        smooth: true,
+                                        symbol: 'triangle',
+                                        symbolSize: 10,
+                                        markPoint: {
+                                            data: [
+                                                {type: 'max', name: '最大值'},
+                                                {type: 'min', name: '最小值'}
+                                            ]
+                                        },
+                                        itemStyle:{normal:{color: color[1]}},
+                                        label: {normal: {show: true,
+                                                         position: 'bottom'}},
+                                        lineStyle:{normal:{width:3}},
+                                    }
+                                ]
+                            };
+                        Chart1.setOption(option1);
+                        Chart2.setOption(option2);
+                        window.onresize = function () {
+                            Chart1.resize();
+                            Chart2.resize();
+                        }
+                    }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            function checkEndTime1(){  
+                var startTime1 = $("#time_start").val();  
+                var endTime1 = $("#time_end").val();  
+                var start1 = startTime1.split("-");
+                var end1 = endTime1.split("-");
+                if(start1[0]>end1[0])return false;
+                else if(start1[0]<end1[0])return true;
+                else if(start1[1]>end1[1])return false;
+                else if(start1[1]<end1[1])return true;
+                else if(start1[2]>end1[2])return false;
+                else return true;
+            }
+            $('#submit').click(function(){
+                if($('#time_start').val().length==0)alert("请选择开始日期");
+                else if($('#time_end').val().length==0)alert("请选择结束日期");
+                else if(!checkEndTime1())alert("结束时间必须晚于开始时间！");
+                else{              
+                    $.ajax({
+                        type: 'GET',
+                        url: 'http://10.108.120.225:5000/api/recharge_day',
+                        dataType: 'jsonp', //希望服务器返回json格式的数据
+                        data:{  'city' : "长沙", 
+                                'time_start':$("#time_start").val(),
+                                'time_end':$("#time_end").val()   
+                             },
+                        jsonp: "callback",
+                        jsonpCallback: "successCallback",//回调方法
+                        success: function (data) {
+                            var color = ['#ffb980','#ff715e'];
+                            var date = [];
+                            var order_sum = [];
+                            var order_suc = [];
+                            var recharge_sum = [];
+                            var recharge_suc = [];
+                            for(var i=0;i<data.data.length;i++)
+                                {
+                                    date.push(data.data[i].date);
+                                    order_sum.push(data.data[i].order_sum);
+                                    order_suc.push(data.data[i].order_suc);
+                                    recharge_sum.push(data.data[i].recharge_sum);
+                                    recharge_suc.push(data.data[i].recharge_suc);
+                                }
+                            var option1 = {
+                                    title: {
+                                        text: '长沙地铁订单金额对比',
+                                        textStyle:{color:'#2f4f4f'},
+                                        left:'center',
+                                        top:'30px'
+                                    },
+                                    legend: {
+                                        x: 'center',
+                                        top: '62px',
+                                        data: ['订单金额','支付金额'],
+                                    },
+                                    tooltip: {trigger: 'axis',
+                                              axisPointer: {type: 'cross',
+                                                            label: {textStyle: {color: 'rgba(255,255,255,1)'},
+                                                                    backgroundColor: '#2F4F4F'}}
+                                    },
+                                    toolbox: {
+                                            show: true,
+                                            iconStyle:{normal:{ 
+                                                                borderColor: ['#2F4F4F'],      // 工具箱边框颜色color
+                                                                borderWidth: 1.5
+                                                               }},
+                                            feature: {
+                                                dataView: {readOnly: false },  //数据视图
+                                                magicType: {type: ['line', 'bar']},
+                                                restore: {},     //还原
+                                                saveAsImage: {}  //保存图片
+                                            }
+                                    },
+                                    grid: {left: '11%',
+                                           right: '7%',
+                                           top: '27%'
+                                    },
+                                    xAxis: {
+                                        data: date,
+                                        boundaryGap: false
+                                    },
+                                    yAxis: {splitArea: {show: true,
+                                                        areaStyle: {color: ['rgba(250,250,250,0.3)','rgba(200,200,200,0)']}},
+                                            axisLabel: {interval: 0},
+                                            name:"（万元）"
+                                    },
+                                    series: [
+                                        {
+                                            name: '订单金额',
+                                            type: 'line',
+                                            data: recharge_sum,
+                                            smooth: true,
+                                            symbol: 'diamond',
+                                            symbolSize: 10,
+                                            markPoint: {
+                                                data: [
+                                                    {type: 'max', name: '最大值'},
+                                                    {type: 'min', name: '最小值'}
+                                                ]
+                                            },
+                                            itemStyle:{normal:{color: color[0]}},
+                                            label: {normal: {show: true,
+                                                             position: 'bottom'}},
+                                            lineStyle:{normal:{width:3}},
+                                        },
+                                        {
+                                            name: '支付金额',
+                                            type: 'line',
+                                            data: recharge_suc,
+                                            smooth: true,
+                                            symbol: 'triangle',
+                                            symbolSize: 10,
+                                            markPoint: {
+                                                data: [
+                                                    {type: 'max', name: '最大值'},
+                                                    {type: 'min', name: '最小值'}
+                                                ]
+                                            },
+                                            itemStyle:{normal:{color: color[1]}},
+                                            label: {normal: {show: true,
+                                                             position: 'bottom'}},
+                                            lineStyle:{normal:{width:3}},
+                                        }
+                                    ]
+                                };
+                            var option2 = {
+                                    title: {
+                                        text: '长沙地铁订单数对比',
+                                        textStyle:{color:'#2f4f4f'},
+                                        left:'center',
+                                        top:'30px'
+                                    },
+                                    legend: {
+                                        x: 'center',
+                                        top: '62px',
+                                        data: ['充值订单数','支付订单数'],
+                                    },
+                                    tooltip: {trigger: 'axis',
+                                                      axisPointer: {type: 'cross',
+                                                                    label: {textStyle: {color: 'rgba(255,255,255,1)'},
+                                                                            backgroundColor: '#2F4F4F'}}
+                                    },
+                                    toolbox: {
+                                            show: true,
+                                            iconStyle:{normal:{ 
+                                                                borderColor: ['#2F4F4F'],      // 工具箱边框颜色color
+                                                                borderWidth: 1.5
+                                                               }},
+                                            feature: {
+                                                dataView: {readOnly: false },  //数据视图
+                                                magicType: {type: ['line', 'bar']},  //动态类型切换
+                                                restore: {},     //还原
+                                                saveAsImage: {}  //保存图片
+                                            }
+                                    },
+                                    grid: {left: '14%',
+                                           right: '9%',
+                                           top: '27%'
+                                    },
+                                    xAxis: {
+                                        data: date,
+                                        boundaryGap: false
+                                    },
+                                    yAxis: {splitArea: {show: true,
+                                                        areaStyle: {color: ['rgba(250,250,250,0.3)','rgba(200,200,200,0)']}},
+                                            axisLabel: {interval: 0},
+                                            name: '（个）'
+                                    },
+                                    series: [
+                                        {
+                                            name: '充值订单数',
+                                            type: 'line',
+                                            data: order_sum, 
+                                            smooth: true,
+                                            symbol: 'diamond',
+                                            symbolSize: 10,
+                                            markPoint: {
+                                                data: [
+                                                    {type: 'max', name: '最大值'},
+                                                    {type: 'min', name: '最小值'}
+                                                ]
+                                            },
+                                            itemStyle:{normal:{color: color[0]}},
+                                            label: {normal: {show: true,
+                                                             position: 'bottom'}},
+                                            lineStyle:{normal:{width:3}},
+                                        },
+                                        {
+                                            name: '支付订单数',
+                                            type: 'line',
+                                            data: order_suc,
+                                            smooth: true,
+                                            symbol: 'triangle',
+                                            symbolSize: 10,
+                                            markPoint: {
+                                                data: [
+                                                    {type: 'max', name: '最大值'},
+                                                    {type: 'min', name: '最小值'}
+                                                ]
+                                            },
+                                            itemStyle:{normal:{color: color[1]}},
+                                            label: {normal: {show: true,
+                                                             position: 'bottom'}},
+                                            lineStyle:{normal:{width:3}},
+                                        }
+                                    ]
+                                };
+//                            Chart1.clear();
+//                            Chart2.clear();
+//                            var Chart1 = echarts.init(document.getElementById('first'));
+//                            var Chart2 = echarts.init(document.getElementById('second'));
+                            Chart1.setOption(option1);
+                            Chart2.setOption(option2);
+                            window.onresize = function () {
+                                Chart1.resize();
+                                Chart2.resize();
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+  </body>
+</html>

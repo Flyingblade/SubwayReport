@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,shrink-to-fit=no,user-scalable=no"/>
+    <title>Realtime Subway Passenger</title>
+    <style type="text/css">
+        .tip_out{
+            position: relative;
+        }
+        .tip{
+            position: absolute;
+
+            width: 120px;
+            left: -60px;
+            bottom: 0;
+        }
+        .tip_name{
+            background: rgba(0,0,0,0.8);
+            padding:3px 0px;
+            text-align: center;
+            font-size: 12px;
+            color: #fff;
+            border-radius: 4px;
+        }
+        .tip .tip_start, .tip .tip_end{
+            float: left;
+        }
+        .tip_footer{
+                height: 10px;
+                background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAALCAYAAACUPhZAAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAG5JREFUeNpiNDY2FmNgYJgDxFIM1AOvgDidCcpIAeJn1DQYiB8zIQlQwwK4wSAOE5oEJRagGIxuOCUWYBiMzXByLMBqMC7DSbEAp8H4DCfGArwGEzIcnwUEDSbGcGwWEGUwsYYjW3CBWINBACDAACkeLdxbVjieAAAAAElFTkSuQmCC) center top no-repeat;
+                background-size: 21px 10px;
+        }
+    </style>
+    <link href ="./static/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="./static/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+    <div class="navbar-header">
+        <h1 class="navbar-brand">地铁客流实时预警系统</h1>
+    </div>
+    <div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="?city=4401">广州市</a></li>
+            <li><a href="?city=1100">北京市</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" data-toggle="dropdown" class="dropdown-toggle">其他市<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="?city=3100">上海市</a></li>
+                <li><a href="?city=4403">深圳市</a></li>
+                <li><a href="?city=4201">武汉市</a></li>
+                <li><a href="?city=1200">天津市</a></li>
+                <li><a href="?city=5000">重庆市</a></li>
+                <li><a href="?city=3301">杭州市</a></li>
+            </ul></li>
+        </ul>
+        <div class="navbar-form navbar-right">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search" id="searchname" />
+        </div>
+        <button type="button" class="btn btn-info" id="search">Search</button>
+        </div>
+    </div>
+    </div>
+    </nav>
+    <div id="mysubway" style="z-index: 0;display: inline;"></div>
+    <div style="position:absolute;width:350px;right:0px;margin-top:300px;z-index: 1;display: none;user-select:none" class="panel panel-default" id = "detial">
+    <div class="panel-heading">
+        <h3 class="panel-title">客流详情</h3>
+    </div>
+    <table class="table" id = "fluent-data">
+        <tr><td>站点名称：</td><td>test</td><td></td></tr>
+        <tr><td>经过线路：</td><td>A号线 B号线</td><td></td></tr>
+        <tr><td>实时客流：</td><td>1000</td><td></td></tr>
+        <tr><td>详细客流：</td><td></td><td></td></tr>
+    </table>
+</div>
+
+</body>
+    <script src="http://webapi.amap.com/subway?v=1.0&key=21099ca70983c8066448fe168c4654ba&callback=cbk"></script>
+    <script src="./static/bootstrap/js/jquery.min.js" type="text/javascript"></script>
+    <script src="./static/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="./static/my.js" type="text/javascript"></script>
+</html>
