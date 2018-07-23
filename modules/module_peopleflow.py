@@ -17,16 +17,18 @@ class Module(object):
 
     def run(self, df):
         # STATUS ==5 的是交易成功的
-        df_suc = df[df['ORDER_STATUS'] == 5]
-        # df['time'] = pd.to_datetime(df['NOTI_TAKE_TICKET_RESULT_DATE'], format='%Y-%m-%d %H:%M:%S')
-        df_suc['hour'] = df_suc['NOTI_TAKE_TICKET_RESULT_DATE'].apply(lambda x: x.hour)
+        df_suc = df[df['order_status'] == 5]
+        df_suc['time'] = pd.to_datetime(df_suc['entry_date'], format='%Y-%m-%d %H:%M:%S')
+        df_suc['hour'] = df_suc['time'].apply(lambda x: x.hour)
 
-        tmp = df_suc.groupby(['START_NAME', 'END_NAME']).SINGLE_TICKET_NUM.sum().reset_index()
-        starts = tmp.groupby('START_NAME').SINGLE_TICKET_NUM.sum().sort_values(ascending=False)
+        tmp = df_suc.groupby(['entry_station', 'exit_station']).ticket_num.sum().reset_index()
+        starts = df_suc.groupby('entry_station').ticket_num.sum().sort_values(ascending=False)
+        hour = tmp[tmp.entry_station == starts.index[0]][
+            tmp.ticket_num > (tmp[tmp.entry_station == starts.index[0]].ticket_num.mean()) * 1.3]
 
         self.__params['M3_stations'] = starts[:3].index.tolist()
-        self.__params['M3_station0_t1'] =
-        self.__params['M3_station0_t2'] =
+        self.__params['M3_station0_t1'] = hour.hour.min()
+        self.__params['M3_station0_t2'] = hour.hour.max()
         # print(self.__params)
 
     def maketext(self, global_params=None):
