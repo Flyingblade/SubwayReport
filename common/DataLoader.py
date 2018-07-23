@@ -33,7 +33,9 @@ class DataLoader(object):
         self.debug = debug
         self.sql_single_tk = '''select USER_ID as user_id,
                   ACCOUNT_ID as account_id, 
-                  PAY_ACCOUNT as owner_id, 
+                  PAY_ACCOUNT as owner_id,
+                  PAYMENT_TYPE as payment_type,
+                  finance.tr_order_thrid.SOURCE as source,
                   order_no, 
                   single_ticket_price as ticket_price,
                   actual_take_ticket_num as ticket_num,
