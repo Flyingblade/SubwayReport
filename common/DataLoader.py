@@ -69,7 +69,7 @@ class DataLoader(object):
             sql = self.sql_single_tk[:]
 
             if self.debug:
-                sql = sql[:-1] + " LIMIT 100000;"
+                sql = sql[:-1] + " LIMIT 10000;"
             if self.current_time.month < 12:
                 next_month = dt.datetime(self.current_time.year, self.current_time.month + 1, 1)
             else:
@@ -128,7 +128,7 @@ class DataLoader(object):
         sql = self.sql_single_tk[:]
 
         if self.debug:
-            sql = sql[:-1] + " LIMIT 100000;"
+            sql = sql[:-1] + " LIMIT 10000;"
         current_str = self.current_time.strftime("%Y-%m-%d")
         end_str = self.end_time.strftime("%Y-%m-%d")
         df = read_sql(sql, conn, params=(current_str, end_str))

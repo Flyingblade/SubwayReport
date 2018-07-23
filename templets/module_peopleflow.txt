@@ -1,0 +1,6 @@
+city, start_month, end_month, M3_stations, M3_station_t1, M3_station_t2
+分析各大站点每日进站高峰期（出站无法统计），重点针对热门进站客流
+{city}从{start_month}到{end_month}期间，按照24小时划分，将固定一小时的购票数量加和起来，就形成了如下折线图，该折线图是{M3_stations[0]}以1小时为单位的整月购票量统计图：
+从图中可以看出从整个月的角度来看，{M3_stations[0]}的客流高峰期处于{M3_station0_t1}至{M3_station0_t2}之间。
+同上所述，以下是{M3_stations[1]}以1小时为单位的整月购票量统计图：
+以下是{M3_stations[2]}以1小时为单位的整月购票量统计图：
