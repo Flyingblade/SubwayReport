@@ -1,0 +1,7 @@
+city, start_month, end_month, M4_stations, M4_top_methods, M4_top_perc
+统计购票数量前五（或者前十）的站每日购票乘客中不同购买方式的占比，而且给出每个站点的走势情况
+{city}从{start_month}到{end_month}期间，购票数量前十的站点为：{M4_stations}
+以下是购票数量前十站点的购票方式占比饼状图：
+
+从图上可以看出，{M4_top_methods[0]}占比最大，为{M4_top_perc[0]}%，其次是{M4_top_methods[1]}，占比{M4_top_perc[1]}%和{M4_top_methods[2]}，占比{M4_top_perc[2]}%
+下图是各个购票方式购票量走势图：

@@ -1,18 +1,19 @@
 # -*- coding: utf-8 -*-
 """
-    @Time    : 2018/7/20 10:08
+    @Time    : 2018/7/23 11:47
     @Author  : ZERO
-    @FileName: module_peopleflow.py
+    @FileName: module_ticketway.py
     @Software: PyCharm
     @Github    ：https://github.com/abcdddxy
 """
+
 import pandas as pd
 
 
 class Module(object):
     def __init__(self):
         from common.TempletLoader import TempletLoader
-        self.__templete = TempletLoader('templets/module_peopleflow.txt')
+        self.__templete = TempletLoader('templets/module_ticketway.txt')
         self.__params = {}
 
     def run(self, df):
@@ -21,11 +22,10 @@ class Module(object):
         df_suc['time'] = pd.to_datetime(df_suc['entry_date'], format='%Y-%m-%d %H:%M:%S')
         df_suc['hour'] = df_suc['time'].apply(lambda x: x.hour)
 
-        tmp = df_suc.groupby(['entry_station', 'hour']).ticket_num.sum().reset_index()
+        tmp = df_suc.groupby(['entry_station', 'exit_station']).ticket_num.sum().reset_index()
         starts = df_suc.groupby('entry_station').ticket_num.sum().sort_values(ascending=False)
         hour = tmp[tmp.entry_station == starts.index[0]][
             tmp.ticket_num > (tmp[tmp.entry_station == starts.index[0]].ticket_num.mean()) * 1.3]
-        # print(hour.head())
 
         self.__params['M3_stations'] = starts[:3].index.tolist()
         self.__params['M3_station0_t1'] = hour.hour.min()
