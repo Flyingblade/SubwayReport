@@ -44,7 +44,7 @@ class DataLoader(object):
                   "WHERE ORDER_DATE >= %s AND ORDER_DATE < %s;"
 
             if self.debug:
-                sql = sql[:-1] + " LIMIT 100000;"
+                sql = sql[:-1] + " LIMIT 10000;"
             if self.current_time.month < 12:
                 next_month = dt.datetime(self.current_time.year, self.current_time.month + 1, 1)
             else:
@@ -75,7 +75,7 @@ class DataLoader(object):
                   "WHERE ORDER_DATE >= %s AND ORDER_DATE < %s;"
 
             if self.debug:
-                sql = sql[:-1] + " LIMIT 100000;"
+                sql = sql[:-1] + " LIMIT 10000;"
             if self.current_time.month < 12:
                 next_month = dt.datetime(self.current_time.year, self.current_time.month + 1, 1)
             else:
@@ -107,7 +107,7 @@ class DataLoader(object):
               "WHERE ORDER_DATE >= %s AND ORDER_DATE < %s;"
 
         if self.debug:
-            sql = sql[:-1] + " LIMIT 100000;"
+            sql = sql[:-1] + " LIMIT 10000;"
         current_str = self.current_time.strftime("%Y-%m-%d")
         end_str = self.end_time.strftime("%Y-%m-%d")
         df = read_sql(sql, conn, params=(current_str, end_str))
@@ -123,7 +123,7 @@ class DataLoader(object):
 
 if __name__ == '__main__':
     loader = DataLoader(db_ip='10.109.247.63', db_port=3306, db_user='root', passwd='hadoop', city='广州',
-                        start_time='2017-02', end_time='2017-03', debug=False)
+                        start_time='2017-02', end_time='2017-03', debug=True)
     import time
     import gc
 

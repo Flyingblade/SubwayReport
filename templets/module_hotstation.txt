@@ -1,0 +1,11 @@
+city, start_month, end_month, M2_hotstations, M2_hotroutes, M2_hotroutes_topstations
+统计热门站点（热门起点站和热门终点站，给出统计指标）
+“热门”定义为：一段时间内进站（或出站）乘客数目大于所有统计到的进站（出站）乘客均值
+{city}从{start_month}到{end_month}期间，购票数量超过均值的站点包括：{M2_hotstations}
+其中{M2_hotstations[0]}每天购票数量走势图如下：
+{M2_hotstations[1]}每天购票数量走势图如下：
+{M2_hotstations[2]}每天购票数量走势图如下：
+
+热点线路统计：以天为单位（以周为单位），统计起点站和终点站都相同的购票数量，给出排名
+{city}从{start_month}到{end_month}期间,购票前十的热门线路包括：{M2_hotroutes}
+热门线路有{M2_hotroutes[0]},{M2_hotroutes[1]},{M2_hotroutes[2]}等等，其中站点{M2_hotroutes_topstations[0]}, {M2_hotroutes_topstations[1]}, {M2_hotroutes_topstations[2]}在热门线路中出现较多。
