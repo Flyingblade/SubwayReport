@@ -11,10 +11,14 @@
       <introspection-schemas>*:account</introspection-schemas>
     </data-source>
     <data-source name="LAB" uuid="ffbc0c27-f38d-4bdc-8ff3-eeed78899217">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <database-info product="MySQL" version="5.1.73" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.46 ( Revision: 9cc87a48e75c2d2e87c1a293b2862ce651cb256e )">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
-      <first-sync>true</first-sync>
       <user-name>root</user-name>
+      <introspection-schemas>*:audio&amp;video</introspection-schemas>
     </data-source>
   </component>
 </project>

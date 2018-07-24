@@ -27,7 +27,7 @@ class Module(object):
 
         tmp = df_suc.groupby(['entry_station', 'exit_station']).ticket_num.sum().reset_index()
         starts = tmp.groupby('entry_station').ticket_num.sum().sort_values(ascending=False)
-        ends = tmp.groupby('exit_station').ticket_numsum().sort_values(ascending=False)
+        ends = tmp.groupby('exit_station').ticket_num.sum().sort_values(ascending=False)
         station = pd.DataFrame()
         station['st_name'] = list(set(list(df_suc['entry_station']) + list(df_suc['exit_station'])))
         starts = pd.DataFrame(starts)
@@ -47,7 +47,7 @@ class Module(object):
         routes = reduce(operator.add, routes_groupby)
         routes = sorted(dict(Counter(routes)).items(), key=lambda x: x[1], reverse=True)[:10]
 
-        self.__params['M2_hotstations'] = station[station.total_ticket > station.total_ticket.mean()].entry_station.tolist()
+        self.__params['M2_hotstations'] = station[station.total_ticket > station.total_ticket.mean()].exit_station.tolist()
         self.__params['M2_hotroutes'] = routes_groupby
         self.__params['M2_hotroutes_topstations'] = [route[0] for route in routes][:5]
         # print(self.__params)
