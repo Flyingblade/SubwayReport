@@ -1,0 +1,12 @@
+city, start_month, end_month, M5_total_rate, M5_tail_stations, M5_success_tk, M5_fail_tk, M5_rate
+以站点为单位统计购票订单和出票转化率
+{city}从{start_month}到{end_month}期间，全站出票转化率饼状图如下：
+
+全网的订单票数与实体票的转化率大约在{M5_total_rate}左右，最低的几个站如下：
+站点：{M5_tail_stations}
+成功购票数：{M5_success_tk}
+失败购票数：{M5_fail_tk}
+购票转化率：{M5_rate}
+
+转化率作为乘客购买之后不退票的一种检验手段，可以看出在线购票的乘客大部分还是愿意再花一点时间取票的，转化率较低的站点可能机器数量较少导致乘客会出现购票之后反而不愿取票而选择退票的情况。
+从表中可以看出，{M5_tail_stations[0]}、{M5_tail_stations[1]}、{M5_tail_stations[2]}等站点的转化率较低。

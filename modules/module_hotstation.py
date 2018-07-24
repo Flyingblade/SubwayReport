@@ -42,7 +42,7 @@ class Module(object):
         station['total_ticket'] = station.ticket_num_x + station.ticket_num_y
         station = station.sort_values(by=['total_ticket'], ascending=False)
 
-        routes_groupby = df_suc.groupby(['entry_station', 'entry_station']).ticket_num.sum().sort_values(
+        routes_groupby = df_suc.groupby(['entry_station', 'exit_station']).ticket_num.sum().sort_values(
             ascending=False).index.tolist()[:10]
         routes = reduce(operator.add, routes_groupby)
         routes = sorted(dict(Counter(routes)).items(), key=lambda x: x[1], reverse=True)[:10]

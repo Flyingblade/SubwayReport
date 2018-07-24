@@ -7,8 +7,6 @@
     @Github    ：https://github.com/abcdddxy
 """
 
-import pandas as pd
-
 
 class Module(object):
     def __init__(self):
