@@ -1,0 +1,9 @@
+order_num, order_use_num, order_notpay, order_pay_not_use_num, order_fail_num, ticket_num, ticket_use_num
+数据整体分析
+订单总数：{order_num}
+未支付订单数：{order_notpay}
+已消费订单数：{order_use_num}
+购票未使用订单数：{order_pay_not_use_num}
+失效订单数：{order_fail_num}
+总票数：{ticket_num}
+已消费票数：{ticket_use_num}
