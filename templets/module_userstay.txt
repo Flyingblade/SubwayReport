@@ -1,0 +1,4 @@
+city, start_month, end_month, US_date, US_num
+统计{city}从{start_month}到{end_month}期间，每个周末新增的用户的留存量。
+日期：{US_date}
+周末新增用户留存量：{US_num}

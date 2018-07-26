@@ -25,7 +25,7 @@ class Module(object):
             1: '盘缠ios', 2: '盘缠android', 3: '插件ios', 4: '插件android', 5: 'h5公众号或扫码支付', 6: '非闪客蜂公众号', 7: '咖啡', 8: '长沙ios',
             9: '长沙android'
         }
-        df_suc = df[df['order_status'] == 5]
+        df_suc = df[df['order_status'] == 5].copy()
 
         tmp = df_suc.groupby(['entry_station', 'exit_station']).ticket_num.sum().reset_index()
         starts = df_suc.groupby('entry_station').ticket_num.sum().sort_values(ascending=False)

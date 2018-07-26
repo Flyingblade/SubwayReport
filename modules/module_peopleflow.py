@@ -17,7 +17,7 @@ class Module(object):
 
     def run(self, df):
         # STATUS ==5 的是交易成功的
-        df_suc = df[df['order_status'] == 5]
+        df_suc = df[df['order_status'] == 5].copy()
         df_suc['time'] = pd.to_datetime(df_suc['entry_date'], format='%Y-%m-%d %H:%M:%S')
         df_suc['hour'] = df_suc['time'].apply(lambda x: x.hour)
 
