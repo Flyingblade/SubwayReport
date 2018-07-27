@@ -38,7 +38,7 @@ class Module(object):
     def run(self, df):
         # STATUS ==5 的是交易成功的
         df_suc = df[df['order_status'] == 5].copy()
-        single_ft = df.groupby(['owner_id'])['reg_date'].min().reset_index()
+        single_ft = df_suc.groupby(['owner_id'])['reg_date'].min().reset_index()
         single_ft = single_ft.rename(index=str, columns={'reg_date': 'first_time'})
         df_suc = df_suc.merge(single_ft, on=['owner_id'], how='left')
         # print(df_suc[['owner_id', 'first_time', 'entry_date', 'reg_date']].head())
