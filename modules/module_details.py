@@ -8,6 +8,8 @@
 """
 import numpy as np
 import pandas as pd
+import json
+import codecs
 from datetime import date, timedelta, datetime
 
 
@@ -520,15 +522,24 @@ class Module(object):
                                         '总使用91~120天', '总使用121天以上']
         self.__params['D_total_day_people'] = D_total_day_people
         self.__params['D_total_day_ratio'] = D_total_day_ratio
-        self.__params['D_user_ratio'] = ['只使用1次', '0.1~0.2', '0.2~0.3', '0.3~0.4', '0.4~0.5', '0.5~0.6', '0.6~0.7',
-                                         '0.7~0.8', '0.8~0.9', '0.9~1']
-        self.__params['D_user_ratio_people'] = D_user_ratio_people
-        self.__params['D_user_ratio_ratio'] = D_user_ratio_ratio
+        self.__params['D_user_pre'] = ['只使用1次', '0.1~0.2', '0.2~0.3', '0.3~0.4', '0.4~0.5', '0.5~0.6', '0.6~0.7',
+                                       '0.7~0.8', '0.8~0.9', '0.9~1']
+        self.__params['D_user_pre_people'] = D_user_ratio_people
+        self.__params['D_user_pre_ratio'] = D_user_ratio_ratio
         self.__params['D_model'] = ['稳定高频周末型', '稳定高频工作型', '稳定高频常用型', '稳定低频周末型', '稳定低频工作型', '稳定低频常用型', '一段时间之后不用型',
                                     '突发周末型', '突发工作型', '突发常用型', '本月新用户周末型', '本月新用户工作型', '本月新用户常用型']
         self.__params['D_model_people'] = D_model_people
         self.__params['D_model_ratio'] = D_model_ratio
         # print(self.__params)
+
+        params = {}
+        for k, v in self.__params.items():
+            if 'people' not in k and 'ratio' not in k:
+                params[k] = {}
+                for i, vv in enumerate(v):
+                    params[k][vv] = self.__params[k + '_ratio'][i]
+        with codecs.open('./json/module_details.json', 'a', 'utf-8') as outf:
+            json.dump(params, outf, ensure_ascii=False)
 
     def maketext(self, global_params=None):
         # 允许传入全局变量， 但局部变量的优先级更高

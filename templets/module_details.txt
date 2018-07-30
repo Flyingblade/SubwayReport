@@ -1,4 +1,4 @@
-city, start_month, end_month,D_new_cont_month,D_new_cont_month_people,D_new_cont_month_ratio,D_total_month,D_total_month_people,D_total_month_ratio,D_total_day,D_total_day_people,D_total_day_ratio,D_user_ratio,D_total_day_people,D_user_ratio_ratio,D_model,D_model_people,D_model_ratio
+city, start_month, end_month,D_new_cont_month,D_new_cont_month_people,D_new_cont_month_ratio,D_total_month,D_total_month_people,D_total_month_ratio,D_total_day,D_total_day_people,D_total_day_ratio,D_user_pre,D_user_pre_people,D_user_pre_ratio,D_model,D_model_people,D_model_ratio
 月新增用户连续使用月数：统计近期内，用户连续使用月数。
 近期内连续使用月数：{D_new_cont_month}
 人数：{D_new_cont_month_people}
@@ -21,9 +21,9 @@ city, start_month, end_month,D_new_cont_month,D_new_cont_month_people,D_new_cont
 定义（用户总使用天数）：最后一次购票与第一次购票相隔的天数。
 
 用户使用频率
-使用频率：{D_user_ratio}
-人数：{D_user_ratio_people}
-比例：{D_user_ratio_ratio}
+使用频率：{D_user_pre}
+人数：{D_user_pre_people}
+比例：{D_user_pre_ratio}
 定义（用户使用频率）：用户有购票记录的天数 / 用户总使用天数。
 
 用户模式：统计每种来源的用户使用模式分布情况。
