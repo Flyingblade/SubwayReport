@@ -69,7 +69,7 @@ class DataLoader(object):
             sql = self.sql_single_tk[:]
 
             if self.debug:
-                sql = sql[:-1] + " LIMIT 10000;"
+                sql = sql[:-1] + " LIMIT 100000;"
             if self.current_time.month < 12:
                 next_month = dt.datetime(self.current_time.year, self.current_time.month + 1, 1)
             else:
@@ -77,6 +77,7 @@ class DataLoader(object):
             current_str = self.current_time.strftime("%Y-%m-%d")
             next_str = next_month.strftime("%Y-%m-%d")
             df = read_sql(sql, conn, params=(current_str, next_str))
+            conn.close()
             sql = "SELECT STATION_CODE, STATION_NAME_ZH FROM station_code;"
             df_code = read_sql(sql, conn).drop_duplicates('STATION_CODE')
             df = df.merge(
@@ -135,6 +136,7 @@ class DataLoader(object):
 
         sql = "SELECT STATION_CODE, STATION_NAME_ZH FROM station_code;"
         df_code = read_sql(sql, conn).drop_duplicates('STATION_CODE')
+        conn.close()
         df = df.merge(
             df_code.rename(columns={"STATION_CODE": "entry_station_code", "STATION_NAME_ZH": "entry_station"}),
             on="entry_station_code", how='left', copy=False)

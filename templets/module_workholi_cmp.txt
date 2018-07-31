@@ -1,0 +1,7 @@
+workday_seq_maxhour, holiday_seq_maxhour, workday_seq_maxfluency, holiday_seq_maxfluency
+工作日全站点日客流曲线如下：
+[图]
+工作日全天最高峰出现在{workday_seq_maxhour}时，最大客流{workday_seq_maxfluency}
+节假日全站点日客流曲线如下：
+[图]
+节假日全天最高峰出现在{holiday_seq_maxhour}时，最大客流{holiday_seq_maxfluency}
