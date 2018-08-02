@@ -10,8 +10,8 @@ class Module(object):
         from common.TempletLoader import TempletLoader
         self.__templete = TempletLoader('templets/module_jamanalize.txt')
         self.__params = {}
+        self.__data = {}
         self.__time_period = [(7, 9), (17, 19)]  # 长度必须为2，代表早晚上班时段
-
     def run(self, df, global_params=None):
         import pickle as pk
         import pandas as pd
@@ -55,7 +55,11 @@ class Module(object):
                 locals()['%s_%s_res'% (d, t)]['level'] = pd.cut(locals()['%s_%s_res'%(d, t)]['fluency'], 5, labels=False)
                 self.__params['%s_%s_jam_routes'% (d, t)] = '\n'.join([','.join(each) for each in locals()['%s_%s_res'% (d, t)][locals()['%s_%s_res'% (d, t)].level==4][['start','end','line','fluency']].astype(str).values])
                 del tmp
-        # workday_morning_res, workday_evening_res, holiday_morning_res, holiday_evening_res
+                for jam_lv in range(0,5):
+                    if jam_lv == 0:
+                        self.__data['%s_%s_jam_routes'%(d, t)] = {}
+                    self.__data['%s_%s_jam_routes' % (d, t)][jam_lv] = locals()['%s_%s_res'% (d, t)][locals()['%s_%s_res'% (d, t)].level==jam_lv][['start', 'end', 'level']].as_matrix().tolist()
+                    # workday_morning_res, workday_evening_res, holiday_morning_res, holiday_evening_res
         # self.__params['morning_jam_routes'] = workday_morning_res[workday_morning_res.level==5]
 
     def maketext(self, global_params=None):
@@ -72,4 +76,6 @@ class Module(object):
         return self.__templete.format_templet(self.__params)
 
     def makedata(self):
-        return ''
+        import json
+        return json.dumps(self.__data,ensure_ascii=False)
+        # return ''

@@ -11,6 +11,7 @@ class Module(object):
         self.__templete = TempletLoader('templets/module_workholi_cmp.txt')
         self.__city_dict = {'广州': ['机场南', '广州东站'], }
         self.__params = {}
+        self.__data = {}
 
     def run(self, df, global_params=None):
         if global_params is None:
@@ -20,8 +21,10 @@ class Module(object):
         df_suc['hour'] = df_suc.entry_date.map(lambda x: x.hour)
         days = df_suc.entry_date.max() - df_suc.entry_date.min()
         days = days.round('d').days
-        workday_seq = df_suc[df_suc.weekday < 5].groupby('hour').ticket_num.sum().sort_index() / days
-        holiday_seq = df_suc[df_suc.weekday >= 5].groupby('hour').ticket_num.sum().sort_index() / days
+        workday_seq = (df_suc[df_suc.weekday < 5].groupby('hour').ticket_num.sum().sort_index() / days).map(
+            lambda x: round(x, 3))
+        holiday_seq = (df_suc[df_suc.weekday >= 5].groupby('hour').ticket_num.sum().sort_index() / days).map(
+            lambda x: round(x, 3))
         self.__params['workday_seq_maxhour'] = workday_seq.argmax()
         self.__params['workday_seq_maxfluency'] = int(workday_seq.max())
         self.__params['holiday_seq_maxhour'] = holiday_seq.argmax()
@@ -29,10 +32,20 @@ class Module(object):
         workday_seqs = {}
         holiday_seqs = {}
         for station in self.__city_dict[global_params.get('city', '广州')]:
-            workday_seqs[station] = df_suc[(df_suc.entry_station == station) & (df_suc.weekday < 5)].groupby(
-                'hour').ticket_num.sum().sort_index()
-            holiday_seqs[station] = df_suc[(df_suc.entry_station == exit) & (df_suc.weekday >= 5)].groupby(
-                'hour').ticket_num.sum().sort_index()
+            workday_seqs[station] = (df_suc[(df_suc.entry_station == station) & (df_suc.weekday < 5)].groupby(
+                'hour').ticket_num.sum().sort_index() / days).map(lambda x: round(x, 3))
+            holiday_seqs[station] = (df_suc[(df_suc.entry_station == station) & (df_suc.weekday >= 5)].groupby(
+                'hour').ticket_num.sum().sort_index() / days).map(lambda x: round(x, 3))
+        # 填数据
+        self.__data['workday_full_seq'] = [workday_seq.index.tolist(), workday_seq.tolist()]
+        self.__data['holiday_full_seq'] = [holiday_seq.index.tolist(), holiday_seq.tolist()]
+        self.__data['stations'] = self.__city_dict[global_params.get('city', '广州')]
+        self.__data['station_workday_seqs'] = {
+        station: [workday_seqs[station].index.tolist(), workday_seqs[station].tolist()] for station in
+        self.__data['stations']}
+        self.__data['station_holiday_seqs'] = {
+        station: [holiday_seqs[station].index.tolist(), holiday_seqs[station].tolist()] for station in
+        self.__data['stations']}
 
     def maketext(self, global_params=None):
         # 允许传入全局变量， 但局部变量的优先级更高
@@ -48,4 +61,6 @@ class Module(object):
         return self.__templete.format_templet(self.__params)
 
     def makedata(self):
-        return ''
+        import json
+        return json.dumps(self.__data, ensure_ascii=False)
+        # return ''

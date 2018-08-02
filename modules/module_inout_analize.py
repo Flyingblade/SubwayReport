@@ -11,6 +11,7 @@ class Module(object):
         self.__templete = TempletLoader('templets/module_inout_analize.txt')
         self.__city_dict = {'广州': ['机场南', '广州东站'], }
         self.__params = {}
+        self.__data = {}
 
     def run(self, df, global_params=None):
         if global_params is None:
@@ -23,28 +24,28 @@ class Module(object):
         # 日进出站人数
         entry_day_nums = {}
         exit_day_nums = {}
-        # 日进出站排名
-        entry_ranks = {}
-        exit_ranks = {}
+        # # 日进出站排名
+        # entry_ranks = {}
+        # exit_ranks = {}
         # 周末去向分布
         weekend_exits = {}
         for station in stations:
             # 日进出站人数
             entry_day_count = df_suc[df_suc.entry_station == station].groupby('date').ticket_num.sum().sort_index()
             exit_day_count = df_suc[df_suc.exit_station == station].groupby('date').ticket_num.sum().sort_index()
-            # 日进出站排名
-            entry_rank = df_suc[df_suc.entry_station == station].groupby('entry_station').ticket_num.sum().sort_values(
-                ascending=False)
-            exit_rank = df_suc[df_suc.exit_station == station].groupby('exit_station').ticket_num.sum().sort_values(
-                ascending=False)
+            # # 日进出站排名
+            # entry_rank = df_suc[df_suc.entry_station == station].groupby('entry_station').ticket_num.sum().sort_values(
+            #     ascending=False).head(20)
+            # exit_rank = df_suc[df_suc.exit_station == station].groupby('exit_station').ticket_num.sum().sort_values(
+            #     ascending=False).head(20)
 
             # 各站点客流去向,放进字典
             entry_tmp = df_suc[df_suc.entry_station == station].groupby('exit_station').ticket_num.sum().sort_values(
-                ascending=False)
+                ascending=False).head(20)
             entry_day_nums[station] = entry_day_count
             exit_day_nums[station] = exit_day_count
-            entry_ranks[station] = entry_rank
-            exit_ranks[station] = exit_rank
+            # entry_ranks[station] = entry_rank
+            # exit_ranks[station] = exit_rank
             weekend_exits[station] = entry_tmp
 
         # 填参数
@@ -52,6 +53,16 @@ class Module(object):
         self.__params['stations_all'] = '，'.join(stations)
         for i in range(len(stations)):
             self.__params['st_%d_wk_top3' % i] = '、'.join(weekend_exits[stations[i]].head(3).index.tolist())
+        # 填数据
+        self.__data['stations'] = stations
+        self.__data['entry_nums'] = {station: [entry_day_nums[station].index.tolist(), entry_day_nums[station].tolist()]
+                                     for station in stations}
+        self.__data['exit_nums'] = {station: [exit_day_nums[station].index.tolist(), exit_day_nums[station].tolist()]
+                                    for station in stations}
+        # self.__data['entry_ranks'] = {station:[entry_ranks[station].index.tolist(), entry_ranks[station].tolist()] for station in stations}
+        # self.__data['exit_ranks'] =
+        self.__data['weekend_exits'] = {
+        station: [weekend_exits[station].index.tolist(), weekend_exits[station].tolist()] for station in stations}
 
     def maketext(self, global_params=None):
         # 允许传入全局变量， 但局部变量的优先级更高
@@ -67,4 +78,6 @@ class Module(object):
         return self.__templete.format_templet(self.__params)
 
     def makedata(self):
-        return ''
+        import json
+        return json.dumps(self.__data, ensure_ascii=False)
+        # return ''
