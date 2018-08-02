@@ -1,0 +1,9 @@
+workday_morning_jam_routes, workday_evening_jam_routes, holiday_morning_jam_routes, holiday_evening_jam_routes
+工作日早高峰拥堵等级最高的路线：
+{workday_morning_jam_routes}
+工作日晚高峰拥堵等级最高的路线：
+{workday_evening_jam_routes}
+周末早高峰拥堵拥堵等级最高路线：
+{holiday_morning_jam_routes}
+周末晚高峰拥堵拥堵等级最高路线：
+{holiday_evening_jam_routes}
