@@ -9,6 +9,8 @@
 
 import numpy as np
 import pandas as pd
+import json
+import codecs
 from datetime import date, timedelta, datetime
 
 
@@ -51,6 +53,13 @@ class Module(object):
         self.__params['US_date'] = us_date
         self.__params['US_num'] = us_num
         # print(self.__params)
+
+        params = {}
+        params['US_date'] = self.__params['US_date']
+        params['US_num'] = self.__params['US_num']
+
+        with codecs.open('./json/module_userstay.json', 'a', 'utf-8') as outf:
+            json.dump(params, outf, ensure_ascii=False)
 
     def maketext(self, global_params=None):
         # 允许传入全局变量， 但局部变量的优先级更高

@@ -6,6 +6,8 @@
     @Software: PyCharm
     @Github    ：https://github.com/abcdddxy
 """
+import json
+import codecs
 
 
 class Module(object):
@@ -44,11 +46,20 @@ class Module(object):
         # print(source.head())
 
         self.__params['M4_stations'] = starts[:10].index.tolist()
-        self.__params['M4_top_methods'] = source.index
-        self.__params['M4_top_source'] = type.index
-        self.__params['M4_top_perc'] = source
-        self.__params['M4_top_perc_source'] = type
+        self.__params['M4_top_methods'] = source.index.tolist()
+        self.__params['M4_top_source'] = type.index.tolist()
+        self.__params['M4_top_perc'] = source.tolist()
+        self.__params['M4_top_perc_source'] = type.tolist()
         # print(self.__params)
+
+        params = {}
+        params['M4_top_methods'] = self.__params['M4_top_methods']
+        params['M4_top_perc'] = self.__params['M4_top_perc']
+        params['M4_top_source'] = self.__params['M4_top_source']
+        params['M4_top_perc_source'] = self.__params['M4_top_perc_source']
+
+        with codecs.open('./json/module_ticketway.json', 'a', 'utf-8') as outf:
+            json.dump(params, outf, ensure_ascii=False)
 
     def maketext(self, global_params=None):
         # 允许传入全局变量， 但局部变量的优先级更高

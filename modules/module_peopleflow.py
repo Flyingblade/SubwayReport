@@ -7,6 +7,8 @@
     @Github    ：https://github.com/abcdddxy
 """
 import pandas as pd
+import codecs
+import json
 
 
 class Module(object):
@@ -23,14 +25,25 @@ class Module(object):
 
         tmp = df_suc.groupby(['entry_station', 'hour']).ticket_num.sum().reset_index()
         starts = df_suc.groupby('entry_station').ticket_num.sum().sort_values(ascending=False)
-        hour = tmp[tmp.entry_station == starts.index[0]][
-            tmp.ticket_num > (tmp[tmp.entry_station == starts.index[0]].ticket_num.mean()) * 1.3]
+        hour = tmp[tmp.entry_station == starts.index[0]][tmp.ticket_num > (tmp[tmp.entry_station == starts.index[0]].ticket_num.mean()) * 1.3]
         # print(hour.head())
 
         self.__params['M3_stations'] = starts[:3].index.tolist()
         self.__params['M3_station0_t1'] = hour.hour.min()
         self.__params['M3_station0_t2'] = hour.hour.max()
         # print(self.__params)
+
+        params = {}
+        params['M3_stations'] = self.__params['M3_stations']
+        params['M3_stations_trend1_time'] = tmp[tmp.entry_station == self.__params['M3_stations'][0]].hour.tolist()
+        params['M3_stations_trend1'] = tmp[tmp.entry_station == self.__params['M3_stations'][0]].ticket_num.tolist()
+        params['M3_stations_trend2_time'] = tmp[tmp.entry_station == self.__params['M3_stations'][1]].hour.tolist()
+        params['M3_stations_trend2'] = tmp[tmp.entry_station == self.__params['M3_stations'][1]].ticket_num.tolist()
+        params['M3_stations_trend3_time'] = tmp[tmp.entry_station == self.__params['M3_stations'][2]].hour.tolist()
+        params['M3_stations_trend3'] = tmp[tmp.entry_station == self.__params['M3_stations'][2]].ticket_num.tolist()
+
+        with codecs.open('./json/module_peopleflow.json', 'a', 'utf-8') as outf:
+            json.dump(params, outf, ensure_ascii=False)
 
     def maketext(self, global_params=None):
         # 允许传入全局变量， 但局部变量的优先级更高

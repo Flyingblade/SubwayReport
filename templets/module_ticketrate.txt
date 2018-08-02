@@ -2,7 +2,7 @@ city, start_month, end_month, M5_total_rate, M5_tail_stations, M5_success_tk, M5
 以站点为单位统计购票订单和出票转化率
 {city}从{start_month}到{end_month}期间，全站出票转化率饼状图如下：
 
-全网的订单票数与实体票的转化率大约在{M5_total_rate}左右，最低的几个站如下：
+全网的订单票数与实体票的转化率大约在{M5_total_rate}左右，最低的几个站的统计表格如下：
 站点：{M5_tail_stations}
 成功购票数：{M5_success_tk}
 失败购票数：{M5_fail_tk}

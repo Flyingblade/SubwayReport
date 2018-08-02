@@ -8,4 +8,3 @@ city, start_month, end_month, M4_stations, M4_top_methods, M4_top_source, M4_top
 以下是购票数量前十站点的购票来源占比饼状图：
 
 从图上可以看出，{M4_top_source[0]}占比最大，为{M4_top_perc_source[0]}%，其次是{M4_top_source[1]}，占比{M4_top_perc_source[1]}%
-下图是各个购票方式购票量走势图：

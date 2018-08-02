@@ -7,6 +7,8 @@
     @Github    ：https://github.com/abcdddxy
 """
 import numpy as np
+import codecs
+import json
 
 
 class Module(object):
@@ -35,6 +37,16 @@ class Module(object):
         self.__params['M5_fail_tk'] = st_status.fail_ticket[:5].tolist()
         self.__params['M5_rate'] = st_status.rate[:5].tolist()
         # print(self.__params)
+
+        params = {}
+        params['M5_total_rate'] = self.__params['M5_total_rate']
+        params['M5_tail_stations'] = self.__params['M5_tail_stations']
+        params['M5_success_tk'] = self.__params['M5_success_tk']
+        params['M5_fail_tk'] = self.__params['M5_fail_tk']
+        params['M5_rate'] = self.__params['M5_rate']
+
+        with codecs.open('./json/module_ticketrate.json', 'a', 'utf-8') as outf:
+            json.dump(params, outf, ensure_ascii=False)
 
     def maketext(self, global_params=None):
         # 允许传入全局变量， 但局部变量的优先级更高

@@ -11,6 +11,8 @@ from collections import Counter
 import operator
 from functools import reduce
 import pandas as pd
+import json
+import codecs
 
 
 class Module(object):
@@ -22,8 +24,9 @@ class Module(object):
     def run(self, df):
         # STATUS ==5 的是交易成功的
         df_suc = df[df['order_status'] == 5].copy()
+        df_suc['entry_date'] = df_suc['entry_date'].astype(str)
+        df_suc['date'] = df_suc['entry_date'].apply(lambda x: x[0:10])
         # df_suc['time'] = pd.to_datetime(df_suc['entry_date'], format='%Y-%m-%d %H:%M:%S')
-        # df_suc['hour'] = df_suc['time'].apply(lambda x: x.hour)
 
         tmp = df_suc.groupby(['entry_station', 'exit_station']).ticket_num.sum().reset_index()
         starts = tmp.groupby('entry_station').ticket_num.sum().sort_values(ascending=False)
@@ -41,9 +44,12 @@ class Module(object):
         station = station.merge(ends, on=['exit_station'], how='left')
         station['total_ticket'] = station.ticket_num_x + station.ticket_num_y
         station = station.sort_values(by=['total_ticket'], ascending=False)
+        # print(station.head())
 
-        routes_groupby = df_suc.groupby(['entry_station', 'exit_station']).ticket_num.sum().sort_values(
-            ascending=False).index.tolist()[:10]
+        trend = df_suc.groupby(['entry_station', 'date']).ticket_num.sum().reset_index()
+        # print(trend.head())
+
+        routes_groupby = df_suc.groupby(['entry_station', 'exit_station']).ticket_num.sum().sort_values(ascending=False).index.tolist()[:10]
         routes = reduce(operator.add, routes_groupby)
         routes = sorted(dict(Counter(routes)).items(), key=lambda x: x[1], reverse=True)[:10]
 
@@ -51,6 +57,22 @@ class Module(object):
         self.__params['M2_hotroutes'] = routes_groupby
         self.__params['M2_hotroutes_topstations'] = [route[0] for route in routes][:5]
         # print(self.__params)
+
+        params = {}
+        params['M2_hotstations'] = self.__params['M2_hotstations']
+        params['M2_hotstations_ticketnum'] = station[station.total_ticket > station.total_ticket.mean()].total_ticket.tolist()
+        params['M2_hotstations_trend1_time'] = trend[trend.entry_station == self.__params['M2_hotstations'][0]].date.tolist()
+        params['M2_hotstations_trend1'] = trend[trend.entry_station == self.__params['M2_hotstations'][0]].ticket_num.tolist()
+        params['M2_hotstations_trend2_time'] = trend[trend.entry_station == self.__params['M2_hotstations'][1]].date.tolist()
+        params['M2_hotstations_trend2'] = trend[trend.entry_station == self.__params['M2_hotstations'][1]].ticket_num.tolist()
+        params['M2_hotstations_trend3_time'] = trend[trend.entry_station == self.__params['M2_hotstations'][2]].date.tolist()
+        params['M2_hotstations_trend3'] = trend[trend.entry_station == self.__params['M2_hotstations'][2]].ticket_num.tolist()
+        params['M2_hotroutes'] = routes_groupby
+        params['M2_hotroutes_ticketnum'] = df_suc.groupby(['entry_station', 'exit_station']).ticket_num.sum().sort_values(ascending=False).tolist()[
+                                           :10]
+
+        with codecs.open('./json/module_hotstation.json', 'a', 'utf-8') as outf:
+            json.dump(params, outf, ensure_ascii=False)
 
     def maketext(self, global_params=None):
         # 允许传入全局变量， 但局部变量的优先级更高
