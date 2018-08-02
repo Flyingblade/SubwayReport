@@ -2,6 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d01733ea-3644-4fb5-b316-47b36f5d4ba7" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/template_doc/~$板-购票数据.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/json/module_hotstation.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/json/module_peopleflow.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/json/module_ticketrate.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/json/module_ticketway.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/json/module_userstay.json" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/result/20180730_556085.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/module_hotstation.py" afterPath="$PROJECT_DIR$/modules/module_hotstation.py" />
