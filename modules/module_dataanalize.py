@@ -10,14 +10,14 @@ class Module(object):
         from common.TempletLoader import TempletLoader
         self.__templete = TempletLoader('templets/module_dataanalize.txt')
         self.__params = {}
-
+        self.__data = {}
     def run(self, df, global_params=None):
         if global_params is None:
             global_params = {}
         # 订单状态分布
         order_status = df.order_status.value_counts().to_dict()
         order_status_tk = df.groupby('order_status').ticket_num.sum().to_dict()
-        print(order_status)
+        # print(order_status)
         # 订单总数
         order_nums = df.shape[0]
         # 出票订单数、购票但未取票订单数、失效订单数
@@ -41,6 +41,14 @@ class Module(object):
         self.__params['ticket_num'] = tk_get_sum
         self.__params['ticket_use_num'] = tk_get_num
 
+        self.__data['order_num'] = order_nums
+        self.__data['order_use_num'] = order_get_tk
+        self.__data['order_notpay'] = order_notpay
+        self.__data['order_pay_not_use_num'] = order_pay_notuse
+        self.__data['order_fail_num'] = order_canceled
+        self.__data['ticket_num'] = tk_get_sum
+        self.__data['ticket_use_num'] = tk_get_num
+
     def maketext(self, global_params=None):
         # 允许传入全局变量， 但局部变量的优先级更高
         if global_params and type(global_params) == dict:
@@ -55,4 +63,5 @@ class Module(object):
         return self.__templete.format_templet(self.__params)
 
     def makedata(self):
-        return ''
+        import json
+        return json.dumps(self.__data,ensure_ascii=False)
