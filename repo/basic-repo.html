@@ -79,6 +79,10 @@
             height: 10px;
             background-color: #F4A460;
         }
+        .green-line {
+            height: 5px;
+            background-color: #39adb4;
+        }
         .sub-title {
             font-size: 24px;
             font-weight: bold;
@@ -417,1073 +421,609 @@
         <!--用户分析报告-->
         <div>
             <div>
-                <div class="sub-title">1. 数据说明</div>
+                <div class="sub-title">用户模式定义</div>
                 <div class="orange-line"></div>
-                <div class="content2">
-                    <table class="table table-striped table-bordered templatemo-user-table">
-                        <thead>
-                            <tr>
-                                <th>数据来源</th>
-                                <th>时间</th>
-                                <th>数据规模</th>
-                                <th>占比</th>
-                                <th>用户量</th>
-                                <th>占比</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th>闪客蜂APP购票数据</th>
-                                <th>Time_interval1</th>
-                                <th>Data_num1</th>
-                                <th>Rate</th>
-                                <th>User_num1</th>
-                                <th>Rate</th>
-                            </tr>
-                            <tr>
-                                <th>广州地铁腾讯乘车码</th>
-                                <th>Time_interval2</th>
-                                <th>Data_num1</th>
-                                <th>Rate</th>
-                                <th>User_num1</th>
-                                <th>Rate</th>
-                            </tr>
-                            <tr>
-                                <th>广州地铁先享后付</th>
-                                <th>Time_interval3</th>
-                                <th>Data_num1</th>
-                                <th>Rate</th>
-                                <th>User_num1</th>
-                                <th>Rate</th>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div>注：</div>
-                    <ul>
-                        <li>闪客蜂APP购票数据（以下简称闪客蜂APP）：{detail1}。</li>
-                        <li>广州地铁腾讯乘车码（以下简称腾讯乘车码）：{detail2}。</li>
-                        <li>广州地铁先享后付（以下简称先享后付）：{detail3}。</li>
-                    </ul>
-                </div>
+                <div class="content1">
+                    <div>
+                        <div class="sec-title">周末型与工作型</div>
+                        <div class="content2">
+                            <ul>
+                                <li>定义1（work） 用户工作日期间购票次数 / 工作日购票天数。</li>
+                                <li>定义2（weekend） 用户周末期间购票次数 / 周末购票天数。</li>
+                                <li>定义3（工作型用户） work-weekend &gt;= 1的用户。</li>
+                                <li>定义4（周末型用户） work-weekend &lt;= -1 的用户。</li>
+                                <li>定义5（常用型用户） 非工作型和周末型用户。</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="sec-title">使用频率模式</div>
+                        <div class="content2">
+                            <ul>
+                                <li>定义6（使用一段时间不再使用型） 只在{day_num}日内有交易行为，{day_num}日之后无交易行为的用户。如3月1日新增的用户A，如果只在3月内有交易行为，从4月开始无交易行为，那么A属于此类型。</li>
+                                <li>定义7（稳定型） 满足以下条件之一的用户：a) 距今{month_num}个月之内新增的用户；b) {month_num}个月之前新增的且使用月数&gt;={month_num}的用户。</li>
+                                <li>定义8（稳定高频性） 稳定型用户，且每月平均使用3-4周或每月平均使用10天以上(不包括10天) 的用户。</li>
+                                <li>定义9（稳定低频性） 稳定型用户，且每月平均使用1-2周且每月平均使用10天(包括10天)的用户。</li>
+                                <li>定义10（突发型） {month_num}个月之前新增的且使用月数&lt;{month_num}的用户。</li>
+                            </ul>
+                        </div>
+                    </div>
+</div>
             </div>
             <div>
-                <div class="sub-title">2. 用户模式定义</div>
+                <div class="sub-title">数据分析结果及展示</div>
                 <div class="orange-line"></div>
-                <div class="content2">
+                <div class="content1">
                     <div>
-                        <div class="sec-title">2.1 周末型与工作型</div>
-                        <ul>
-                            <li>定义1（work） 用户工作日期间购票次数 / 工作日购票天数。</li>
-                            <li>定义2（weekend） 用户周末期间购票次数 / 周末购票天数。</li>
-                            <li>定义3（工作型用户） work-weekend &gt;= 1的用户。</li>
-                            <li>定义4（周末型用户） work-weekend &lt;= -1 的用户。</li>
-                            <li>定义5（常用型用户） 非工作型和周末型用户。</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div class="sec-title">2.2 使用频率模式</div>
-                        <ul>
-                            <li>定义6（使用一段时间不再使用型） 只在{day_num}日内有交易行为，{day_num}日之后无交易行为的用户。如3月1日新增的用户A，如果只在3月内有交易行为，从4月开始无交易行为，那么A属于此类型。</li>
-                            <li>定义7（稳定型） 满足以下条件之一的用户：a) 距今{month_num}个月之内新增的用户；b) {month_num}个月之前新增的且使用月数&gt;={month_num}的用户。</li>
-                            <li>定义8（稳定高频性） 稳定型用户，且每月平均使用3-4周或每月平均使用10天以上(不包括10天) 的用户。</li>
-                            <li>定义9（稳定低频性） 稳定型用户，且每月平均使用1-2周且每月平均使用10天(包括10天)的用户。</li>
-                            <li>定义10（突发型） {month_num}个月之前新增的且使用月数&lt;{month_num}的用户。</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="sub-title">3. 数据分析结果及展示</div>
-                <div class="orange-line"></div>
-                <div class="content2">
-                    <div>
-                        <div class="sec-title">3.1 每天新增用户量</div>
-                        <div>统计{date1}到{date2}[时间段]之间，每种来源每天新增用户数量。</div>
-                        <div id="chart311" style="width:100%;height:300px"></div>
-                        <div id="chart312" style="width:100%;height:300px"></div>
-                        <div id="chart313" style="width:100%;height:300px"></div>
-                        <div id="chart314" style="width:100%;height:300px"></div>
-                    </div>
-                    <div>
-                        <div class="sec-title">3.2 用户使用次数统计</div>
-                        <div>统计3种来源的用户使用次数。</div>
-                        <div class="table-title">表3-1 购票次数用户量及比例</div>
-                        <table class="table table-striped table-bordered templatemo-user-table">
-                            <thead>
-                                <tr>
-                                    <th>来源</th>
-                                    <th>1次</th>
-                                    <th>比例</th>
-                                    <th>2-5次</th>
-                                    <th>比例</th>
-                                    <th>6-20次</th>
-                                    <th>比例</th>
-                                    <th>20次以上</th>
-                                    <th>比例</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th>闪客蜂APP</th>
-                                    <th>Num1</th>
-                                    <th>Rate</th>
-                                    <th>Num1</th>
-                                    <th>Rate</th>
-                                    <th>Num1</th>
-                                    <th>Rate</th>
-                                    <th>Num1</th>
-                                    <th>Rate</th>
-                                </tr>
-                                <tr>
-                                    <th>先享后付</th>
-                                    <th>Num2</th>
-                                    <th>Rate</th>
-                                    <th>Num2</th>
-                                    <th>Rate</th>
-                                    <th>Num2</th>
-                                    <th>Rate</th>
-                                    <th>Num2</th>
-                                    <th>Rate</th>
-                                </tr>
-                                <tr>
-                                    <th>腾讯乘车码</th>
-                                    <th>Num3</th>
-                                    <th>Rate</th>
-                                    <th>Num3</th>
-                                    <th>Rate</th>
-                                    <th>Num3</th>
-                                    <th>Rate</th>
-                                    <th>Num3</th>
-                                    <th>Rate</th>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="table-title">图3-5 购票次数用户量及比例</div>
-                        <div class="row-chart">
-                            <div id="chart321" style="width:33%;height:300px"></div>
-                            <div id="chart322" style="width:33%;height:300px"></div>
-                            <div id="chart323" style="width:33%;height:300px"></div>
+                        <div class="sec-title">每天新增用户量</div>
+                        <div class="content2">
+                            <p>统计{date1}到{date2}[时间段]之间，每种来源每天新增用户数量。</p>
+                            <div id="chart31" style="width:100%;height:300px"></div>
                         </div>
                     </div>
                     <div>
-                        <div class="sec-title">3.3 元旦新增用户留存情况</div>
-                        <div>
-                            <h4>3.3.1 闪客蜂APP</h4>
-                            <div id="chart331" style="width:100%;height:300px"></div>
-                        </div>
-                        <div>
-                            <h4>3.3.2 先享后付</h4>
-                            <div id="chart333" style="width:100%;height:300px"></div>
-                        </div>
-                        <div>
-                            <h4>3.3.3 腾讯乘车码</h4>
-                            <div id="chart332" style="width:100%;height:300px"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="sec-title">3.4 清明新增用户留存情况</div>
-                        <div>
-                            <h4>3.4.1 闪客蜂APP</h4>
-                            <div id="chart341" style="width:100%;height:300px"></div>
-                        </div>
-                        <div>
-                            <h4>3.4.2 先享后付</h4>
+                        <div class="sec-title">用户使用次数统计</div>
+                        <div class="content2">
+                            <p class="table-title"> 购票次数用户量及比例
+                            </p>
+                            <table id="table32" class="table table-striped table-bordered templatemo-user-table">
+                                <thead>
+                                    <tr>
+                                        <th>来源</th>
+                                        <th>1次</th>
+                                        <th>比例</th>
+                                        <th>2-5次</th>
+                                        <th>比例</th>
+                                        <th>6-20次</th>
+                                        <th>比例</th>
+                                        <th>20次以上</th>
+                                        <th>比例</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>闪客蜂APP</th>
+                                        <th>Num1</th>
+                                        <th>Rate</th>
+                                        <th>Num1</th>
+                                        <th>Rate</th>
+                                        <th>Num1</th>
+                                        <th>Rate</th>
+                                        <th>Num1</th>
+                                        <th>Rate</th>
+                                    </tr>
+                                    <tr>
+                                        <th>先享后付</th>
+                                        <th>Num2</th>
+                                        <th>Rate</th>
+                                        <th>Num2</th>
+                                        <th>Rate</th>
+                                        <th>Num2</th>
+                                        <th>Rate</th>
+                                        <th>Num2</th>
+                                        <th>Rate</th>
+                                    </tr>
+                                    <tr>
+                                        <th>腾讯乘车码</th>
+                                        <th>Num3</th>
+                                        <th>Rate</th>
+                                        <th>Num3</th>
+                                        <th>Rate</th>
+                                        <th>Num3</th>
+                                        <th>Rate</th>
+                                        <th>Num3</th>
+                                        <th>Rate</th>
+                                    </tr>
+                                </tbody>
+                            </table>
                             <div class="row-chart">
-                                <div id="chart343" style="width:50%;height:300px"></div>
-                                <div id="chart344" style="width:50%;height:300px"></div>
+                                <div id="chart32" style="width:100%;height:300px"></div>
                             </div>
-                        </div>
-                        <div>
-                            <h4>3.4.3 腾讯乘车码</h4>
-                            <div id="chart342" style="width:100%;height:300px"></div>
                         </div>
                     </div>
                     <div>
                         <div class="sec-title">3.5 周末新增用户留存量</div>
-                        <div>
-                            <h4>3.5.1 闪客蜂APP</h4>
-                            <div id="chart351" style="width:100%;height:300px"></div>
-                        </div>
-                        <div>
-                            <h4>3.5.2 先享后付</h4>
-                            <div class="row-chart">
-                                <div id="chart352" style="width:50%;height:300px"></div>
-                                <div id="chart353" style="width:50%;height:300px"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <h4>3.5.3 腾讯乘车码</h4>
-                            <div id="chart354" style="width:100%;height:300px"></div>
+                        <div class="content2">
+                            <blockquote>
+                                <p>多线折线图1个</p>
+                            </blockquote>
+                            <div id="chart35" style="width:95%;height:300px"></div>
                         </div>
                     </div>
                     <div>
-                        <div class="sec-title">3.6 用户使用详情统计</div>
-                        <div>
-                            <h4>3.6.1 月新增用户连续使用月数</h4>
-                            <div>统计近期内，3种来源的用户连续使用月数。</div>
-                            <div class="table-title">表3-2 每月新增用户连续使用月数及所占比例</div>
-                            <table class="table table-striped table-bordered templatemo-user-table">
-                                <thead>
-                                    <tr>
-                                        <th>来源</th>
-                                        <th>月份</th>
-                                        <th>1</th>
-                                        <th>2</th>
-                                        <th>3</th>
-                                        <th>4</th>
-                                        <th>5</th>
-                                        <th>6</th>
-                                        <th>7</th>
-                                        <th>8</th>
-                                        <th>9</th>
-                                    </tr>
-                                </thead>
-                                <tr>
-                                    <th rowspan="9">腾讯乘车码</th>
-                                    <th>2017.7</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>2017.8</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>2017.9</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>2017.10</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>2017.11</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>2017.12</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>2018.1</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>2018.2</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>2018.3</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th rowspan="5">先享后付微信端</th>
-                                    <th>2017.11</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>2017.12</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>2018.1</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>2018.2</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>2018.3</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th rowspan="2">支付宝端</th>
-                                    <th>2018.2</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>2018.3</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th rowspan="6">闪客蜂APP</th>
-                                    <th>2017.10</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>2017.11</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>2017.12</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>2018.1</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-
-                                    <th>2018.2</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>2018.3</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                            </table>
-                        </div>
-                        <div>
-                            <h4>3.6.2 用户使用月数</h4>
-                            <div>统计用户的总使用月数。</div>
-                            <div class="table-title">表3-3 用户使用月数所占比例</div>
-                            <table class="table table-striped table-bordered templatemo-user-table">
-                                <thead>
-                                    <tr>
-                                        <th>来源</th>
-                                        <th>1</th>
-                                        <th>2</th>
-                                        <th>3</th>
-                                        <th>4</th>
-                                        <th>5</th>
-                                        <th>6</th>
-                                        <th>7</th>
-                                        <th>更多</th>
-                                    </tr>
-                                </thead>
-                                <tr>
-                                    <th>先享后付1</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>先享后付2</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>腾讯乘车码</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>闪客蜂APP</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                            </table>
-                            <div>注：</div>
-                            <ul>
-                                <li>先享后付1：微信端；</li>
-                                <li>先享后付2：支付宝端。<br>表中省略了百分号，表中数字表示百分比。</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4>3.6.3 用户最长连续使用天数</h4>
-                            <div>统计用户最长连续使用的天数。 </div>
-                            <div class="table-title">表3-4 用户最长连续使用天数所占比例</div>
-                            <table class="table table-striped table-bordered templatemo-user-table">
-                                <thead>
-                                    <tr>
-                                        <th>来源</th>
-                                        <th>1天</th>
-                                        <th>2-3天</th>
-                                        <th>4-7天</th>
-                                        <th>8-20天</th>
-                                        <th>20天以上</th>
-                                    </tr>
-                                </thead>
-                                <tr>
-                                    <th>先享后付1</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>先享后付2</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>腾讯乘车码</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>闪客蜂APP</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                            </table>
-                            <div>注： 先享后付1：微信端；先享后付2：支付宝端。</div>
-                        </div>
-                        <div>
-                            <h4>3.6.4 用户总使用天数</h4>
-                            <div>统计用户总使用天数。</div>
-                            <div class="table-title"> 表3-5 用户总使用天数所占比例</div>
-                            <table class="table table-striped table-bordered templatemo-user-table">
-                                <thead>
-                                    <tr>
-                                        <th>来源</th>
-                                        <th>1天</th>
-                                        <th>2-5</th>
-                                        <th>6-20</th>
-                                        <th>21-30</th>
-                                        <th>31-60</th>
-                                        <th>61-90</th>
-                                        <th>91-120</th>
-                                        <th>更长</th>
-                                    </tr>
-                                </thead>
-                                <tr>
-                                    <th>先享后付1</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>先享后付2</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>腾讯乘车码</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>闪客蜂APP</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                            </table>
-                            <div>注： 定义3.1（用户总使用天数） 最后一次购票与第一次购票相隔的天数。 先享后付1：微信端；先享后付2：支付宝端。 表中省略了百分号，表中数字表示百分比。</div>
-                        </div>
-                        <div>
-                            <h4>3.6.5 用户使用频率</h4>
-                            <div class="table-title">表3-6 用户使用频率所占比例</div>
-                            <table class="table table-striped table-bordered templatemo-user-table">
-                                <thead>
-                                    <tr>
-                                        <th>来源</th>
-                                        <th>只使用1次</th>
-                                        <th>0-0.1</th>
-                                        <th>0.1-0.2</th>
-                                        <th>0.2-0.3</th>
-                                        <th>0.3-0.4</th>
-                                        <th>0.4-0.5</th>
-                                        <th>0.5-0.6</th>
-                                        <th>0.6-0.7</th>
-                                        <th>0.7-0.8</th>
-                                        <th>0.8-0.9</th>
-                                        <th>0.9-1</th>
-                                    </tr>
-                                </thead>
-                                <tr>
-                                    <th>先享后付1</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>先享后付2</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>腾讯乘车码</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>闪客蜂APP</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                            </table>
-                            <div>注： 定义3.2（用户使用频率） 用户有购票记录的天数 / 用户总使用天数。 先享后付1：微信端；先享后付2：支付宝端。 表中省略了百分号，表中数字表示百分比。</div>
-                        </div>
-                        <div>
-                            <h4>3.6.6 用户模式</h4>
-                            <div>统计每种来源的用户使用模式分布情况。 </div>
-                            <div class="table-title">表3-7 用户模式人数及比例</div>
-                            <table class="table table-striped table-bordered templatemo-user-table">
-                                <thead>
-                                    <tr>
-                                        <th rowspan="2" style="vertical-align:middle">模式</th>
-                                        <th colspan="2">先享后付1</th>
-                                        <th colspan="2">先享后付2</th>
-                                        <th colspan="2">腾讯乘车码</th>
-                                        <th colspan="2">闪客蜂APP</th>
-                                    </tr>
-
-                                    <tr>
-                                        <th>人数</th>
-                                        <th>比例</th>
-                                        <th>人数</th>
-                                        <th>比例</th>
-                                        <th>人数</th>
-                                        <th>比例</th>
-                                        <th>人数</th>
-                                        <th>比例</th>
-                                    </tr>
-                                </thead>
-                                <tr>
-                                    <th>稳定高频周末型</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>稳定高频工作型</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>稳定高频常用型</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>稳定低频周末型</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>稳定低频工作型</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>稳定低频常用型</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>一段时间之后不用型</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>突发周末型</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>突发工作型</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>突发常用型</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>本月新用户周末型</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>本月新用户工作型</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>本月新用户常用型</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                            </table>
-                            <div>注： 先享后付1：微信端；先享后付2：支付宝端。 表中省略了百分号，表中数字表示百分比。</div>
-                            <div class="table-title">图3-17 用户模式人数及比例</div>
-                            <div class="row-chart">
-                                <div id="chart3661" style="width:50%;height:300px"></div>
-                                <div id="chart3662" style="width:50%;height:300px"></div>
+                        <div class="sec-title">用户使用详情统计</div>
+                        <div class="green-line"></div>
+                        <div class="content2">
+                            <div>
+                                <h4>月新增用户连续使用月数</h4>
+                                <div class="content3">
+                                    <p class="table-title">每月新增用户连续使用月数及所占比例</p>
+                                    <table id="table361" class="table table-striped table-bordered templatemo-user-table">
+                                        <thead>
+                                            <tr>
+                                                <th>来源</th>
+                                                <th>月份</th>
+                                                <th>1</th>
+                                                <th>2</th>
+                                                <th>3</th>
+                                                <th>4</th>
+                                                <th>5</th>
+                                                <th>6</th>
+                                                <th>7</th>
+                                                <th>8</th>
+                                                <th>9</th>
+                                            </tr>
+                                        </thead>
+                                        <tr>
+                                            <th rowspan="1">先享后付微信端</th>
+                                            <th>2017.11</th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </table>
+                                </div>
                             </div>
-                            <div class="row-chart">
-                                <div id="chart3663" style="width:50%;height:300px"></div>
-                                <div id="chart3664" style="width:50%;height:300px"></div>
+                            <div>
+                                <h4>用户使用月数</h4>
+                                <div class="content3">
+                                    <p>统计用户的总使用月数。</p>
+                                    <p class="table-title">用户使用月数所占比例</p>
+                                    <table id="table362" class="table table-striped table-bordered templatemo-user-table">
+                                        <thead>
+                                            <tr>
+                                                <th>来源</th>
+                                                <th>1</th>
+                                                <th>2</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th>先享后付1</th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <div class="row-chart">
-                                <div id="chart3665" style="width:50%;height:300px"></div>
-                                <div id="chart3666" style="width:50%;height:300px"></div>
+                            <div>
+                                <h4>用户最长连续使用天数</h4>
+                                <div class="content3">
+                                    <p>统计用户最长连续使用的天数。 </p>
+                                    <p class="table-title">用户最长连续使用天数所占比例</p>
+                                    <table class="table table-striped table-bordered templatemo-user-table">
+                                        <thead>
+                                            <tr>
+                                                <th>来源</th>
+                                                <th>1天</th>
+                                                <th>2-3天</th>
+                                                <th>4-7天</th>
+                                                <th>8-20天</th>
+                                                <th>20天以上</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="body363">
+                                            <tr>
+                                                <th>先享后付1</th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <div class="row-chart">
-                                <div id="chart3667" style="width:50%;height:300px"></div>
-                                <div id="chart3668" style="width:50%;height:300px"></div>
+                            <div>
+                                <h4>用户总使用天数</h4>
+                                <div class="content3">
+                                    <p>统计用户总使用天数。</p>
+                                    <p class="table-title">用户总使用天数所占比例</p>
+                                    <table id="table364" class="table table-striped table-bordered templatemo-user-table">
+                                        <thead>
+                                            <tr>
+                                                <th>来源</th>
+                                                <th>1天</th>
+                                                <th>2-5</th>
+                                                <th>6-20</th>
+                                                <th>21-30</th>
+                                                <th>31-60</th>
+                                                <th>61-90</th>
+                                                <th>91-120</th>
+                                                <th>更长</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="body364">
+                                            <tr>
+                                                <th>先享后付1</th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p>注： 定义3.1（用户总使用天数） 最后一次购票与第一次购票相隔的天数。 表中省略了百分号，表中数字表示百分比。
+                                    </p>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>用户使用频率</h4>
+                                <div class="content3">
+                                    <p class="table-title">用户使用频率所占比例</p>
+                                    <table id="table365" class="table table-striped table-bordered templatemo-user-table">
+                                        <thead>
+                                            <tr>
+                                                <th>来源</th>
+                                                <th>只使用1次</th>
+                                                <th>0-0.1</th>
+                                                <th>0.1-0.2</th>
+                                                <th>0.2-0.3</th>
+                                                <th>0.3-0.4</th>
+                                                <th>0.4-0.5</th>
+                                                <th>0.5-0.6</th>
+                                                <th>0.6-0.7</th>
+                                                <th>0.7-0.8</th>
+                                                <th>0.8-0.9</th>
+                                                <th>0.9-1</th>
+                                            </tr>
+                                        </thead>
+                                        <tr>
+                                            <th>先享后付1</th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>用户模式</h4>
+                                <div class="content3">
+                                    <p>统计用户使用模式分布情况 </p>
+                                    <p class="table-title">用户模式人数及比例</p>
+                                    <table id="table366" class="table table-striped table-bordered templatemo-user-table"></table>
+                                    <div class="row-chart">
+                                        <div id="chart3661" style="width:50%;height:300px"></div>
+                                        <div id="chart3662" style="width:50%;height:300px"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div>
                         <div class="sec-title">3.7 闪客蜂APP用户</div>
-                        <div>统计闪客蜂APP用户的月购票次数及月活用户数量。</div>
-                        <div class="table-title">表3-8 闪客蜂APP用户月购票次数</div>
-                        <table class="table table-striped table-bordered templatemo-user-table">
-                            <thead>
-                                <tr>
-                                    <th rowspan="2" style="vertical-align:middle">城市</th>
-                                    <th colspan="2">2017-10</th>
-                                    <th colspan="2">2017-11</th>
-                                    <th colspan="2">2017-12</th>
-                                    <th colspan="2">2018-01</th>
-                                    <th colspan="2">2018-02</th>
-                                    <th colspan="2">2018-03</th>
-                                    <th colspan="2">2018-04</th>
-                                </tr>
-                                <tr>
-                                    <th>数量</th>
-                                    <th>比例</th>
-                                    <th>数量</th>
-                                    <th>比例</th>
-                                    <th>数量</th>
-                                    <th>比例</th>
-                                    <th>数量</th>
-                                    <th>比例</th>
-                                    <th>数量</th>
-                                    <th>比例</th>
-                                    <th>数量</th>
-                                    <th>比例</th>
-                                    <th>数量</th>
-                                    <th>比例</th>
-                                </tr>
-                            </thead>
-                            <tr>
-                                <th>青岛</th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                            <tr>
-                                <th>长沙</th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </table>
-                        <div class="table-title">表3-9 闪客蜂APP月活用户数</div>
-                        <table class="table table-striped table-bordered templatemo-user-table">
-                            <thead>
-                                <tr>
-                                    <th rowspan="2" style="vertical-align:middle">城市</th>
-                                    <th colspan="2">2017-10</th>
-                                    <th colspan="2">2017-11</th>
-                                    <th colspan="2">2017-12</th>
-                                    <th colspan="2">2018-01</th>
-                                    <th colspan="2">2018-02</th>
-                                    <th colspan="2">2018-03</th>
-                                    <th colspan="2">2018-04</th>
-                                </tr>
+                        <div class="content2">
+                            <p>统计闪客蜂APP用户的月购票次数及月活用户数量。</p>
+                            <p class="table-title"> 表3.8 闪客蜂APP用户月购票次数</p>
+                            <table class="table table-striped table-bordered templatemo-user-table">
+                                <thead>
+                                    <tr>
+                                        <th rowspan="2">城市</th>
+                                        <th colspan="2">2017-10</th>
+                                        <th colspan="2">2017-11</th>
+                                        <th colspan="2">2017-12</th>
+                                        <th colspan="2">2018-01</th>
+                                        <th colspan="2">2018-02</th>
+                                        <th colspan="2">2018-03</th>
+                                        <th colspan="2">2018-04</th>
+                                    </tr>
 
+                                    <tr>
+                                        <th>数量</th>
+                                        <th>比例</th>
+                                        <th>数量</th>
+                                        <th>比例</th>
+                                        <th>数量</th>
+                                        <th>比例</th>
+                                        <th>数量</th>
+                                        <th>比例</th>
+                                        <th>数量</th>
+                                        <th>比例</th>
+                                        <th>数量</th>
+                                        <th>比例</th>
+                                        <th>数量</th>
+                                        <th>比例</th>
+                                    </tr>
+                                </thead>
                                 <tr>
-                                    <th>数量</th>
-                                    <th>比例</th>
-                                    <th>数量</th>
-                                    <th>比例</th>
-                                    <th>数量</th>
-                                    <th>比例</th>
-                                    <th>数量</th>
-                                    <th>比例</th>
-                                    <th>数量</th>
-                                    <th>比例</th>
-                                    <th>数量</th>
-                                    <th>比例</th>
-                                    <th>数量</th>
-                                    <th>比例</th>
+                                    <th>青岛</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
-                            </thead>
-                            <tr>
-                                <th>青岛</th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </table>
-                        <div>注： 表中省略了百分号，表中数字表示百分比。 5190代表的城市未知。</div>
+                                <tr>
+                                    <th>长沙</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th>广州</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th>郑州</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th>5190</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th>南宁</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th>西安</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </table>
+                            <p class="table-title">表3.9 闪客蜂APP月活用户数</p>
+                            <table class="table table-striped table-bordered templatemo-user-table">
+                                <thead>
+                                    <tr>
+                                        <th rowspan="2">城市</th>
+                                        <th colspan="2">2017-10</th>
+                                        <th colspan="2">2017-11</th>
+                                        <th colspan="2">2017-12</th>
+                                        <th colspan="2">2018-01</th>
+                                        <th colspan="2">2018-02</th>
+                                        <th colspan="2">2018-03</th>
+                                        <th colspan="2">2018-04</th>
+                                    </tr>
+
+                                    <tr>
+                                        <th>数量</th>
+                                        <th>比例</th>
+                                        <th>数量</th>
+                                        <th>比例</th>
+                                        <th>数量</th>
+                                        <th>比例</th>
+                                        <th>数量</th>
+                                        <th>比例</th>
+                                        <th>数量</th>
+                                        <th>比例</th>
+                                        <th>数量</th>
+                                        <th>比例</th>
+                                        <th>数量</th>
+                                        <th>比例</th>
+                                    </tr>
+                                </thead>
+                                <tr>
+                                    <th>青岛</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th>长沙</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th>广州</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th>郑州</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th>5190</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th>南宁</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th>西安</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </table>
+                            <p>注： 表中省略了百分号，表中数字表示百分比。 5190代表的城市未知。
+                            </p>
+                        </div>
                     </div>
-                </div>
+</div>
             </div>
         </div>
-        
         <div class="footer">
             <div>{city}地铁运营数据分析报告</div>
         </div>
@@ -1493,6 +1033,7 @@
     <!--基础分析报告-->
     <script type="text/javascript">
         $(document).ready(function(){
+            
             var baseurl = "../json/";  //json文件存放路径
             //对象克隆函数
             function cloneObj(obj){
@@ -1848,1666 +1389,327 @@
     </script>
     
     <!--用户分析报告-->
+
     <script type="text/javascript">
-        //        json
-        //        $(function() {
-        //            $.getJSON("../module_details.json", function(data) {
-        //                alert("hi");
-        //                alert(data);
-        //
-        //                $.each(data, function(name, value) {
-        //                    alert(name);
-        //                    alert(value);
-        //                });
-        //            });
-        //        })
+        $(document).ready(function() {
 
-        var chart311 = echarts.init(document.getElementById("chart311"));
-        var option311 = {
-            title: {
-                text: '图3-1 闪客蜂APP每日新增用户量',
-                textStyle: {
-                    color: '#333',
-                    fontWeight: '550'
+            var datafrom = "先享后付";
+            var baseurl = "../json/";  //json文件存放路径
+            var module_json = ["module_newuseranalize.json","module_usertimes.json","module_userstay.json","module_details.json"];
+            //对象克隆函数
+            function cloneObj(obj){
+                return JSON.parse(JSON.stringify(obj));
+            };
+            //向table填充数据
+            function writeToTable(target, data){
+                var html = '';
+                html = html + '<tbody>';
+				for ( var i = 0; i < data.length; i++) {//循环json对象，拼接tr,td的html
+					html = html + '<tr>';
+                    for(var j = 0; j < data[0].length; j++){
+                        html = html + '<td>' + data[i][j] + '</td>';
+                    }
+					html = html + '</tr>';
+				}
+                html = html + '</tbody>';
+				$(target).append(html);
+            };
+            var line_option={
+                title: {
+                    text: '',
+                    textStyle:{color:'#333', fontWeight: '550'},
+                    left:'center',
                 },
-                left: 'center',
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'cross',
-                    label: {
-                        backgroundColor: '#6a7985'
+                tooltip: {
+                    trigger:'axis',
+                    axisPointer: {
+                        type: 'cross',
+                        label: {backgroundColor: '#6a7985'}
                     }
-                }
-            },
-            toolbox: {
-                show: true,
-                right: '20px',
-                top: '25px',
-                feature: {
-                    dataView: {
-                        readOnly: false
-                    }, //数据视图
-                }
-            },
-            grid: {
-                bottom: '30px'
-            },
-            xAxis: {
-                boundaryGap: false,
-                data: ['10/20/2017', '10/27/2017', '11/3/2017', '11/10/2017', '11/17/2017', '11/24/2017', '12/1/2017'],
-                axisLine: {
-                    lineStyle: {
-                        color: '#333'
+                },
+                toolbox: {
+                    show: true,
+                    right: '150px',
+                    top: '25px',
+                    feature: {
+                        dataView: {readOnly: false },  //数据视图
                     }
-                }
-            },
-            yAxis: {
-                type: 'value',
-                axisLine: {
-                    lineStyle: {
-                        color: '#333'
-                    }
-                }
-            },
-            series: [{
-                type: 'line',
-                data: [820, 932, 901, 934, 1290, 1330, 1320],
-                symbolSize: 10,
-                itemStyle: {
-                    normal: {
-                        color: '#cc7e63',
-                        label: {
-                            show: true
+                },
+                grid: {
+                    bottom: '30px'
+                },
+                legend: {
+                    data:[],
+                    textStyle:{color:'#333'},
+                    top: '30px'
+                },
+                xAxis: {
+                    boundaryGap: false,
+                    data: [],
+                    axisLine: {lineStyle: {color: '#333'}},
+                    name: ''
+                },
+                yAxis: {
+                    type:'value',
+                    axisLine: {lineStyle: {color: '#333'}}
+                },
+                series: [{
+                    name: '',
+                    type: 'line',
+                    data: [],
+                    smooth:true,
+                    symbolSize: 10,
+                    itemStyle:{normal:{label: {show: true}}},
+                    lineStyle:{normal:{width:2}}
+                }]
+            };
+            var color = ['#66CDAA','#CD7054','#d7ab82','#61a0a8','#CD69C9'];
+            var pie_option={
+                title : {
+                    text: '',
+                    textStyle:{color:'#333', fontWeight: '550'},
+                    left:'center',
+                },
+                tooltip : {
+                    trigger: 'item',
+                    formatter: "{b} : {c} ({d}%)"
+                },
+                legend: {
+                    orient: 'vertical',
+                    left: '100px',
+                    top: '50px',
+                    data: []
+                },
+                series : [
+                    {
+                        name: '',
+                        type: 'pie',
+                        radius : '55%',
+                        center: ['50%', '60%'],
+                        data:[],
+                        itemStyle: {
+                            emphasis: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
                         }
                     }
-                },
-                lineStyle: {
-                    normal: {
-                        width: 2
-                    }
-                }
-            }]
-        };
-        chart311.setOption(option311);
-        var chart312 = echarts.init(document.getElementById("chart312"));
-        var option312 = {
-            title: {
-                text: '图3-2 腾讯乘车码每日新增用户量',
-                textStyle: {
-                    color: '#333',
-                    fontWeight: '550'
-                },
-                left: 'center',
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'cross',
-                    label: {
-                        backgroundColor: '#6a7985'
-                    }
-                }
-            },
-            toolbox: {
-                show: true,
-                right: '20px',
-                top: '25px',
-                feature: {
-                    dataView: {
-                        readOnly: false
-                    }, //数据视图
-                }
-            },
-            grid: {
-                bottom: '30px'
-            },
-            xAxis: {
-                boundaryGap: false,
-                data: ['10/20/2017', '10/27/2017', '11/3/2017', '11/10/2017', '11/17/2017', '11/24/2017', '12/1/2017'],
-                axisLine: {
-                    lineStyle: {
-                        color: '#333'
-                    }
-                }
-            },
-            yAxis: {
-                type: 'value',
-                axisLine: {
-                    lineStyle: {
-                        color: '#333'
-                    }
-                }
-            },
-            series: [{
-                type: 'line',
-                data: [820, 932, 901, 934, 1290, 1330, 1320],
-                symbolSize: 10,
-                itemStyle: {
-                    normal: {
-                        color: '#cc7e63',
-                        label: {
-                            show: true
-                        }
-                    }
-                },
-                lineStyle: {
-                    normal: {
-                        width: 2
-                    }
-                }
-            }]
-        };
-        chart312.setOption(option312);
-        var chart313 = echarts.init(document.getElementById("chart313"));
-        var option313 = {
-            title: {
-                text: '图3-3 先享后付支付宝端每日新增用户量',
-                textStyle: {
-                    color: '#333',
-                    fontWeight: '550'
-                },
-                left: 'center',
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'cross',
-                    label: {
-                        backgroundColor: '#6a7985'
-                    }
-                }
-            },
-            toolbox: {
-                show: true,
-                right: '20px',
-                top: '25px',
-                feature: {
-                    dataView: {
-                        readOnly: false
-                    }, //数据视图
-                }
-            },
-            grid: {
-                bottom: '30px'
-            },
-            xAxis: {
-                boundaryGap: false,
-                data: ['10/20/2017', '10/27/2017', '11/3/2017', '11/10/2017', '11/17/2017', '11/24/2017', '12/1/2017'],
-                axisLine: {
-                    lineStyle: {
-                        color: '#333'
-                    }
-                }
-            },
-            yAxis: {
-                type: 'value',
-                axisLine: {
-                    lineStyle: {
-                        color: '#333'
-                    }
-                }
-            },
-            series: [{
-                type: 'line',
-                data: [820, 932, 901, 934, 1290, 1330, 1320],
-                symbolSize: 10,
-                itemStyle: {
-                    normal: {
-                        color: '#cc7e63',
-                        label: {
-                            show: true
-                        }
-                    }
-                },
-                lineStyle: {
-                    normal: {
-                        width: 2
-                    }
-                }
-            }]
-        };
-        chart313.setOption(option313);
-        var chart314 = echarts.init(document.getElementById("chart314"));
-        var option314 = {
-            title: {
-                text: '图3-4 先享后付微信端每日新增用户量',
-                textStyle: {
-                    color: '#333',
-                    fontWeight: '550'
-                },
-                left: 'center',
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'cross',
-                    label: {
-                        backgroundColor: '#6a7985'
-                    }
-                }
-            },
-            toolbox: {
-                show: true,
-                right: '20px',
-                top: '25px',
-                feature: {
-                    dataView: {
-                        readOnly: false
-                    }, //数据视图
-                }
-            },
-            grid: {
-                bottom: '30px'
-            },
-            xAxis: {
-                boundaryGap: false,
-                data: ['10/20/2017', '10/27/2017', '11/3/2017', '11/10/2017', '11/17/2017', '11/24/2017', '12/1/2017'],
-                axisLine: {
-                    lineStyle: {
-                        color: '#333'
-                    }
-                }
-            },
-            yAxis: {
-                type: 'value',
-                axisLine: {
-                    lineStyle: {
-                        color: '#333'
-                    }
-                }
-            },
-            series: [{
-                type: 'line',
-                data: [820, 932, 901, 934, 1290, 1330, 1320],
-                symbolSize: 10,
-                itemStyle: {
-                    normal: {
-                        color: '#cc7e63',
-                        label: {
-                            show: true
-                        }
-                    }
-                },
-                lineStyle: {
-                    normal: {
-                        width: 2
-                    }
-                }
-            }]
-        };
-        chart314.setOption(option314);
+                ]
+            };
 
-        var chart321 = echarts.init(document.getElementById("chart321"));
-        var option321 = {
-            title: {
-                text: '先享后付',
-                x: 'center'
-            },
-            tooltip: {
-                trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} ({d}%)"
-            },
-            legend: {
-                bottom:0,
-                left: 'center',
-                data: ['1次', '2-5次', '6-20次', '20次以上']
-            },
-            label: {
-                normal: {
-                    show: false,
-                    position: 'center'
+            $.getJSON(baseurl + module_json[0],function(data) {
+                alert("read0");
+                var chart31 = echarts.init(document.getElementById("chart31"));
+                var option31 = cloneObj(line_option);
+                option31.xAxis.data = data.new_user_day_count[0];
+                option31.series[0].data = data.new_user_day_count[1];
+                option31.title.text = "每天新增用户量";
+                chart31.setOption(option31);
+            });
+            
+            $.getJSON(baseurl+ module_json[1], function(data) {
+                var levels = data.levels;
+                var html1 = "<thead><tr><th>来源</th>";
+                var html2 = "<tbody><tr><th>"+datafrom+"</th>";
+                for ( var i = 0; i < levels.length; i++) {
+                    var s = levels[i];
+                    html1+="<th>"+s+"</th><th>比例</th>";
+                    html2+="<th>"+data.user_times[s]+"</th><th>"+(data.user_percent[s] * 100).toFixed(2)+"</th>"; 
                 }
-            },
-            labelLine: {
-                normal: {
-                    show: false
+                html1+="</tr></thead>";
+                html2+="</tr></tbody>";
+                $("#table32").html(html1+html2);
+                var chart32 = echarts.init(document.getElementById("chart32"));
+                var option32 = cloneObj(pie_option);
+                let datas=[];
+                for(var i=0; i<levels.length; i++){
+                    let datas_item={value:'', name:'', itemStyle: {normal:{color:color[i]}}};
+                    var s = levels[i];
+                    datas_item.value=data.user_times[s];
+                    datas_item.name=s;
+                    datas.push(datas_item);
                 }
-            },
-            series: [{
-                name: '购票次数',
-                type: 'pie',
-                radius: '55%',
-                center: ['50%', '50%'],
-                data: [{
-                        value: 335,
-                        name: '1次'
-                    },
-                    {
-                        value: 310,
-                        name: '2-5次'
-                    },
-                    {
-                        value: 234,
-                        name: '6-20次'
-                    },
-                    {
-                        value: 135,
-                        name: '20次以上'
-                    },
-                ],
-                itemStyle: {
-                    emphasis: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                }
-            }]
-        };
-        chart321.setOption(option321);
-        var chart322 = echarts.init(document.getElementById("chart322"));
-        var option322 = {
-            title: {
-                text: '腾讯乘车码',
-                x: 'center'
-            },
-            tooltip: {
-                trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} ({d}%)"
-            },
-            legend: {
-                bottom:0,
-                left: 'center',
-                data: ['1次', '2-5次', '6-20次', '20次以上']
-            },
-            label: {
-                normal: {
-                    show: false,
-                    position: 'center'
-                }
-            },
-            labelLine: {
-                normal: {
-                    show: false
-                }
-            },
-            series: [{
-                name: '购票次数',
-                type: 'pie',
-                radius: '55%',
-                center: ['50%', '50%'],
-                data: [{
-                        value: 335,
-                        name: '1次'
-                    },
-                    {
-                        value: 310,
-                        name: '2-5次'
-                    },
-                    {
-                        value: 234,
-                        name: '6-20次'
-                    },
-                    {
-                        value: 135,
-                        name: '20次以上'
-                    },
-                ],
-                itemStyle: {
-                    emphasis: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                }
-            }]
-        };
-        chart322.setOption(option322);
-        var chart323 = echarts.init(document.getElementById("chart323"));
-        var option323 = {
-            title: {
-                text: '闪客蜂APP',
-                x: 'center'
-            },
-            tooltip: {
-                trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} ({d}%)"
-            },
-            legend: {
-                bottom:0,
-                left: 'center',
-                data: ['1次', '2-5次', '6-20次', '20次以上']
-            },
-            label: {
-                normal: {
-                    show: false,
-                    position: 'center'
-                }
-            },
-            labelLine: {
-                normal: {
-                    show: false
-                }
-            },
-            series: [{
-                name: '购票次数',
-                type: 'pie',
-                radius: '55%',
-                center: ['50%', '50%'],
-                data: [{
-                        value: 335,
-                        name: '1次'
-                    },
-                    {
-                        value: 310,
-                        name: '2-5次'
-                    },
-                    {
-                        value: 234,
-                        name: '6-20次'
-                    },
-                    {
-                        value: 135,
-                        name: '20次以上'
-                    },
-                ],
-                itemStyle: {
-                    emphasis: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                }
-            }]
-        };
-        chart323.setOption(option323);
+                option32.series[0].data = datas;
+                option32.title.text = "购票次数用户量及比例";
+                chart32.setOption(option32);
+            });
 
-        var chart331 = echarts.init(document.getElementById("chart331"));
-        var option331 = {
-            title: {
-                text: '图3-6 闪客蜂APP元旦新增用户每日留存量',
-                textStyle: {
-                    color: '#333',
-                    fontWeight: '550'
-                },
-                left: 'center',
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'cross',
-                    label: {
-                        backgroundColor: '#6a7985'
-                    }
-                }
-            },
-            toolbox: {
-                show: true,
-                right: '20px',
-                top: '25px',
-                feature: {
-                    dataView: {
-                        readOnly: false
-                    }, //数据视图
-                }
-            },
-            grid: {
-                bottom: '30px'
-            },
-            xAxis: {
-                boundaryGap: false,
-                data: ['10/20/2017', '10/27/2017', '11/3/2017', '11/10/2017', '11/17/2017', '11/24/2017', '12/1/2017'],
-                axisLine: {
-                    lineStyle: {
-                        color: '#333'
-                    }
-                }
-            },
-            yAxis: {
-                type: 'value',
-                axisLine: {
-                    lineStyle: {
-                        color: '#333'
-                    }
-                }
-            },
-            series: [{
-                type: 'line',
-                data: [820, 932, 901, 934, 1290, 1330, 1320],
-                symbolSize: 10,
-                itemStyle: {
-                    normal: {
-                        color: '#cc7e63',
-                        label: {
-                            show: true
+            $.getJSON(baseurl + module_json[2], function(data) {
+                alert("read1");
+                date = data.US_date;
+                num = data.US_num;
+                var chart35 = echarts.init(document.getElementById("chart35"));
+                var option35 = {
+                    title: {
+                        text: '闪客蜂APP新增用户每日留存量'
+                    },
+                    tooltip: {
+                        trigger: 'axis'
+                    },
+                    legend: {
+                        left: 'right',
+                        data: ['3月10日', '3月17日', '3月24日', '3月31日']
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis: {
+                        type: 'category',
+                        boundaryGap: false,
+                        data: date
+                    },
+                    yAxis: {
+                        type: 'value'
+                    },
+                    series: [{
+                            name: '3月10日',
+                            type: 'line',
+                            data: num
+                        },
+                        {
+                            name: '3月17日',
+                            type: 'line',
+                            data: num
+                        },
+                        {
+                            name: '3月24日',
+                            type: 'line',
+                            data: num
+                        },
+                        {
+                            name: '3月31日',
+                            type: 'line',
+                            data: num
                         }
-                    }
-                },
-                lineStyle: {
-                    normal: {
-                        width: 2
-                    }
+                    ]
+                };
+                chart35.setOption(option35);
+            });
+
+            $.getJSON(baseurl + module_json[3], function(data) {
+                alert("read2");
+
+                <!--361-->
+                var head361 = "<thead><tr><th>来源</th><th>月份</th>";
+                var body361 = datafrom+"</th>";
+                var count3611 = 0;
+                var count3612 = 0;
+                $.each(data.D_new_cont_month_fm,function(name,value) {
+                    if(count3611>0)body361+="<tr>";
+                    body361 += "<th>"+name+"</th>";
+                    count3611++;
+                    $.each(value,function(name,value) {
+                        body361 += "<th>"+(value * 100).toFixed(2)+"</th>";
+                        count3612++;
+                    });
+                    body361+="</tr>";
+                });
+                body361 = "<tr><th rowspan='"+count3611+"'>"+body361;
+                for(var i=1;i<=count3612;i++) {
+                    head361 += "<th>"+i+"</th>";
                 }
-            }]
-        };
-        chart331.setOption(option331);
-        var chart332 = echarts.init(document.getElementById("chart332"));
-        var option332 = {
-            title: {
-                text: '图3-8 腾讯乘车码元旦新增用户每日留存量',
-                textStyle: {
-                    color: '#333',
-                    fontWeight: '550'
-                },
-                left: 'center',
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'cross',
-                    label: {
-                        backgroundColor: '#6a7985'
-                    }
+                head361+="</tr></thead>";
+                $("#table361").html(head361+body361);
+                <!--362-->
+                var head362 = "<thead><tr><th>来源</th>";
+                var body362 = "<tbody><tr><th>"+datafrom+"</th>";
+                $.each(data.D_total_month,function(name,value) {
+                    head362 += "<th>"+name+"</th>";
+                    body362 += "<th>"+(value*100).toFixed(2)+"</th>";
+                });
+                body362 += "</tr></tbody>";
+                head362+="</tr></thead>";
+                $("#table362").html(head362+body362);
+                <!--363-->
+                body363 = "<tr><th>"+datafrom+"</th>";
+                $.each(data.D_cont_day,function(name,value) {
+                    body363 += "<th>"+(value*100).toFixed(2)+"</th>";
+                });
+                body363+="</tr>";
+                $("#body363").html(body363);
+                <!--364-->
+                body364 = "<tr><th>"+datafrom+"</th>";
+                $.each(data.D_total_day,function(name,value) {
+                    body364 += "<th>"+(value*100).toFixed(2)+"</th>";
+                });
+                body364+="</tr>";
+                $("#body364").html(body364);
+                <!--365-->
+                head365 = "<thead><tr><th>来源</th>";
+                body365 = "<tbody><tr><th>"+datafrom+"</th>";
+                $.each(data.D_user_pre,function(name,value) {
+                    head365 += "<th>"+name+"</th>";
+                    body365 += "<th>"+(value*100).toFixed(2)+"</th>";
+                });
+                head365+="</tr></thead>";
+                body365+="</tr></tbody>";
+                $("#table365").html(head365+body365);
+                <!--366-->
+                var model = data.D_model;
+                var people = data.D_model_people;
+                var html366 = "<thead><tr><th rowspan='2'>模式</th><th colspan='2'>"+datafrom+"</th></tr>"+
+                "<tr><th>人数</th><th>比例</th></tr></thead>";
+                $.each(model, function(name, value) {
+                    html366 += "<tr><th>" + name +
+                        "</th><th>"+people[name]+"</th><th>" + (value * 100).toFixed(2) +
+                        "</th></tr>"
+                });
+                $("#table366").html(html366);
+                var chart3661 = echarts.init(document.getElementById("chart3661"));
+                var option3661 = cloneObj(pie_option);
+                var chart3662 = echarts.init(document.getElementById("chart3662"));
+                var option3662 = cloneObj(pie_option);
+                option3662.legend = {
+                    orient: 'horizontal',
+                    left: 'center',
+                    top: 'bottom',
+                    data: []
+                };
+                option3661.legend = {
+                    orient: 'horizontal',
+                    left: 'center',
+                    top: 'bottom',
+                    data: []
+                };
+                option3661.legend.data = ['稳定高频', '稳定低频', '一段时间后不用', '突发'];
+                option3662.legend.data = ['周末', '工作', '常用'];
+                var classify1 = [0,0,0,1,1,1,2,3,3,3,4,4,4];
+                var classify2 = [0,1,2,0,1,2,3,0,1,2,0,1,2];
+                var count1 = [0,0,0,0,0];
+                var count2 = [0,0,0,0];
+                var i = 0;
+                $.each(people, function(name, value) {
+                    count1[classify1[i]] += value;
+                    count2[classify2[i]] += value;
+                    i++;
+                });
+                let datas1=[];
+                for(var i=0; i<4; i++){
+                    let datas_item={value:'', name:'', itemStyle: {normal:{color:color[i]}}};
+                    datas_item.value=count1[i];
+                    datas_item.name=option3661.legend.data[i];
+                    datas1.push(datas_item);
                 }
-            },
-            toolbox: {
-                show: true,
-                right: '20px',
-                top: '25px',
-                feature: {
-                    dataView: {
-                        readOnly: false
-                    }, //数据视图
+                let datas2=[];
+                for(var i=0; i<3; i++){
+                    let datas_item={value:'', name:'', itemStyle: {normal:{color:color[i]}}};
+                    datas_item.value=count2[i];
+                    datas_item.name=option3662.legend.data[i];
+                    datas2.push(datas_item);
                 }
-            },
-            grid: {
-                bottom: '30px'
-            },
-            xAxis: {
-                boundaryGap: false,
-                data: ['10/20/2017', '10/27/2017', '11/3/2017', '11/10/2017', '11/17/2017', '11/24/2017', '12/1/2017'],
-                axisLine: {
-                    lineStyle: {
-                        color: '#333'
-                    }
-                }
-            },
-            yAxis: {
-                type: 'value',
-                axisLine: {
-                    lineStyle: {
-                        color: '#333'
-                    }
-                }
-            },
-            series: [{
-                type: 'line',
-                data: [820, 932, 901, 934, 1290, 1330, 1320],
-                symbolSize: 10,
-                itemStyle: {
-                    normal: {
-                        color: '#cc7e63',
-                        label: {
-                            show: true
-                        }
-                    }
-                },
-                lineStyle: {
-                    normal: {
-                        width: 2
-                    }
-                }
-            }]
-        };
-        chart332.setOption(option332);
-        var chart333 = echarts.init(document.getElementById("chart333"));
-        var option333 = {
-            title: {
-                text: '图3-7 先享后付微信端元旦新增用户每日留存量',
-                textStyle: {
-                    color: '#333',
-                    fontWeight: '550'
-                },
-                left: 'center',
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'cross',
-                    label: {
-                        backgroundColor: '#6a7985'
-                    }
-                }
-            },
-            toolbox: {
-                show: true,
-                right: '20px',
-                top: '25px',
-                feature: {
-                    dataView: {
-                        readOnly: false
-                    }, //数据视图
-                }
-            },
-            grid: {
-                bottom: '30px'
-            },
-            xAxis: {
-                boundaryGap: false,
-                data: ['10/20/2017', '10/27/2017', '11/3/2017', '11/10/2017', '11/17/2017', '11/24/2017', '12/1/2017'],
-                axisLine: {
-                    lineStyle: {
-                        color: '#333'
-                    }
-                }
-            },
-            yAxis: {
-                type: 'value',
-                axisLine: {
-                    lineStyle: {
-                        color: '#333'
-                    }
-                }
-            },
-            series: [{
-                type: 'line',
-                data: [820, 932, 901, 934, 1290, 1330, 1320],
-                symbolSize: 10,
-                itemStyle: {
-                    normal: {
-                        color: '#cc7e63',
-                        label: {
-                            show: true
-                        }
-                    }
-                },
-                lineStyle: {
-                    normal: {
-                        width: 2
-                    }
-                }
-            }]
-        };
-        chart333.setOption(option333);
-             
-        var chart341 = echarts.init(document.getElementById("chart341"));
-        var option341 = {
-            title: {
-                text: '图3-9 闪客蜂APP清明新增用户每日留存量',
-                textStyle: {
-                    color: '#333',
-                    fontWeight: '550'
-                },
-                left: 'center',
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'cross',
-                    label: {
-                        backgroundColor: '#6a7985'
-                    }
-                }
-            },
-            toolbox: {
-                show: true,
-                right: '20px',
-                top: '25px',
-                feature: {
-                    dataView: {
-                        readOnly: false
-                    }, //数据视图
-                }
-            },
-            grid: {
-                bottom: '30px'
-            },
-            xAxis: {
-                boundaryGap: false,
-                data: ['10/20/2017', '10/27/2017', '11/3/2017', '11/10/2017', '11/17/2017', '11/24/2017', '12/1/2017'],
-                axisLine: {
-                    lineStyle: {
-                        color: '#333'
-                    }
-                }
-            },
-            yAxis: {
-                type: 'value',
-                axisLine: {
-                    lineStyle: {
-                        color: '#333'
-                    }
-                }
-            },
-            series: [{
-                type: 'line',
-                data: [820, 932, 901, 934, 1290, 1330, 1320],
-                symbolSize: 10,
-                itemStyle: {
-                    normal: {
-                        color: '#cc7e63',
-                        label: {
-                            show: true
-                        }
-                    }
-                },
-                lineStyle: {
-                    normal: {
-                        width: 2
-                    }
-                }
-            }]
-        };
-        chart341.setOption(option341);
-        var chart342 = echarts.init(document.getElementById("chart342"));
-        var option342 = {
-            title: {
-                text: '图3-12 腾讯乘车码清明新增用户每日留存量',
-                textStyle: {
-                    color: '#333',
-                    fontWeight: '550'
-                },
-                left: 'center',
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'cross',
-                    label: {
-                        backgroundColor: '#6a7985'
-                    }
-                }
-            },
-            toolbox: {
-                show: true,
-                right: '20px',
-                top: '25px',
-                feature: {
-                    dataView: {
-                        readOnly: false
-                    }, //数据视图
-                }
-            },
-            grid: {
-                bottom: '30px'
-            },
-            xAxis: {
-                boundaryGap: false,
-                data: ['10/20/2017', '10/27/2017', '11/3/2017', '11/10/2017', '11/17/2017', '11/24/2017', '12/1/2017'],
-                axisLine: {
-                    lineStyle: {
-                        color: '#343'
-                    }
-                }
-            },
-            yAxis: {
-                type: 'value',
-                axisLine: {
-                    lineStyle: {
-                        color: '#343'
-                    }
-                }
-            },
-            series: [{
-                type: 'line',
-                data: [820, 932, 901, 934, 1290, 1340, 1320],
-                symbolSize: 10,
-                itemStyle: {
-                    normal: {
-                        color: '#cc7e63',
-                        label: {
-                            show: true
-                        }
-                    }
-                },
-                lineStyle: {
-                    normal: {
-                        width: 2
-                    }
-                }
-            }]
-        };
-        chart342.setOption(option342);
-        var chart343 = echarts.init(document.getElementById("chart343"));
-        var option343 = {
-            title: {
-                text: '图3-10 先享后付微信端清明新增用户每日留存量',
-                textStyle: {
-                    color: '#333',
-                    fontWeight: '550'
-                },
-                left: 'center',
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'cross',
-                    label: {
-                        backgroundColor: '#6a7985'
-                    }
-                }
-            },
-            toolbox: {
-                show: true,
-                right: '20px',
-                top: '25px',
-                feature: {
-                    dataView: {
-                        readOnly: false
-                    }, //数据视图
-                }
-            },
-            grid: {
-                bottom: '30px'
-            },
-            xAxis: {
-                boundaryGap: false,
-                data: ['10/20/2017', '10/27/2017', '11/3/2017', '11/10/2017', '11/17/2017', '11/24/2017', '12/1/2017'],
-                axisLine: {
-                    lineStyle: {
-                        color: '#333'
-                    }
-                }
-            },
-            yAxis: {
-                type: 'value',
-                axisLine: {
-                    lineStyle: {
-                        color: '#333'
-                    }
-                }
-            },
-            series: [{
-                type: 'line',
-                data: [820, 932, 901, 934, 1290, 1330, 1320],
-                symbolSize: 10,
-                itemStyle: {
-                    normal: {
-                        color: '#cc7e63',
-                        label: {
-                            show: true
-                        }
-                    }
-                },
-                lineStyle: {
-                    normal: {
-                        width: 2
-                    }
-                }
-            }]
-        };
-        chart343.setOption(option343);
-        var chart344 = echarts.init(document.getElementById("chart344"));
-        var option344 = {
-            title: {
-                text: '图3-11 先享后付支付宝端清明新增用户每日留存量',
-                textStyle: {
-                    color: '#333',
-                    fontWeight: '550'
-                },
-                left: 'center',
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'cross',
-                    label: {
-                        backgroundColor: '#6a7985'
-                    }
-                }
-            },
-            toolbox: {
-                show: true,
-                right: '20px',
-                top: '25px',
-                feature: {
-                    dataView: {
-                        readOnly: false
-                    }, //数据视图
-                }
-            },
-            grid: {
-                bottom: '30px'
-            },
-            xAxis: {
-                boundaryGap: false,
-                data: ['10/20/2017', '10/27/2017', '11/3/2017', '11/10/2017', '11/17/2017', '11/24/2017', '12/1/2017'],
-                axisLine: {
-                    lineStyle: {
-                        color: '#333'
-                    }
-                }
-            },
-            yAxis: {
-                type: 'value',
-                axisLine: {
-                    lineStyle: {
-                        color: '#333'
-                    }
-                }
-            },
-            series: [{
-                type: 'line',
-                data: [820, 932, 901, 934, 1290, 1330, 1320],
-                symbolSize: 10,
-                itemStyle: {
-                    normal: {
-                        color: '#cc7e63',
-                        label: {
-                            show: true
-                        }
-                    }
-                },
-                lineStyle: {
-                    normal: {
-                        width: 2
-                    }
-                }
-            }]
-        };
-        chart344.setOption(option344);
-        
-        var chart351 = echarts.init(document.getElementById("chart351"));
-        var option351 = {
-            title: {
-                text: '图3-13 闪客蜂APP新增用户每日留存量',
-                textStyle: {
-                    color: '#333',
-                    fontWeight: '550'
-                },
-                left: 'center',
-            },
-            toolbox: {
-                show: true,
-                right: '150px',
-                top: '25px',
-                feature: {
-                    dataView: {readOnly: false },  //数据视图
-                }
-            },
-            tooltip:{
-                trigger:'axis',
-                 axisPointer: {
-                    type: 'cross',
-                    label: {backgroundColor: '#6a7985'}
-                 }
-            },
-            legend: {
-                data:['3月10日','3月17日','3月24日','3月31日'],
-                textStyle:{color:'#000'},
-                top: '30px'
-            },
-            grid: {
-                bottom: '30px'
-            },
-            xAxis: {
-                type: 'category',
-                boundaryGap: false,
-                data: ['10/20/2017', '10/27/2017', '11/3/2017', '11/10/2017', '11/17/2017', '11/24/2017', '12/1/2017']
-            },
-            yAxis: {
-                type: 'value'
-            },
-            series: [
-                {
-                    name:'3月10日',
-                    type:'line',
-                    data:[120, 132, 101, 134, 90, 230, 210]
-                },
-                {
-                    name:'3月17日',
-                    type:'line',
-                    data:[220, 182, 191, 234, 290, 330, 310]
-                },
-                {
-                    name:'3月24日',
-                    type:'line',
-                    data:[150, 232, 201, 154, 190, 330, 410]
-                },
-                {
-                    name:'3月31日',
-                    type:'line',
-                    data:[320, 332, 301, 334, 390, 330, 320]
-                }
-            ]
-        };
-        chart351.setOption(option351);
-        var chart352 = echarts.init(document.getElementById("chart352"));
-        var option352 = {
-            title: {
-                text: '图3-14 先享后付微信端新增用户每日留存量',
-                textStyle: {
-                    color: '#333',
-                    fontWeight: '550'
-                },
-                left: 'center',
-            },
-            toolbox: {
-                show: true,
-                right: '20px',
-                top: '25px',
-                feature: {
-                    dataView: {readOnly: false },  //数据视图
-                }
-            },
-            tooltip:{
-                trigger:'axis',
-                 axisPointer: {
-                    type: 'cross',
-                    label: {backgroundColor: '#6a7985'}
-                 }
-            },
-            legend: {
-                data:['3月10日','3月17日','3月24日','3月31日'],
-                textStyle:{color:'#000'},
-                top: '30px'
-            },
-            grid: {
-                bottom: '30px'
-            },
-            xAxis: {
-                type: 'category',
-                boundaryGap: false,
-                data: ['10/20/2017', '10/27/2017', '11/3/2017', '11/10/2017', '11/17/2017', '11/24/2017', '12/1/2017']
-            },
-            yAxis: {
-                type: 'value'
-            },
-            series: [
-                {
-                    name:'3月10日',
-                    type:'line',
-                    data:[120, 132, 101, 134, 90, 230, 210]
-                },
-                {
-                    name:'3月17日',
-                    type:'line',
-                    data:[220, 182, 191, 234, 290, 330, 310]
-                },
-                {
-                    name:'3月24日',
-                    type:'line',
-                    data:[150, 232, 201, 154, 190, 330, 410]
-                },
-                {
-                    name:'3月31日',
-                    type:'line',
-                    data:[320, 332, 301, 334, 390, 330, 320]
-                }
-            ]
-        };
-        chart352.setOption(option352);
-        var chart353 = echarts.init(document.getElementById("chart353"));
-        var option353 = {
-            title: {
-                text: '图3-15 先享后付支付宝端新增用户每日留存量',
-                textStyle: {
-                    color: '#333',
-                    fontWeight: '550'
-                },
-                left: 'center',
-            },
-            toolbox: {
-                show: true,
-                right: '20px',
-                top: '25px',
-                feature: {
-                    dataView: {readOnly: false },  //数据视图
-                }
-            },
-            tooltip:{
-                trigger:'axis',
-                 axisPointer: {
-                    type: 'cross',
-                    label: {backgroundColor: '#6a7985'}
-                 }
-            },
-            legend: {
-                data:['3月10日','3月17日','3月24日','3月31日'],
-                textStyle:{color:'#000'},
-                top: '30px'
-            },
-            grid: {
-                bottom: '30px'
-            },
-            xAxis: {
-                type: 'category',
-                boundaryGap: false,
-                data: ['10/20/2017', '10/27/2017', '11/3/2017', '11/10/2017', '11/17/2017', '11/24/2017', '12/1/2017']
-            },
-            yAxis: {
-                type: 'value'
-            },
-            series: [
-                {
-                    name:'3月10日',
-                    type:'line',
-                    data:[120, 132, 101, 134, 90, 230, 210]
-                },
-                {
-                    name:'3月17日',
-                    type:'line',
-                    data:[220, 182, 191, 234, 290, 330, 310]
-                },
-                {
-                    name:'3月24日',
-                    type:'line',
-                    data:[150, 232, 201, 154, 190, 330, 410]
-                },
-                {
-                    name:'3月31日',
-                    type:'line',
-                    data:[320, 332, 301, 334, 390, 330, 320]
-                }
-            ]
-        };
-        chart353.setOption(option353);
-        var chart354 = echarts.init(document.getElementById("chart354"));
-        var option354 = {
-            title: {
-                text: '图3-16 腾讯乘车码新增用户每日留存量',
-                textStyle: {
-                    color: '#333',
-                    fontWeight: '550'
-                },
-                left: 'center',
-            },
-            toolbox: {
-                show: true,
-                right: '150px',
-                top: '25px',
-                feature: {
-                    dataView: {readOnly: false },  //数据视图
-                }
-            },
-            tooltip:{
-                trigger:'axis',
-                 axisPointer: {
-                    type: 'cross',
-                    label: {backgroundColor: '#6a7985'}
-                 }
-            },
-            legend: {
-                data:['3月10日','3月17日','3月24日','3月31日'],
-                textStyle:{color:'#000'},
-                top: '30px'
-            },
-            grid: {
-                bottom: '30px'
-            },
-            xAxis: {
-                type: 'category',
-                boundaryGap: false,
-                data: ['10/20/2017', '10/27/2017', '11/3/2017', '11/10/2017', '11/17/2017', '11/24/2017', '12/1/2017']
-            },
-            yAxis: {
-                type: 'value'
-            },
-            series: [
-                {
-                    name:'3月10日',
-                    type:'line',
-                    data:[120, 132, 101, 134, 90, 230, 210]
-                },
-                {
-                    name:'3月17日',
-                    type:'line',
-                    data:[220, 182, 191, 234, 290, 330, 310]
-                },
-                {
-                    name:'3月24日',
-                    type:'line',
-                    data:[150, 232, 201, 154, 190, 330, 410]
-                },
-                {
-                    name:'3月31日',
-                    type:'line',
-                    data:[320, 332, 301, 334, 390, 330, 320]
-                }
-            ]
-        };
-        chart354.setOption(option354);
-        
-        var chart3661 = echarts.init(document.getElementById("chart3661"));
-        var option3661 = {
-            title: {
-                text: '先享后付微信端模式人数',
-                x: 'center'
-            },
-            tooltip: {
-                trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} ({d}%)"
-            },
-            legend: {
-                bottom:0,
-                left: 'center',
-                data: ['稳定高频', '稳定低频', '一段时间后不用', '突发']
-            },
-            label: {
-                normal: {
-                    show: false,
-                    position: 'center'
-                }
-            },
-            labelLine: {
-                normal: {
-                    show: false
-                }
-            },
-            series: [{
-                name: '模式人数',
-                type: 'pie',
-                radius: '55%',
-                center: ['50%', '50%'],
-                data: [{
-                        value: 335,
-                        name: '稳定高频'
-                    },
-                    {
-                        value: 310,
-                        name: '稳定低频'
-                    },
-                    {
-                        value: 234,
-                        name: '一段时间之后不用'
-                    },
-                    {
-                        value: 135,
-                        name: '突发'
-                    }
-                ],
-                itemStyle: {
-                    emphasis: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                }
-            }]
-        };     
-        chart3661.setOption(option3661);
-        var chart3662 = echarts.init(document.getElementById("chart3662"));
-        var option3662 = {
-            title: {
-                text: '先享后付支付宝端模式人数',
-                x: 'center'
-            },
-            tooltip: {
-                trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} ({d}%)"
-            },
-            legend: {
-                bottom:0,
-                left: 'center',
-                data: ['稳定高频', '稳定低频', '一段时间后不用', '突发']
-            },
-            label: {
-                normal: {
-                    show: false,
-                    position: 'center'
-                }
-            },
-            labelLine: {
-                normal: {
-                    show: false
-                }
-            },
-            series: [{
-                name: '模式人数',
-                type: 'pie',
-                radius: '55%',
-                center: ['50%', '50%'],
-                data: [{
-                        value: 335,
-                        name: '稳定高频'
-                    },
-                    {
-                        value: 310,
-                        name: '稳定低频'
-                    },
-                    {
-                        value: 234,
-                        name: '一段时间之后不用'
-                    },
-                    {
-                        value: 135,
-                        name: '突发'
-                    },
-                ],
-                itemStyle: {
-                    emphasis: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                }
-            }]
-        };     
-        chart3662.setOption(option3662);
-        var chart3663 = echarts.init(document.getElementById("chart3663"));
-        var option3663 = {
-            title: {
-                text: '腾讯乘车码模式人数',
-                x: 'center'
-            },
-            tooltip: {
-                trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} ({d}%)"
-            },
-            legend: {
-                bottom:0,
-                left: 'center',
-                data: ['稳定高频', '稳定低频', '一段时间后不用', '突发']
-            },
-            label: {
-                normal: {
-                    show: false,
-                    position: 'center'
-                }
-            },
-            labelLine: {
-                normal: {
-                    show: false
-                }
-            },
-            series: [{
-                name: '模式人数',
-                type: 'pie',
-                radius: '55%',
-                center: ['50%', '50%'],
-                data: [{
-                        value: 335,
-                        name: '稳定高频'
-                    },
-                    {
-                        value: 310,
-                        name: '稳定低频'
-                    },
-                    {
-                        value: 234,
-                        name: '一段时间之后不用'
-                    },
-                    {
-                        value: 135,
-                        name: '突发'
-                    },
-                ],
-                itemStyle: {
-                    emphasis: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                }
-            }]
-        };     
-        chart3663.setOption(option3663);
-        var chart3664 = echarts.init(document.getElementById("chart3664"));
-        var option3664 = {
-            title: {
-                text: '闪客蜂APP模式人数',
-                x: 'center'
-            },
-            tooltip: {
-                trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} ({d}%)"
-            },
-            legend: {
-                bottom:0,
-                left: 'center',
-                data: ['稳定高频', '稳定低频', '一段时间后不用', '突发']
-            },
-            label: {
-                normal: {
-                    show: false,
-                    position: 'center'
-                }
-            },
-            labelLine: {
-                normal: {
-                    show: false
-                }
-            },
-            series: [{
-                name: '模式人数',
-                type: 'pie',
-                radius: '55%',
-                center: ['50%', '50%'],
-                data: [{
-                        value: 335,
-                        name: '稳定高频'
-                    },
-                    {
-                        value: 310,
-                        name: '稳定低频'
-                    },
-                    {
-                        value: 234,
-                        name: '一段时间之后不用'
-                    },
-                    {
-                        value: 135,
-                        name: '突发'
-                    },
-                ],
-                itemStyle: {
-                    emphasis: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                }
-            }]
-        };     
-        chart3664.setOption(option3664);
-        var chart3665 = echarts.init(document.getElementById("chart3665"));
-        var option3665 = {
-            title: {
-                text: '先享后付微信端模式人数',
-                x: 'center'
-            },
-            tooltip: {
-                trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} ({d}%)"
-            },
-            legend: {
-                bottom:0,
-                left: 'center',
-                data: ['周末', '工作', '常用']
-            },
-            label: {
-                normal: {
-                    show: false,
-                    position: 'center'
-                }
-            },
-            labelLine: {
-                normal: {
-                    show: false
-                }
-            },
-            series: [{
-                name: '模式人数',
-                type: 'pie',
-                radius: '55%',
-                center: ['50%', '50%'],
-                data: [{
-                        value: 335,
-                        name: '周末'
-                    },
-                    {
-                        value: 310,
-                        name: '工作'
-                    },
-                    {
-                        value: 234,
-                        name: '常用'
-                    }
-                ],
-                itemStyle: {
-                    emphasis: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                }
-            }]
-        };     
-        chart3665.setOption(option3665);
-        var chart3666 = echarts.init(document.getElementById("chart3666"));
-        var option3666 = {
-            title: {
-                text: '先享后付支付宝端模式人数',
-                x: 'center'
-            },
-            tooltip: {
-                trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} ({d}%)"
-            },
-            legend: {
-                bottom:0,
-                left: 'center',
-                data: ['周末', '工作', '常用']
-            },
-            label: {
-                normal: {
-                    show: false,
-                    position: 'center'
-                }
-            },
-            labelLine: {
-                normal: {
-                    show: false
-                }
-            },
-            series: [{
-                name: '模式人数',
-                type: 'pie',
-                radius: '55%',
-                center: ['50%', '50%'],
-                data: [{
-                        value: 335,
-                        name: '周末'
-                    },
-                    {
-                        value: 310,
-                        name: '工作'
-                    },
-                    {
-                        value: 234,
-                        name: '常用'
-                    }
-                ],
-                itemStyle: {
-                    emphasis: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                }
-            }]
-        };      
-        chart3666.setOption(option3666);
-        var chart3667 = echarts.init(document.getElementById("chart3667"));
-        var option3667 = {
-            title: {
-                text: '腾讯乘车码模式人数',
-                x: 'center'
-            },
-            tooltip: {
-                trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} ({d}%)"
-            },
-            legend: {
-                bottom:0,
-                left: 'center',
-                data: ['周末', '工作', '常用']
-            },
-            label: {
-                normal: {
-                    show: false,
-                    position: 'center'
-                }
-            },
-            labelLine: {
-                normal: {
-                    show: false
-                }
-            },
-            series: [{
-                name: '模式人数',
-                type: 'pie',
-                radius: '55%',
-                center: ['50%', '50%'],
-                data: [{
-                        value: 335,
-                        name: '周末'
-                    },
-                    {
-                        value: 310,
-                        name: '工作'
-                    },
-                    {
-                        value: 234,
-                        name: '常用'
-                    }
-                ],
-                itemStyle: {
-                    emphasis: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                }
-            }]
-        };      
-        chart3667.setOption(option3667);
-        var chart3668 = echarts.init(document.getElementById("chart3668"));
-        var option3668 = {
-            title: {
-                text: '闪客蜂APP模式人数',
-                x: 'center'
-            },
-            tooltip: {
-                trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} ({d}%)"
-            },
-            legend: {
-                bottom:0,
-                left: 'center',
-                data: ['周末', '工作', '常用']
-            },
-            label: {
-                normal: {
-                    show: false,
-                    position: 'center'
-                }
-            },
-            labelLine: {
-                normal: {
-                    show: false
-                }
-            },
-            series: [{
-                name: '模式人数',
-                type: 'pie',
-                radius: '55%',
-                center: ['50%', '50%'],
-                data: [{
-                        value: 335,
-                        name: '周末'
-                    },
-                    {
-                        value: 310,
-                        name: '工作'
-                    },
-                    {
-                        value: 234,
-                        name: '常用'
-                    }
-                ],
-                itemStyle: {
-                    emphasis: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                }
-            }]
-        };    
-        chart3668.setOption(option3668);
+                option3661.series[0].data = datas1;
+                option3662.series[0].data = datas2;
+                option3661.title.text = datafrom+"用户模式";
+                option3662.title.text = datafrom+"用户模式";
+                chart3661.setOption(option3661);
+                chart3662.setOption(option3662);
+            });
+
+        });
     </script>
 </body>
 </html>
