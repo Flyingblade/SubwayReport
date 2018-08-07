@@ -397,16 +397,23 @@ class Module(object):
         df_suc['day_interval'] = df_suc['tmp'].map(lambda x: x.days)
         df_suc.drop(['first_date_obj', 'reg_date_obj', 'tmp'], axis=1, inplace=True)
 
+        params = {}
+        params['D_new_cont_month_fm'] = {}
+
         mon_count = used_month_count(df_suc)
-        fm = df_suc.reg_date.min()[0:10]
-        D_new_cont_month = []
-        D_new_cont_month_people = []
-        total_people = 0
-        for i in range(month_diff(fm) - 1):
-            D_new_cont_month.append(i + 1)
-            people, total_people = used_next_month_count(df_suc, fm, i + 1, has_used_in_all_next_months)
-            D_new_cont_month_people.append(people)
-        D_new_cont_month_ratio = list(np.array(D_new_cont_month_people) / (total_people + 1))
+        fm = df_suc.reg_date.min()[0:7]
+        if fm <= df_suc.reg_date.max()[0:7]:
+            D_new_cont_month = []
+            D_new_cont_month_people = []
+            total_people = 0
+            # print(next_month(fm))
+            for i in range(month_diff(fm) - 1):
+                D_new_cont_month.append(i + 1)
+                people, total_people = used_next_month_count(df_suc, fm, i + 1, has_used_in_all_next_months)
+                D_new_cont_month_people.append(people)
+            D_new_cont_month_ratio = list(np.array(D_new_cont_month_people) / (total_people + 1))
+            params['D_new_cont_month_fm'][fm] = dict(zip(D_new_cont_month, D_new_cont_month_ratio))
+        # print(params)
 
         D_total_month = list(range(1, month_diff(fm)))
         tmp_df = df_suc.groupby(['owner_id']).reg_month.unique().reset_index()
@@ -532,7 +539,6 @@ class Module(object):
         self.__params['D_model_ratio'] = D_model_ratio
         # print(self.__params)
 
-        params = {}
         for k, v in self.__params.items():
             if 'people' not in k and 'ratio' not in k:
                 params[k] = {}
