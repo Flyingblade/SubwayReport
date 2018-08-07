@@ -23,7 +23,7 @@ def region_form():
     return app.send_static_file('region.html')
 
 
-@app.route('/signin', methods=['POST'])
+@app.route('/region', methods=['POST'])
 def region():
     return request.form['city']
     # 需要从request对象读取表单内容：

@@ -538,6 +538,7 @@ class Module(object):
                 params[k] = {}
                 for i, vv in enumerate(v):
                     params[k][vv] = self.__params[k + '_ratio'][i]
+            params['D_model_people'] = dict(zip(self.__params['D_model'], self.__params['D_model_people']))
         with codecs.open('./json/module_details.json', 'a', 'utf-8') as outf:
             json.dump(params, outf, ensure_ascii=False)
 

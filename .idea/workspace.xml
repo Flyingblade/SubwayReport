@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d01733ea-3644-4fb5-b316-47b36f5d4ba7" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/template_doc/~$板-基础分析.docx" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flask/apprun.py" afterPath="$PROJECT_DIR$/flask/apprun.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/json/module_details.json" afterPath="$PROJECT_DIR$/json/module_details.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/module_details.py" afterPath="$PROJECT_DIR$/modules/module_details.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run.py" afterPath="$PROJECT_DIR$/run.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templets/module_details.txt" afterPath="$PROJECT_DIR$/templets/module_details.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,22 +49,12 @@
       <file leaf-file-name="run.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="36" column="25" lean-forward="false" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
+            <state relative-caret-position="230">
+              <caret line="25" column="47" lean-forward="true" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
               <folding>
                 <element signature="e#68#77#0" expanded="true" />
                 <marker date="1533625851075" expanded="true" signature="1669:1670" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="module_details.json" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/json/module_details.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="71" lean-forward="false" selection-start-line="0" selection-start-column="71" selection-end-line="0" selection-end-column="71" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -137,13 +129,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="module_details.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="module_details.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/modules/module_details.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="859">
-              <caret line="393" column="38" lean-forward="false" selection-start-line="393" selection-start-column="38" selection-end-line="393" selection-end-column="38" />
+            <state relative-caret-position="621">
+              <caret line="535" column="42" lean-forward="true" selection-start-line="535" selection-start-column="42" selection-end-line="535" selection-end-column="42" />
               <folding>
                 <element signature="e#183#201#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="apprun.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flask/apprun.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="26" column="13" lean-forward="true" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+              <folding>
+                <element signature="e#175#198#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -200,9 +204,9 @@
         <option value="$PROJECT_DIR$/modules/module_ticketrate.py" />
         <option value="$PROJECT_DIR$/modules/module_userstay.py" />
         <option value="$PROJECT_DIR$/flask/__init__.py" />
+        <option value="$PROJECT_DIR$/run.py" />
         <option value="$PROJECT_DIR$/flask/apprun.py" />
         <option value="$PROJECT_DIR$/modules/module_details.py" />
-        <option value="$PROJECT_DIR$/run.py" />
       </list>
     </option>
   </component>
@@ -398,6 +402,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2328618" sideWeight="0.5042644" order="7" side_tool="true" content_ui="tabs" />
@@ -405,7 +410,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2328618" sideWeight="0.49573562" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13646056" sideWeight="0.49503547" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13646056" sideWeight="0.49503547" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18230277" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -642,16 +647,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flask/apprun.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="41" lean-forward="true" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
-          <folding>
-            <element signature="e#175#198#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/flask/static/region.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="314">
@@ -696,16 +691,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/module_details.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="859">
-          <caret line="393" column="38" lean-forward="false" selection-start-line="393" selection-start-column="38" selection-end-line="393" selection-end-column="38" />
-          <folding>
-            <element signature="e#183#201#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/module_userstay.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="626">
@@ -718,8 +703,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="36" column="25" lean-forward="false" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
+        <state relative-caret-position="230">
+          <caret line="25" column="47" lean-forward="true" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
           <folding>
             <element signature="e#68#77#0" expanded="true" />
             <marker date="1533625851075" expanded="true" signature="1669:1670" ph="..." />
@@ -727,11 +712,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/flask/apprun.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="13" lean-forward="true" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding>
+            <element signature="e#175#198#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/json/module_details.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="71" lean-forward="false" selection-start-line="0" selection-start-column="71" selection-end-line="0" selection-end-column="71" />
+          <caret line="0" column="138" lean-forward="true" selection-start-line="0" selection-start-column="138" selection-end-line="0" selection-end-column="138" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/module_details.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="535" column="42" lean-forward="true" selection-start-line="535" selection-start-column="42" selection-end-line="535" selection-end-column="42" />
+          <folding>
+            <element signature="e#183#201#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
