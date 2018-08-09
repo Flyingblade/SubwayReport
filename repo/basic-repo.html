@@ -3,7 +3,6 @@
 <head>
     <title>Report</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link href="templatemo-style.css" rel="stylesheet">
     <link href="bootstrap.min.css" rel="stylesheet" media="screen">
     <script src="echarts.js"></script>
@@ -59,7 +58,7 @@
             display: flex;
             color: #333;
             justify-content: center;
-            padding: 10px 0px;
+            padding: 15px 0 10px 0px;
             border-top: 1px solid #ccc;
         }
         .blank {
@@ -131,7 +130,7 @@
 <body>
     <div class="page">
         <div class="header">
-            <span class="fas fa-subway"></span>
+            <img src="subway.png" style="width:20px;height:20px">
             <div>{city}地铁运营数据分析报告</div>
         </div>
         <div class="title">{city}地铁运营数据</div>
@@ -423,762 +422,312 @@
             <div>
                 <div class="sub-title">用户模式定义</div>
                 <div class="orange-line"></div>
-                <div class="content1">
-                    <div>
-                        <div class="sec-title">周末型与工作型</div>
-                        <div class="content2">
-                            <ul>
-                                <li>定义1（work） 用户工作日期间购票次数 / 工作日购票天数。</li>
-                                <li>定义2（weekend） 用户周末期间购票次数 / 周末购票天数。</li>
-                                <li>定义3（工作型用户） work-weekend &gt;= 1的用户。</li>
-                                <li>定义4（周末型用户） work-weekend &lt;= -1 的用户。</li>
-                                <li>定义5（常用型用户） 非工作型和周末型用户。</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="sec-title">使用频率模式</div>
-                        <div class="content2">
-                            <ul>
-                                <li>定义6（使用一段时间不再使用型） 只在{day_num}日内有交易行为，{day_num}日之后无交易行为的用户。如3月1日新增的用户A，如果只在3月内有交易行为，从4月开始无交易行为，那么A属于此类型。</li>
-                                <li>定义7（稳定型） 满足以下条件之一的用户：a) 距今{month_num}个月之内新增的用户；b) {month_num}个月之前新增的且使用月数&gt;={month_num}的用户。</li>
-                                <li>定义8（稳定高频性） 稳定型用户，且每月平均使用3-4周或每月平均使用10天以上(不包括10天) 的用户。</li>
-                                <li>定义9（稳定低频性） 稳定型用户，且每月平均使用1-2周且每月平均使用10天(包括10天)的用户。</li>
-                                <li>定义10（突发型） {month_num}个月之前新增的且使用月数&lt;{month_num}的用户。</li>
-                            </ul>
-                        </div>
-                    </div>
-</div>
+                <div class="content2">
+                    <div class="sec-title">1）周末型与工作型</div>
+                    <ul>
+                        <li>定义1（work） 用户工作日期间购票次数 / 工作日购票天数。</li>
+                        <li>定义2（weekend） 用户周末期间购票次数 / 周末购票天数。</li>
+                        <li>定义3（工作型用户） work-weekend &gt;= 1的用户。</li>
+                        <li>定义4（周末型用户） work-weekend &lt;= -1 的用户。</li>
+                        <li>定义5（常用型用户） 非工作型和周末型用户。</li>
+                    </ul>
+                    <div class="sec-title">2）使用频率模式</div>
+                    <ul>
+                        <li>定义6（使用一段时间不再使用型） 只在{day_num}日内有交易行为，{day_num}日之后无交易行为的用户。如3月1日新增的用户A，如果只在3月内有交易行为，从4月开始无交易行为，那么A属于此类型。</li>
+                        <li>定义7（稳定型） 满足以下条件之一的用户：a) 距今{month_num}个月之内新增的用户；b) {month_num}个月之前新增的且使用月数&gt;={month_num}的用户。</li>
+                        <li>定义8（稳定高频性） 稳定型用户，且每月平均使用3-4周或每月平均使用10天以上(不包括10天) 的用户。</li>
+                        <li>定义9（稳定低频性） 稳定型用户，且每月平均使用1-2周且每月平均使用10天(包括10天)的用户。</li>
+                        <li>定义10（突发型） {month_num}个月之前新增的且使用月数&lt;{month_num}的用户。</li>
+                    </ul>
+                </div>
             </div>
             <div>
                 <div class="sub-title">数据分析结果及展示</div>
                 <div class="orange-line"></div>
-                <div class="content1">
+                <div class="content2">
                     <div>
-                        <div class="sec-title">每天新增用户量</div>
-                        <div class="content2">
-                            <p>统计{date1}到{date2}[时间段]之间，每种来源每天新增用户数量。</p>
-                            <div id="chart31" style="width:100%;height:300px"></div>
-                        </div>
+                        <div class="sec-title">1）每天新增用户量</div>
+                        <div>统计{date1}到{date2}[时间段]之间，每种来源每天新增用户数量。</div>
+                        <div id="chart31" style="width:100%;height:300px"></div>
                     </div>
                     <div>
-                        <div class="sec-title">用户使用次数统计</div>
-                        <div class="content2">
-                            <p class="table-title"> 购票次数用户量及比例
-                            </p>
-                            <table id="table32" class="table table-striped table-bordered templatemo-user-table">
+                        <div class="sec-title">2）用户使用次数统计</div>
+                        <div class="table-title"> 购票次数用户量及比例</div>
+                        <table id="table32" class="table table-striped table-bordered templatemo-user-table">
+                            <thead>
+                                <tr>
+                                    <th>来源</th>
+                                    <th>1次</th>
+                                    <th>比例</th>
+                                    <th>2-5次</th>
+                                    <th>比例</th>
+                                    <th>6-20次</th>
+                                    <th>比例</th>
+                                    <th>20次以上</th>
+                                    <th>比例</th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <div id="chart32" style="width:100%;height:300px"></div>
+                    </div>
+                    <div>
+                        <div class="sec-title">3）周末新增用户留存量</div>
+                        <blockquote>
+                            <div>多线折线图1个</div>
+                        </blockquote>
+                        <div id="chart35" style="width:95%;height:300px"></div>
+                    </div>
+                    <div>
+                        <div class="sec-title">4）用户使用详情统计</div>
+                        <div>
+                            <h4>月新增用户连续使用月数</h4>
+                            <div class="table-title">每月新增用户连续使用月数及所占比例</div>
+                            <table id="table361" class="table table-striped table-bordered templatemo-user-table"></table>
+                        </div>
+                        <div>
+                            <h4>用户使用月数</h4>
+                            <div>统计用户的总使用月数。</div>
+                            <div class="table-title">用户使用月数所占比例</div>
+                            <table id="table362" class="table table-striped table-bordered templatemo-user-table"></table>
+                        </div>
+                        <div>
+                            <h4>用户最长连续使用天数</h4>
+                            <div>统计用户最长连续使用的天数。 </div>
+                            <div class="table-title">用户最长连续使用天数所占比例</div>
+                            <table class="table table-striped table-bordered templatemo-user-table">
                                 <thead>
                                     <tr>
                                         <th>来源</th>
-                                        <th>1次</th>
-                                        <th>比例</th>
-                                        <th>2-5次</th>
-                                        <th>比例</th>
-                                        <th>6-20次</th>
-                                        <th>比例</th>
-                                        <th>20次以上</th>
-                                        <th>比例</th>
+                                        <th>1天</th>
+                                        <th>2-3天</th>
+                                        <th>4-7天</th>
+                                        <th>8-20天</th>
+                                        <th>20天以上</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="body363">
                                     <tr>
-                                        <th>闪客蜂APP</th>
-                                        <th>Num1</th>
-                                        <th>Rate</th>
-                                        <th>Num1</th>
-                                        <th>Rate</th>
-                                        <th>Num1</th>
-                                        <th>Rate</th>
-                                        <th>Num1</th>
-                                        <th>Rate</th>
-                                    </tr>
-                                    <tr>
-                                        <th>先享后付</th>
-                                        <th>Num2</th>
-                                        <th>Rate</th>
-                                        <th>Num2</th>
-                                        <th>Rate</th>
-                                        <th>Num2</th>
-                                        <th>Rate</th>
-                                        <th>Num2</th>
-                                        <th>Rate</th>
-                                    </tr>
-                                    <tr>
-                                        <th>腾讯乘车码</th>
-                                        <th>Num3</th>
-                                        <th>Rate</th>
-                                        <th>Num3</th>
-                                        <th>Rate</th>
-                                        <th>Num3</th>
-                                        <th>Rate</th>
-                                        <th>Num3</th>
-                                        <th>Rate</th>
+                                        <th>先享后付1</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
                                     </tr>
                                 </tbody>
                             </table>
+                        </div>
+                        <div>
+                            <h4>用户总使用天数</h4>
+                            <div>统计用户总使用天数。</div>
+                            <div class="table-title">用户总使用天数所占比例</div>
+                            <table id="table364" class="table table-striped table-bordered templatemo-user-table">
+                                <thead>
+                                    <tr>
+                                        <th>来源</th>
+                                        <th>1天</th>
+                                        <th>2-5</th>
+                                        <th>6-20</th>
+                                        <th>21-30</th>
+                                        <th>31-60</th>
+                                        <th>61-90</th>
+                                        <th>91-120</th>
+                                        <th>更长</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="body364">
+                                    <tr>
+                                        <th>先享后付1</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div>注： 定义3.1（用户总使用天数） 最后一次购票与第一次购票相隔的天数。 表中省略了百分号，表中数字表示百分比。</div>
+                        </div>
+                        <div>
+                            <h4>用户使用频率</h4>
+                            <div class="table-title">用户使用频率所占比例</div>
+                            <table id="table365" class="table table-striped table-bordered templatemo-user-table"></table>
+                        </div>
+                        <div>
+                            <h4>用户模式</h4>
+                            <div>统计用户使用模式分布情况 </div>
+                            <div class="table-title">用户模式人数及比例</div>
+                            <table id="table366" class="table table-striped table-bordered templatemo-user-table"></table>
                             <div class="row-chart">
-                                <div id="chart32" style="width:100%;height:300px"></div>
+                                <div id="chart3661" style="width:50%;height:300px"></div>
+                                <div id="chart3662" style="width:50%;height:300px"></div>
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <div class="sec-title">3.5 周末新增用户留存量</div>
-                        <div class="content2">
-                            <blockquote>
-                                <p>多线折线图1个</p>
-                            </blockquote>
-                            <div id="chart35" style="width:95%;height:300px"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="sec-title">用户使用详情统计</div>
-                        <div class="green-line"></div>
-                        <div class="content2">
-                            <div>
-                                <h4>月新增用户连续使用月数</h4>
-                                <div class="content3">
-                                    <p class="table-title">每月新增用户连续使用月数及所占比例</p>
-                                    <table id="table361" class="table table-striped table-bordered templatemo-user-table">
-                                        <thead>
-                                            <tr>
-                                                <th>来源</th>
-                                                <th>月份</th>
-                                                <th>1</th>
-                                                <th>2</th>
-                                                <th>3</th>
-                                                <th>4</th>
-                                                <th>5</th>
-                                                <th>6</th>
-                                                <th>7</th>
-                                                <th>8</th>
-                                                <th>9</th>
-                                            </tr>
-                                        </thead>
-                                        <tr>
-                                            <th rowspan="1">先享后付微信端</th>
-                                            <th>2017.11</th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                            <div>
-                                <h4>用户使用月数</h4>
-                                <div class="content3">
-                                    <p>统计用户的总使用月数。</p>
-                                    <p class="table-title">用户使用月数所占比例</p>
-                                    <table id="table362" class="table table-striped table-bordered templatemo-user-table">
-                                        <thead>
-                                            <tr>
-                                                <th>来源</th>
-                                                <th>1</th>
-                                                <th>2</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th>先享后付1</th>
-                                                <th></th>
-                                                <th></th>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div>
-                                <h4>用户最长连续使用天数</h4>
-                                <div class="content3">
-                                    <p>统计用户最长连续使用的天数。 </p>
-                                    <p class="table-title">用户最长连续使用天数所占比例</p>
-                                    <table class="table table-striped table-bordered templatemo-user-table">
-                                        <thead>
-                                            <tr>
-                                                <th>来源</th>
-                                                <th>1天</th>
-                                                <th>2-3天</th>
-                                                <th>4-7天</th>
-                                                <th>8-20天</th>
-                                                <th>20天以上</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="body363">
-                                            <tr>
-                                                <th>先享后付1</th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div>
-                                <h4>用户总使用天数</h4>
-                                <div class="content3">
-                                    <p>统计用户总使用天数。</p>
-                                    <p class="table-title">用户总使用天数所占比例</p>
-                                    <table id="table364" class="table table-striped table-bordered templatemo-user-table">
-                                        <thead>
-                                            <tr>
-                                                <th>来源</th>
-                                                <th>1天</th>
-                                                <th>2-5</th>
-                                                <th>6-20</th>
-                                                <th>21-30</th>
-                                                <th>31-60</th>
-                                                <th>61-90</th>
-                                                <th>91-120</th>
-                                                <th>更长</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="body364">
-                                            <tr>
-                                                <th>先享后付1</th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <p>注： 定义3.1（用户总使用天数） 最后一次购票与第一次购票相隔的天数。 表中省略了百分号，表中数字表示百分比。
-                                    </p>
-                                </div>
-                            </div>
-                            <div>
-                                <h4>用户使用频率</h4>
-                                <div class="content3">
-                                    <p class="table-title">用户使用频率所占比例</p>
-                                    <table id="table365" class="table table-striped table-bordered templatemo-user-table">
-                                        <thead>
-                                            <tr>
-                                                <th>来源</th>
-                                                <th>只使用1次</th>
-                                                <th>0-0.1</th>
-                                                <th>0.1-0.2</th>
-                                                <th>0.2-0.3</th>
-                                                <th>0.3-0.4</th>
-                                                <th>0.4-0.5</th>
-                                                <th>0.5-0.6</th>
-                                                <th>0.6-0.7</th>
-                                                <th>0.7-0.8</th>
-                                                <th>0.8-0.9</th>
-                                                <th>0.9-1</th>
-                                            </tr>
-                                        </thead>
-                                        <tr>
-                                            <th>先享后付1</th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                            <div>
-                                <h4>用户模式</h4>
-                                <div class="content3">
-                                    <p>统计用户使用模式分布情况 </p>
-                                    <p class="table-title">用户模式人数及比例</p>
-                                    <table id="table366" class="table table-striped table-bordered templatemo-user-table"></table>
-                                    <div class="row-chart">
-                                        <div id="chart3661" style="width:50%;height:300px"></div>
-                                        <div id="chart3662" style="width:50%;height:300px"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="sec-title">3.7 闪客蜂APP用户</div>
-                        <div class="content2">
-                            <p>统计闪客蜂APP用户的月购票次数及月活用户数量。</p>
-                            <p class="table-title"> 表3.8 闪客蜂APP用户月购票次数</p>
-                            <table class="table table-striped table-bordered templatemo-user-table">
-                                <thead>
-                                    <tr>
-                                        <th rowspan="2">城市</th>
-                                        <th colspan="2">2017-10</th>
-                                        <th colspan="2">2017-11</th>
-                                        <th colspan="2">2017-12</th>
-                                        <th colspan="2">2018-01</th>
-                                        <th colspan="2">2018-02</th>
-                                        <th colspan="2">2018-03</th>
-                                        <th colspan="2">2018-04</th>
-                                    </tr>
-
-                                    <tr>
-                                        <th>数量</th>
-                                        <th>比例</th>
-                                        <th>数量</th>
-                                        <th>比例</th>
-                                        <th>数量</th>
-                                        <th>比例</th>
-                                        <th>数量</th>
-                                        <th>比例</th>
-                                        <th>数量</th>
-                                        <th>比例</th>
-                                        <th>数量</th>
-                                        <th>比例</th>
-                                        <th>数量</th>
-                                        <th>比例</th>
-                                    </tr>
-                                </thead>
-                                <tr>
-                                    <th>青岛</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>长沙</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>广州</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>郑州</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>5190</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>南宁</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>西安</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                            </table>
-                            <p class="table-title">表3.9 闪客蜂APP月活用户数</p>
-                            <table class="table table-striped table-bordered templatemo-user-table">
-                                <thead>
-                                    <tr>
-                                        <th rowspan="2">城市</th>
-                                        <th colspan="2">2017-10</th>
-                                        <th colspan="2">2017-11</th>
-                                        <th colspan="2">2017-12</th>
-                                        <th colspan="2">2018-01</th>
-                                        <th colspan="2">2018-02</th>
-                                        <th colspan="2">2018-03</th>
-                                        <th colspan="2">2018-04</th>
-                                    </tr>
-
-                                    <tr>
-                                        <th>数量</th>
-                                        <th>比例</th>
-                                        <th>数量</th>
-                                        <th>比例</th>
-                                        <th>数量</th>
-                                        <th>比例</th>
-                                        <th>数量</th>
-                                        <th>比例</th>
-                                        <th>数量</th>
-                                        <th>比例</th>
-                                        <th>数量</th>
-                                        <th>比例</th>
-                                        <th>数量</th>
-                                        <th>比例</th>
-                                    </tr>
-                                </thead>
-                                <tr>
-                                    <th>青岛</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>长沙</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>广州</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>郑州</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>5190</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>南宁</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>西安</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                            </table>
-                            <p>注： 表中省略了百分号，表中数字表示百分比。 5190代表的城市未知。
-                            </p>
-                        </div>
-                    </div>
-</div>
+                </div>
             </div>
         </div>
+        
         <div class="footer">
             <div>{city}地铁运营数据分析报告</div>
         </div>
     </div>
     
     <!--JS-->
+    <script type="text/javascript">
+        var baseurl = "../json/";  //json文件存放路径
+        //对象克隆函数
+        function cloneObj(obj){
+            return JSON.parse(JSON.stringify(obj));
+        };
+        //向table填充数据
+        function writeToTable(target, data){
+            var html = '';
+            html = html + '<tbody>';
+            for ( var i = 0; i < data.length; i++) {//循环json对象，拼接tr,td的html
+                html = html + '<tr>';
+                for(var j = 0; j < data[0].length; j++){
+                    html = html + '<td>' + data[i][j] + '</td>';
+                }
+                html = html + '</tr>';
+            }
+            html = html + '</tbody>';
+            $(target).append(html);
+        };
+        var line_option={
+            title: {
+                text: '',
+                textStyle:{color:'#333', fontWeight: '550'},
+                left:'center',
+            },
+            tooltip: {
+                trigger:'axis',
+                axisPointer: {
+                    type: 'cross',
+                    label: {backgroundColor: '#6a7985'}
+                }
+            },
+            toolbox: {
+                show: true,
+                right: '150px',
+                top: '25px',
+                feature: {
+                    dataView: {readOnly: false },  //数据视图
+                }
+            },
+            grid: {
+                bottom: '30px'
+            },
+            legend: {
+                data:[],
+                textStyle:{color:'#333'},
+                top: '30px'
+            },
+            xAxis: {
+                boundaryGap: false,
+                data: [],
+                axisLine: {lineStyle: {color: '#333'}},
+                name: ''
+            },
+            yAxis: {
+                type:'value',
+                axisLine: {lineStyle: {color: '#333'}}
+            },
+            series: [{
+                name: '',
+                type: 'line',
+                data: [],
+                smooth:true,
+                symbolSize: 10,
+                itemStyle:{normal:{label: {show: true}}},
+                lineStyle:{normal:{width:2}}
+            }]
+        };
+        var bar_option={
+            title: {
+                text: '',
+                textStyle:{color:'#333', fontWeight: '550'},
+                left:'center',
+                top: '10px'
+            },
+            tooltip: {trigger:'axis'},
+            toolbox: {
+                show: true,
+                right: '150px',
+                top: '10px',
+                feature: {
+                    dataView: {readOnly: false },  //数据视图
+                }
+            },
+            xAxis: {
+                type:'value',
+                axisLine: {lineStyle: {color: '#333'}},
+                name: '(人)'
+            },
+            yAxis: {
+                data: [],
+                axisLabel: {interval: 0},
+                axisLine: {lineStyle: {color: '#333'}}
+            },
+            grid: {
+               bottom: '30px'
+            },
+            series: [{
+                name: '',
+                type: 'bar',
+                itemStyle:{
+                    normal:{
+                        color: '#00CED1',
+                        label: {show: true, position: 'right'}
+                    }
+                },
+                data: []
+            }]
+        };
+        var color = ['#66CDAA','#CD7054','#d7ab82','#61a0a8','#CD69C9'];
+        var pie_option={
+            title : {
+                text: '',
+                textStyle:{color:'#333', fontWeight: '550'},
+                left:'center',
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{b} : {c} ({d}%)"
+            },
+            legend: {
+                orient: 'vertical',
+                left: '100px',
+                top: '50px',
+                data: []
+            },
+            series : [
+                {
+                    name: '',
+                    type: 'pie',
+                    radius : '55%',
+                    center: ['50%', '60%'],
+                    data:[],
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+    </script>
+    
     <!--基础分析报告-->
     <script type="text/javascript">
         $(document).ready(function(){
-            
-            var baseurl = "../json/";  //json文件存放路径
-            //对象克隆函数
-            function cloneObj(obj){
-                return JSON.parse(JSON.stringify(obj));
-            };
-            //向table填充数据
-            function writeToTable(target, data){
-                var html = '';
-                html = html + '<tbody>';
-				for ( var i = 0; i < data.length; i++) {//循环json对象，拼接tr,td的html
-					html = html + '<tr>';
-                    for(var j = 0; j < data[0].length; j++){
-                        html = html + '<td>' + data[i][j] + '</td>';
-                    }
-					html = html + '</tr>';
-				}
-                html = html + '</tbody>';
-				$(target).append(html);
-            };
-            var line_option={
-                title: {
-                    text: '',
-                    textStyle:{color:'#333', fontWeight: '550'},
-                    left:'center',
-                },
-                tooltip: {
-                    trigger:'axis',
-                    axisPointer: {
-                        type: 'cross',
-                        label: {backgroundColor: '#6a7985'}
-                    }
-                },
-                toolbox: {
-                    show: true,
-                    right: '150px',
-                    top: '25px',
-                    feature: {
-                        dataView: {readOnly: false },  //数据视图
-                    }
-                },
-                grid: {
-                    bottom: '30px'
-                },
-                legend: {
-                    data:[],
-                    textStyle:{color:'#333'},
-                    top: '30px'
-                },
-                xAxis: {
-                    boundaryGap: false,
-                    data: [],
-                    axisLine: {lineStyle: {color: '#333'}},
-                    name: ''
-                },
-                yAxis: {
-                    type:'value',
-                    axisLine: {lineStyle: {color: '#333'}}
-                },
-                series: [{
-                    name: '',
-                    type: 'line',
-                    data: [],
-                    smooth:true,
-                    symbolSize: 10,
-                    itemStyle:{normal:{label: {show: true}}},
-                    lineStyle:{normal:{width:2}}
-                }]
-            };
-            var bar_option={
-                title: {
-                    text: '',
-                    textStyle:{color:'#333', fontWeight: '550'},
-                    left:'center',
-                    top: '10px'
-                },
-                tooltip: {trigger:'axis'},
-                toolbox: {
-                    show: true,
-                    right: '150px',
-                    top: '10px',
-                    feature: {
-                        dataView: {readOnly: false },  //数据视图
-                    }
-                },
-                xAxis: {
-                    type:'value',
-                    axisLine: {lineStyle: {color: '#333'}},
-                    name: '(人)'
-                },
-                yAxis: {
-                    data: [],
-                    axisLabel: {interval: 0},
-                    axisLine: {lineStyle: {color: '#333'}}
-                },
-                grid: {
-                   bottom: '30px'
-                },
-                series: [{
-                    name: '',
-                    type: 'bar',
-                    itemStyle:{
-                        normal:{
-                            color: '#00CED1',
-                            label: {show: true, position: 'right'}
-                        }
-                    },
-                    data: []
-                }]
-            };
-            var color = ['#66CDAA','#CD7054','#d7ab82','#61a0a8','#CD69C9'];
-            var pie_option={
-                title : {
-                    text: '',
-                    textStyle:{color:'#333', fontWeight: '550'},
-                    left:'center',
-                },
-                tooltip : {
-                    trigger: 'item',
-                    formatter: "{b} : {c} ({d}%)"
-                },
-                legend: {
-                    orient: 'vertical',
-                    left: '100px',
-                    top: '50px',
-                    data: []
-                },
-                series : [
-                    {
-                        name: '',
-                        type: 'pie',
-                        radius : '55%',
-                        center: ['50%', '60%'],
-                        data:[],
-                        itemStyle: {
-                            emphasis: {
-                                shadowBlur: 10,
-                                shadowOffsetX: 0,
-                                shadowColor: 'rgba(0, 0, 0, 0.5)'
-                            }
-                        }
-                    }
-                ]
-            };
-            var module_json = ["module_inout_analize.json","module_hotstation.json","module_workholi_cmp.json","module_ticketway.json","module_ticketrate.json","module_jamanalize.json","module_peopleflow.json","module_dataanalize.json"];
-            $.getJSON(baseurl+module_json[0],function(data){
+            var basic_json = ["module_inout_analize.json","module_hotstation.json","module_workholi_cmp.json","module_ticketway.json","module_ticketrate.json","module_jamanalize.json","module_peopleflow.json","module_dataanalize.json"];
+            $.getJSON(baseurl+basic_json[0],function(data){
                 var chart1 = echarts.init(document.getElementById('in-sta'));//chart1
                 var option1=cloneObj(line_option);
                 option1.title.text="{start}至{end}进站客流走势";
@@ -1218,7 +767,7 @@
                 option4.series[0].data=data.weekend_exits[data.stations[1]][1];
                 chart4.setOption(option4);
             });
-            $.getJSON(baseurl+module_json[1],function(data){
+            $.getJSON(baseurl+basic_json[1],function(data){
                 var chart6 = echarts.init(document.getElementById('chart6'));//chart6
                 var option6=cloneObj(bar_option);
                 option6.title.text="{start}至{end}广州地铁热门站点购票量";
@@ -1253,7 +802,7 @@
                 }
                 writeToTable("#hotline-table", hotline_table);
             });
-            $.getJSON(baseurl+module_json[2],function(data){
+            $.getJSON(baseurl+basic_json[2],function(data){
                 var chart14 = echarts.init(document.getElementById('chart14'));//chart14
                 var option14=cloneObj(line_option);
                 option14.title.text="{starttime}至{endtime}全站点工作日日客流曲线";
@@ -1280,7 +829,7 @@
                 option17.series[0].data=data.station_holiday_seqs[data.stations[0]][1];
                 chart17.setOption(option17);
             });
-            $.getJSON(baseurl+module_json[3],function(data){
+            $.getJSON(baseurl+basic_json[3],function(data){
                 var chart11 = echarts.init(document.getElementById('chart11'));
                 var option11=cloneObj(pie_option);
                 option11.title.text="{starttime}至{endtime}购票数量前十的站点的支付方式占比饼图";
@@ -1308,7 +857,7 @@
                 option12.series[0].data=datas1;
                 chart12.setOption(option12);
             });
-            $.getJSON(baseurl+module_json[4],function(data){
+            $.getJSON(baseurl+basic_json[4],function(data){
                 var chart13 = echarts.init(document.getElementById('chart13'));
                 var option13=cloneObj(pie_option);
                 option13.title.text="全站出票转化率";
@@ -1342,7 +891,7 @@
                 }
                 return jam;
             }
-            $.getJSON(baseurl+module_json[5],function(data){
+            $.getJSON(baseurl+basic_json[5],function(data){
                 var jam1=formJamData(data.workday_morning_jam_routes[4]);
                 writeToTable("#jam1", jam1);
                 var jam2=formJamData(data.workday_evening_jam_routes[4])
@@ -1354,7 +903,7 @@
                 var jam6=jam4.concat(jam5);
                 writeToTable("#jam4", jam6);
             });
-            $.getJSON(baseurl+module_json[6],function(data){
+            $.getJSON(baseurl+basic_json[6],function(data){
                 var chart10 = echarts.init(document.getElementById('chart10'));
                 var option10=cloneObj(line_option);
                 option10.title.text="{starttime}至{endtime}{M3_stations[0]}日客流走势";
@@ -1381,7 +930,7 @@
                 option8.series[0].data=data.M3_stations_trend3;
                 chart8.setOption(option8);
             });
-            $.getJSON(baseurl+module_json[7],function(data){
+            $.getJSON(baseurl+basic_json[7],function(data){
                 var html = '<tbody><tr><td>'+data.order_use_num+'</td><td>'+data.order_pay_not_use_num+'</td><td>'+data.order_fail_num+'</td><td>'+data.order_num+'</td><td>'+data.ticket_use_num+'</td><td>'+data.ticket_num+'</tbody>';
                 $("#data-analize").append(html);
             });
@@ -1389,117 +938,11 @@
     </script>
     
     <!--用户分析报告-->
-
     <script type="text/javascript">
         $(document).ready(function() {
-
             var datafrom = "先享后付";
-            var baseurl = "../json/";  //json文件存放路径
-            var module_json = ["module_newuseranalize.json","module_usertimes.json","module_userstay.json","module_details.json"];
-            //对象克隆函数
-            function cloneObj(obj){
-                return JSON.parse(JSON.stringify(obj));
-            };
-            //向table填充数据
-            function writeToTable(target, data){
-                var html = '';
-                html = html + '<tbody>';
-				for ( var i = 0; i < data.length; i++) {//循环json对象，拼接tr,td的html
-					html = html + '<tr>';
-                    for(var j = 0; j < data[0].length; j++){
-                        html = html + '<td>' + data[i][j] + '</td>';
-                    }
-					html = html + '</tr>';
-				}
-                html = html + '</tbody>';
-				$(target).append(html);
-            };
-            var line_option={
-                title: {
-                    text: '',
-                    textStyle:{color:'#333', fontWeight: '550'},
-                    left:'center',
-                },
-                tooltip: {
-                    trigger:'axis',
-                    axisPointer: {
-                        type: 'cross',
-                        label: {backgroundColor: '#6a7985'}
-                    }
-                },
-                toolbox: {
-                    show: true,
-                    right: '150px',
-                    top: '25px',
-                    feature: {
-                        dataView: {readOnly: false },  //数据视图
-                    }
-                },
-                grid: {
-                    bottom: '30px'
-                },
-                legend: {
-                    data:[],
-                    textStyle:{color:'#333'},
-                    top: '30px'
-                },
-                xAxis: {
-                    boundaryGap: false,
-                    data: [],
-                    axisLine: {lineStyle: {color: '#333'}},
-                    name: ''
-                },
-                yAxis: {
-                    type:'value',
-                    axisLine: {lineStyle: {color: '#333'}}
-                },
-                series: [{
-                    name: '',
-                    type: 'line',
-                    data: [],
-                    smooth:true,
-                    symbolSize: 10,
-                    itemStyle:{normal:{label: {show: true}}},
-                    lineStyle:{normal:{width:2}}
-                }]
-            };
-            var color = ['#66CDAA','#CD7054','#d7ab82','#61a0a8','#CD69C9'];
-            var pie_option={
-                title : {
-                    text: '',
-                    textStyle:{color:'#333', fontWeight: '550'},
-                    left:'center',
-                },
-                tooltip : {
-                    trigger: 'item',
-                    formatter: "{b} : {c} ({d}%)"
-                },
-                legend: {
-                    orient: 'vertical',
-                    left: '100px',
-                    top: '50px',
-                    data: []
-                },
-                series : [
-                    {
-                        name: '',
-                        type: 'pie',
-                        radius : '55%',
-                        center: ['50%', '60%'],
-                        data:[],
-                        itemStyle: {
-                            emphasis: {
-                                shadowBlur: 10,
-                                shadowOffsetX: 0,
-                                shadowColor: 'rgba(0, 0, 0, 0.5)'
-                            }
-                        }
-                    }
-                ]
-            };
-
-            $.getJSON(baseurl + module_json[0],function(data) {
-                alert("read0");
+            var user_json = ["module_newuseranalize.json","module_usertimes.json","module_userstay.json","module_details.json"];
+            $.getJSON(baseurl + user_json[0],function(data) {
                 var chart31 = echarts.init(document.getElementById("chart31"));
                 var option31 = cloneObj(line_option);
                 option31.xAxis.data = data.new_user_day_count[0];
@@ -1508,7 +951,7 @@
                 chart31.setOption(option31);
             });
             
-            $.getJSON(baseurl+ module_json[1], function(data) {
+            $.getJSON(baseurl+ user_json[1], function(data) {
                 var levels = data.levels;
                 var html1 = "<thead><tr><th>来源</th>";
                 var html2 = "<tbody><tr><th>"+datafrom+"</th>";
@@ -1530,69 +973,33 @@
                     datas_item.name=s;
                     datas.push(datas_item);
                 }
+                option32.legend.data=datas.map(function(v){return v.name;});
                 option32.series[0].data = datas;
                 option32.title.text = "购票次数用户量及比例";
                 chart32.setOption(option32);
             });
 
-            $.getJSON(baseurl + module_json[2], function(data) {
-                alert("read1");
+            $.getJSON(baseurl + user_json[2], function(data) {
                 date = data.US_date;
                 num = data.US_num;
                 var chart35 = echarts.init(document.getElementById("chart35"));
-                var option35 = {
-                    title: {
-                        text: '闪客蜂APP新增用户每日留存量'
-                    },
-                    tooltip: {
-                        trigger: 'axis'
-                    },
-                    legend: {
-                        left: 'right',
-                        data: ['3月10日', '3月17日', '3月24日', '3月31日']
-                    },
-                    grid: {
-                        left: '3%',
-                        right: '4%',
-                        bottom: '3%',
-                        containLabel: true
-                    },
-                    xAxis: {
-                        type: 'category',
-                        boundaryGap: false,
-                        data: date
-                    },
-                    yAxis: {
-                        type: 'value'
-                    },
-                    series: [{
-                            name: '3月10日',
-                            type: 'line',
-                            data: num
-                        },
-                        {
-                            name: '3月17日',
-                            type: 'line',
-                            data: num
-                        },
-                        {
-                            name: '3月24日',
-                            type: 'line',
-                            data: num
-                        },
-                        {
-                            name: '3月31日',
-                            type: 'line',
-                            data: num
-                        }
-                    ]
-                };
+                var option35=cloneObj(line_option);
+                option35.title.text="闪客蜂APP新增用户每日留存量";
+                option35.legend.data=['3月10日', '3月17日', '3月24日', '3月31日'];
+                option35.xAxis.data=date;
+                option35.series[0].name="3月10日";
+                option35.series[0].data=num;
+                let seri_item1=cloneObj(option35.series[0]);
+                let seri_item2=cloneObj(option35.series[0]);
+                let seri_item3=cloneObj(option35.series[0]);
+                seri_item1.name="3月17日";
+                seri_item2.name="3月24日";
+                seri_item3.name="3月31日";
+                option35.series.push(seri_item1,seri_item2,seri_item3);
                 chart35.setOption(option35);
             });
 
-            $.getJSON(baseurl + module_json[3], function(data) {
-                alert("read2");
-
+            $.getJSON(baseurl + user_json[3], function(data) {
                 <!--361-->
                 var head361 = "<thead><tr><th>来源</th><th>月份</th>";
                 var body361 = datafrom+"</th>";
