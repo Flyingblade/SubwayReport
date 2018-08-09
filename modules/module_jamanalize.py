@@ -11,6 +11,7 @@ class Module(object):
         self.__templete = TempletLoader('templets/module_jamanalize.txt')
         self.__params = {}
         self.__data = {}
+        self.name = ""
         self.__time_period = [(7, 9), (17, 19)]  # 长度必须为2，代表早晚上班时段
     def run(self, df, global_params=None):
         import pickle as pk

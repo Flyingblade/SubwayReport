@@ -11,6 +11,7 @@ class Module(object):
         self.__templete = TempletLoader('templets/module0.txt')
         self.__params = {}
         self.__data = {}
+        self.name = ""
 
     def run(self, df, global_params=None):
         if global_params is None:

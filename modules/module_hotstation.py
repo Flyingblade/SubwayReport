@@ -20,6 +20,7 @@ class Module(object):
         from common.TempletLoader import TempletLoader
         self.__templete = TempletLoader('templets/module_hotstation.txt')
         self.__params = {}
+        self.name = ""
 
     def run(self, df):
         # STATUS ==5 的是交易成功的

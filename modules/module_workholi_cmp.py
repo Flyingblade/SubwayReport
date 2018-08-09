@@ -10,6 +10,7 @@ class Module(object):
         from common.TempletLoader import TempletLoader
         self.__templete = TempletLoader('templets/module_workholi_cmp.txt')
         self.__city_dict = {'广州': ['机场南', '广州东站'], }
+        self.name = ""
         self.__params = {}
         self.__data = {}
 
