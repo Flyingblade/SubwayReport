@@ -371,7 +371,7 @@ class Module(object):
         self.__params = {}
         self.name = ""
 
-    def run(self, df):
+    def run(self, df, global_params=None):
         # STATUS ==5 的是交易成功的
         df_suc = df[df['order_status'] == 5].copy()
         df_suc['datetime'] = pd.to_datetime(df_suc['reg_date'], format='%Y-%m-%d %H:%M:%S')
@@ -546,7 +546,7 @@ class Module(object):
                 for i, vv in enumerate(v):
                     params[k][vv] = self.__params[k + '_ratio'][i]
             params['D_model_people'] = dict(zip(self.__params['D_model'], self.__params['D_model_people']))
-        with codecs.open('./json/module_details.json', 'a', 'utf-8') as outf:
+        with codecs.open('./json/module_details.json', 'w', 'utf-8') as outf:
             json.dump(params, outf, ensure_ascii=False)
 
     def maketext(self, global_params=None):

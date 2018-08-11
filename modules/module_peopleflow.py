@@ -18,7 +18,7 @@ class Module(object):
         self.__params = {}
         self.name = ""
 
-    def run(self, df):
+    def run(self, df, global_params=None):
         # STATUS ==5 的是交易成功的
         df_suc = df[df['order_status'] == 5].copy()
         df_suc['time'] = pd.to_datetime(df_suc['entry_date'], format='%Y-%m-%d %H:%M:%S')
@@ -43,7 +43,7 @@ class Module(object):
         params['M3_stations_trend3_time'] = tmp[tmp.entry_station == self.__params['M3_stations'][2]].hour.tolist()
         params['M3_stations_trend3'] = tmp[tmp.entry_station == self.__params['M3_stations'][2]].ticket_num.tolist()
 
-        with codecs.open('./json/module_peopleflow.json', 'a', 'utf-8') as outf:
+        with codecs.open('./json/module_peopleflow.json', 'w', 'utf-8') as outf:
             json.dump(params, outf, ensure_ascii=False)
 
     def maketext(self, global_params=None):

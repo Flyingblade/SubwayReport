@@ -22,7 +22,7 @@ class Module(object):
         self.__params = {}
         self.name = ""
 
-    def run(self, df):
+    def run(self, df, global_params=None):
         # STATUS ==5 的是交易成功的
         df_suc = df[df['order_status'] == 5].copy()
         df_suc['entry_date'] = df_suc['entry_date'].astype(str)
@@ -72,7 +72,7 @@ class Module(object):
         params['M2_hotroutes_ticketnum'] = df_suc.groupby(['entry_station', 'exit_station']).ticket_num.sum().sort_values(ascending=False).tolist()[
                                            :10]
 
-        with codecs.open('./json/module_hotstation.json', 'a', 'utf-8') as outf:
+        with codecs.open('./json/module_hotstation.json', 'w', 'utf-8') as outf:
             json.dump(params, outf, ensure_ascii=False)
 
     def maketext(self, global_params=None):

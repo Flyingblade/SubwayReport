@@ -38,7 +38,7 @@ class Module(object):
         self.__params = {}
         self.name = ""
 
-    def run(self, df):
+    def run(self, df, global_params=None):
         # STATUS ==5 的是交易成功的
         df_suc = df[df['order_status'] == 5].copy()
         single_ft = df_suc.groupby(['owner_id'])['reg_date'].min().reset_index()
@@ -59,7 +59,7 @@ class Module(object):
         params['US_date'] = self.__params['US_date']
         params['US_num'] = self.__params['US_num']
 
-        with codecs.open('./json/module_userstay.json', 'a', 'utf-8') as outf:
+        with codecs.open('./json/module_userstay.json', 'w', 'utf-8') as outf:
             json.dump(params, outf, ensure_ascii=False)
 
     def maketext(self, global_params=None):

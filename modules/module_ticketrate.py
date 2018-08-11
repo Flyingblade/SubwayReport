@@ -18,7 +18,7 @@ class Module(object):
         self.__params = {}
         self.name = ""
 
-    def run(self, df):
+    def run(self, df, global_params=None):
         # STATUS ==5 的是交易成功的
         df['is_success'] = df['order_status'].apply(lambda x: 1 if x == 5 else 0)
         status = df.groupby(['is_success']).ticket_num.count()
@@ -46,7 +46,7 @@ class Module(object):
         params['M5_fail_tk'] = self.__params['M5_fail_tk']
         params['M5_rate'] = self.__params['M5_rate']
 
-        with codecs.open('./json/module_ticketrate.json', 'a', 'utf-8') as outf:
+        with codecs.open('./json/module_ticketrate.json', 'w', 'utf-8') as outf:
             json.dump(params, outf, ensure_ascii=False)
 
     def maketext(self, global_params=None):

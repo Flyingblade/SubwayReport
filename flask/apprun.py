@@ -20,11 +20,13 @@ def home():
 
 @app.route('/region', methods=['GET'])
 def region_form():
+    print('return success')
     return app.send_static_file('region.html')
 
 
 @app.route('/region', methods=['POST'])
 def region():
+    print(request.form)
     return request.form['city']
     # 需要从request对象读取表单内容：
     # if request.form['username'] == 'admin' and request.form['password'] == 'password':
