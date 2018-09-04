@@ -64,6 +64,10 @@ class Module(object):
         # self.__data['exit_ranks'] =
         self.__data['weekend_exits'] = {
         station: [weekend_exits[station].index.tolist(), weekend_exits[station].tolist()] for station in stations}
+        global_params['stations_all'] = '、'.join(stations)
+        for i in range(len(stations)):
+            global_params['stations[%d]'%i] = stations[i]
+            global_params['st_%d_wk_top3'%i] = '、'.join(self.__data['weekend_exits'][stations[i]][0][:3])
 
     def maketext(self, global_params=None):
         # 允许传入全局变量， 但局部变量的优先级更高

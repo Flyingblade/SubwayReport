@@ -21,7 +21,7 @@ class DataLoader(object):
         }
         if city not in city_parser:
             raise RuntimeError('city %s not supported.' % city)
-
+        self.__station_info = tuple()
         self.db_ip = db_ip
         self.db_user = db_user
         self.db_passwd = passwd
@@ -80,6 +80,8 @@ class DataLoader(object):
             conn.close()
             sql = "SELECT STATION_CODE, STATION_NAME_ZH FROM station_code;"
             df_code = read_sql(sql, conn).drop_duplicates('STATION_CODE')
+            # 站点名数、站点数、站点编号数
+            self.__station_info = (df_code.STATION_NAME_ZH.nunique(), df_code.STATION_NAME_ZH.nunique(), df_code.STATION_CODE.nunique())
             df = df.merge(
                 df_code.rename(columns={"STATION_CODE": "entry_station_code", "STATION_NAME_ZH": "entry_station"}),
                 on="entry_station_code", how='left', copy=False)
@@ -136,6 +138,8 @@ class DataLoader(object):
 
         sql = "SELECT STATION_CODE, STATION_NAME_ZH FROM station_code;"
         df_code = read_sql(sql, conn).drop_duplicates('STATION_CODE')
+        self.__station_info = (df_code.STATION_NAME_ZH.nunique(), df_code.STATION_NAME_ZH.nunique(),
+                               df_code.STATION_CODE.nunique())
         conn.close()
         df = df.merge(
             df_code.rename(columns={"STATION_CODE": "entry_station_code", "STATION_NAME_ZH": "entry_station"}),
@@ -143,7 +147,8 @@ class DataLoader(object):
         df = df.merge(df_code.rename(columns={"STATION_CODE": "exit_station_code", "STATION_NAME_ZH": "exit_station"}),
                       on="exit_station_code", how='left', copy=False)
         return df
-
+    def get_station_info(self):
+        return self.__station_info
 
 if __name__ == '__main__':
     loader = DataLoader(db_ip='10.109.247.63', db_port=3306, db_user='root', passwd='hadoop', city='广州',

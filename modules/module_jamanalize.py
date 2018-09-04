@@ -60,8 +60,13 @@ class Module(object):
                     if jam_lv == 0:
                         self.__data['%s_%s_jam_routes'%(d, t)] = {}
                     self.__data['%s_%s_jam_routes' % (d, t)][jam_lv] = locals()['%s_%s_res'% (d, t)][locals()['%s_%s_res'% (d, t)].level==jam_lv][['start', 'end', 'level']].as_matrix().tolist()
-                    # workday_morning_res, workday_evening_res, holiday_morning_res, holiday_evening_res
-        # self.__params['morning_jam_routes'] = workday_morning_res[workday_morning_res.level==5]
+        global_params['M7_AM_busy_routes'] = '、'.join('-'.join([str(x) for x in each[:2]]) for each in self.__data['workday_morning_jam_routes'][4][:3])
+        global_params['M7_AM_lv4_count'] = len(self.__data['workday_morning_jam_routes'][4])
+        global_params['M7_AM_lv4_rate'] = '%.2f'%(global_params['M7_AM_lv4_count'] / len(routes) * 100)
+        global_params['M7_PM_busy_routes'] = '、'.join('-'.join([str(x) for x in each[:2]]) for each in self.__data['workday_evening_jam_routes'][4][:3])
+        global_params['M7_PM_lv4_count'] = len(self.__data['workday_evening_jam_routes'][4])
+        global_params['M7_PM_lv4_rate'] = '%.2f'%(global_params['M7_PM_lv4_count'] / len(routes) * 100)
+
 
     def maketext(self, global_params=None):
         # 允许传入全局变量， 但局部变量的优先级更高

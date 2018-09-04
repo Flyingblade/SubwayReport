@@ -17,7 +17,7 @@ class Module(object):
         self.__params = {}
         self.name = ""
 
-    def run(self, df):
+    def run(self, df, global_params=None):
         # STATUS ==5 的是交易成功的
         # payment_type source
         payment_type_dict = {
@@ -60,6 +60,17 @@ class Module(object):
         params['M4_top_perc_source'] = self.__params['M4_top_perc_source']
 
         self.__data = params
+        global_params['M4_stations'] = self.__params['M4_stations']
+        global_params['M4_top_methods[0]'] = self.__params['M4_top_methods'][0]
+        global_params['M4_top_perc[0]'] = '%.2f'%(self.__params['M4_top_perc'][0]*100)
+        if len(self.__params['M4_top_methods']) > 1:
+            global_params['M4_top_methods[1]'] = self.__params['M4_top_methods'][1]
+            global_params['M4_top_perc[1]'] = '%.2f'%(self.__params['M4_top_perc'][1]*100)
+        global_params['M4_top_source[0]'] = self.__params['M4_top_source'][0]
+        global_params['M4_top_perc_source[0]'] = '%.2f'%(self.__params['M4_top_perc_source'][0]*100)
+        if len(self.__params['M4_top_source']) > 1:
+            global_params['M4_top_source[1]'] = self.__params['M4_top_source'][1]
+            global_params['M4_top_perc_source[1]'] = '%.2f' % (self.__params['M4_top_perc_source'][1] * 100)
 
     def maketext(self, global_params=None):
         # 允许传入全局变量， 但局部变量的优先级更高

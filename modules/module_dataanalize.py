@@ -29,6 +29,9 @@ class Module(object):
         # 出票数、订单总票数
         tk_get_num = order_status_tk.get(5, 0)
         tk_get_sum = sum(order_status_tk.values())
+        # 站点名称数、站点数量、编号数量
+
+
         # 有过购票行为的站点数，站点编码数
         st_num = len(set(df.entry_station.unique()) | set(df.exit_station.unique()))
         st_code_num = len(set(df.entry_station_code.unique()) | set(df.exit_station_code.unique()))

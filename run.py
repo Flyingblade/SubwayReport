@@ -11,10 +11,10 @@ from datetime import datetime
 from common.ModuleLoader import ModuleLoader
 from common.DataLoader import DataLoader
 import json
-import codecs
 
-module_list = ["module_inout_analize", "module_hotstation", "module_workholi_cmp", "module_ticketway", "module_ticketrate", "module_jamanalize",
-               "module_peopleflow", "module_dataanalize"]
+module_list = ["module_details", "module_dataanalize", "module_hotstation", "module_inout_analize", "module_jamanalize",
+               "module_newuseranalize", "module_peopleflow", "module_ticketrate", "module_ticketway", "module_userstay",
+               "module_usertimes", "module_workholi_cmp"]
 
 if __name__ == "__main__":
     # 模块的路径
@@ -26,8 +26,10 @@ if __name__ == "__main__":
         city = sys.argv[1]
         start_month = sys.argv[2]
         end_month = sys.argv[3]
-        modules = ModuleLoader(module_dir, sys.argv[4:]).get_modules()
-        global_params = {'city': city, 'start_month': start_month, 'end_month': end_month, 'modules': sys.argv[4:]}
+        if sys.argv[4] != 'all':
+            modules = ModuleLoader(module_dir, sys.argv[4:]).get_modules()
+        else:
+            modules = ModuleLoader(module_dir, module_list).get_modules()
         # 基础json
         params = {}
         params['city'] = city
@@ -35,8 +37,10 @@ if __name__ == "__main__":
         params['end_month'] = end_month
         params['datetime'] = time.strftime("%Y-%m-%d", time.localtime())
         params['modules'] = sys.argv[4:]
-        with codecs.open('./json/module_basic.json', 'w', 'utf-8') as outf:
-            json.dump(params, outf, ensure_ascii=False)
+        global_params = {'city': city, 'start': start_month, 'end': end_month, 'datestart': start_month,
+                         'dateend': end_month, 'starttime': start_month, 'endtime': end_month,
+                         'date1': start_month, 'date2': end_month, 'modules': sys.argv[4:],
+                         'Modules': '<br />'.join(sys.argv[4:])}
         # 生成目录名
         today = datetime.now()
         filename = '%04d%02d%02d_%06d' % (today.year, today.month, today.day, randint(0, 999999))
@@ -44,22 +48,38 @@ if __name__ == "__main__":
             filename = '%04d%02d%02d_%06d' % (today.year, today.month, today.day, randint(0, 999999))
         os.makedirs('result/' + filename)
         os.makedirs('result/' + filename + '/json')
-        f_html = open('result/' + filename + '/index.html', 'w', encoding='utf-8')
+        os.makedirs('result/' + filename + '/html')
         # 读数据
         loader = DataLoader(db_ip='10.109.247.63', db_port=3306, db_user='root', passwd='hadoop', city='广州',
                             start_time=start_month, end_time=end_month, debug=True)
+        with open('result/' + filename + '/json/module_basic.json', 'w', encoding='utf-8') as outf:
+            json.dump(params, outf, ensure_ascii=False)
+
         # 进行分析
         df = loader.read_all()
         gc.collect()
+        # 站点编号信息
+        global_params['M0_6'], global_params['M0_7'], global_params['M0_8'] = loader.get_station_info()
         for module in modules:
             module.run(df, global_params=global_params)
             text = module.maketext(global_params=global_params)
             data = module.makedata()
-            f_html.write(text)
             with open('result/' + filename + '/json/' + module.name + '.json', 'w', encoding='utf-8') as f_json:
                 f_json.write(data)
+        # html填写:
+        f_html = open('result/' + filename + '/html/index.html', 'w', encoding='utf-8')
+        with open('repo/basic-repo.html','r', encoding='utf-8') as f:
+            templete = f.read()
+            for param in global_params:
+                templete = templete.replace(r'{'+param+r'}', str(global_params[param]))
+            f_html.write(templete)
         f_html.close()
-
+        # 其他文件
+        otherfiles = ['bootstrap.min.css', 'echarts.js', 'jquery-1.11.2.min.js', 'templatemo-style.css']
+        for otherf in otherfiles:
+            with open('repo/' + otherf, 'r', encoding='utf-8') as f1:
+                with open('result/' + filename + '/html/' + otherf, 'w', encoding='utf-8') as f2:
+                    f2.write(f1.read())
         print('job finished. Save to result/' + filename)
     else:
         print('args not enough.exit.')

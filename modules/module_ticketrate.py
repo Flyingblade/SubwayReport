@@ -47,6 +47,8 @@ class Module(object):
         params['M5_rate'] = self.__params['M5_rate']
 
         self.__data = params
+        global_params['M5_total_rate'] = '%.2f'%(params['M5_total_rate']*100)
+        global_params['M5_tail_stations'] = '、'.join(params['M5_tail_stations'][-3::-1])
 
     def maketext(self, global_params=None):
         # 允许传入全局变量， 但局部变量的优先级更高

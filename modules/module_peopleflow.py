@@ -44,6 +44,10 @@ class Module(object):
         params['M3_stations_trend3'] = tmp[tmp.entry_station == self.__params['M3_stations'][2]].ticket_num.tolist()
 
         self.__data = params
+        global_params['M3_station0_t1'] = self.__params['M3_station0_t1']
+        global_params['M3_station0_t2'] = self.__params['M3_station0_t2']
+        for i in range(3):
+            global_params['M3_stations[%d]'%i] = self.__params['M3_stations'][i]
 
     def maketext(self, global_params=None):
         # 允许传入全局变量， 但局部变量的优先级更高

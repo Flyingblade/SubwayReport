@@ -47,6 +47,11 @@ class Module(object):
         self.__data['station_holiday_seqs'] = {
         station: [holiday_seqs[station].index.tolist(), holiday_seqs[station].tolist()] for station in
         self.__data['stations']}
+        #
+        global_params['workday_seq_maxhour'] = self.__params['workday_seq_maxhour']
+        global_params['workday_seq_maxfluency'] = self.__params['workday_seq_maxfluency']
+        global_params['holiday_seq_maxhour'] = self.__params['holiday_seq_maxhour']
+        global_params['holiday_seq_maxfluency'] = self.__params['holiday_seq_maxfluency']
 
     def maketext(self, global_params=None):
         # 允许传入全局变量， 但局部变量的优先级更高

@@ -547,6 +547,8 @@ class Module(object):
                     params[k][vv] = self.__params[k + '_ratio'][i]
             params['D_model_people'] = dict(zip(self.__params['D_model'], self.__params['D_model_people']))
         self.__data = params
+        global_params['day_num'] = 30
+        global_params['month_num'] = 3
 
     def maketext(self, global_params=None):
         # 允许传入全局变量， 但局部变量的优先级更高

@@ -23,7 +23,9 @@ class Module(object):
         user_counts = user_counts.groupby('user_counts_level').owner_id.count().to_dict()
         # 填数据
         self.__data['levels'] = list(user_counts.keys())
-        self.__data['user_percent'] = user_counts
+        self.__data['user_times'] = user_counts
+        counts_sum = sum(user_counts.values())
+        self.__data['user_percent'] = {each:user_counts[each] / counts_sum for each in user_counts}
 
 
     def maketext(self, global_params=None):

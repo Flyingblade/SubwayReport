@@ -23,6 +23,8 @@ class Module(object):
         self.name = ""
 
     def run(self, df, global_params=None):
+        if global_params is None:
+            global_params = {}
         # STATUS ==5 的是交易成功的
         df_suc = df[df['order_status'] == 5].copy()
         df_suc['entry_date'] = df_suc['entry_date'].astype(str)
@@ -51,6 +53,7 @@ class Module(object):
         # print(trend.head())
 
         routes_groupby = df_suc.groupby(['entry_station', 'exit_station']).ticket_num.sum().sort_values(ascending=False).index.tolist()[:10]
+
         routes = reduce(operator.add, routes_groupby)
         routes = sorted(dict(Counter(routes)).items(), key=lambda x: x[1], reverse=True)[:10]
 
@@ -73,6 +76,10 @@ class Module(object):
                                            :10]
 
         self.__data = params
+        global_params['M2_hotstations'] = '、'.join(params['M2_hotstations'])
+        for i in range(3): global_params['M2_top%d'%(i+1)] = params['M2_hotstations'][i]
+        for i in range(3): global_params['M2_hotroutes'] = '、'.join('-'.join(each) for each in params['M2_hotroutes'][:2])
+        global_params['M2_hotroutes_topstations'] = '、'.join(self.__params['M2_hotroutes_topstations'][:3])
 
     def maketext(self, global_params=None):
         # 允许传入全局变量， 但局部变量的优先级更高
