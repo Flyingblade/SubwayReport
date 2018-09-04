@@ -59,8 +59,7 @@ class Module(object):
         params['US_date'] = self.__params['US_date']
         params['US_num'] = self.__params['US_num']
 
-        with codecs.open('./json/module_userstay.json', 'w', 'utf-8') as outf:
-            json.dump(params, outf, ensure_ascii=False)
+        self.__data = params
 
     def maketext(self, global_params=None):
         # 允许传入全局变量， 但局部变量的优先级更高
@@ -76,4 +75,4 @@ class Module(object):
         return self.__templete.format_templet(self.__params)
 
     def makedata(self):
-        return ''
+        return json.dumps(self.__data, ensure_ascii=False)
