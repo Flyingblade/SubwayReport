@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d01733ea-3644-4fb5-b316-47b36f5d4ba7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/module_details.py" afterPath="$PROJECT_DIR$/modules/module_details.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/module_hotstation.py" afterPath="$PROJECT_DIR$/modules/module_hotstation.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/module_peopleflow.py" afterPath="$PROJECT_DIR$/modules/module_peopleflow.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/module_ticketrate.py" afterPath="$PROJECT_DIR$/modules/module_ticketrate.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/module_userstay.py" afterPath="$PROJECT_DIR$/modules/module_userstay.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/module_ticketway.py" afterPath="$PROJECT_DIR$/modules/module_ticketway.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -68,11 +64,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="module_hotstation.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="module_hotstation.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/module_hotstation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="74" column="28" lean-forward="false" selection-start-line="74" selection-start-column="28" selection-end-line="74" selection-end-column="28" />
+            <state relative-caret-position="145">
+              <caret line="67" column="102" lean-forward="true" selection-start-line="67" selection-start-column="102" selection-end-line="67" selection-end-column="102" />
               <folding>
                 <element signature="e#187#218#0" expanded="true" />
               </folding>
@@ -107,10 +103,22 @@
       <file leaf-file-name="module_userstay.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/module_userstay.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="61" column="28" lean-forward="false" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
+            <state relative-caret-position="264">
+              <caret line="60" column="0" lean-forward="true" selection-start-line="60" selection-start-column="0" selection-end-line="61" selection-end-column="28" />
               <folding>
                 <element signature="e#185#203#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="module_ticketway.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/modules/module_ticketway.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="61" column="28" lean-forward="false" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
+              <folding>
+                <marker date="1536030509178" expanded="true" signature="258:413" ph="..." />
               </folding>
             </state>
           </provider>
@@ -187,7 +195,6 @@
         <option value="$PROJECT_DIR$/result/20180727_325114.html" />
         <option value="$PROJECT_DIR$/json/module_peopleflow.json" />
         <option value="$PROJECT_DIR$/result/20180802_063321.html" />
-        <option value="$PROJECT_DIR$/modules/module_ticketway.py" />
         <option value="$PROJECT_DIR$/json/module_ticketway.json" />
         <option value="$PROJECT_DIR$/flask/__init__.py" />
         <option value="$PROJECT_DIR$/html/region.html" />
@@ -200,6 +207,7 @@
         <option value="$PROJECT_DIR$/modules/module_ticketrate.py" />
         <option value="$PROJECT_DIR$/modules/module_peopleflow.py" />
         <option value="$PROJECT_DIR$/modules/module_hotstation.py" />
+        <option value="$PROJECT_DIR$/modules/module_ticketway.py" />
       </list>
     </option>
   </component>
@@ -276,11 +284,6 @@
               <item name="SubwayReport" type="462c0819:PsiDirectoryNode" />
               <item name="flask" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SubwayReport" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SubwayReport" type="462c0819:PsiDirectoryNode" />
-              <item name="json" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SubwayReport" type="b2602c69:ProjectViewProjectNode" />
@@ -560,13 +563,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/module_ticketway.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="56" column="66" lean-forward="false" selection-start-line="56" selection-start-column="66" selection-end-line="56" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/json/module_newuseranalize.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-518">
@@ -723,12 +719,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/module_userstay.py">
+    <entry file="file://$PROJECT_DIR$/modules/module_peopleflow.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="61" column="28" lean-forward="false" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
+        <state relative-caret-position="264">
+          <caret line="45" column="28" lean-forward="false" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
           <folding>
-            <element signature="e#185#203#0" expanded="true" />
+            <element signature="e#186#205#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/module_hotstation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="67" column="102" lean-forward="true" selection-start-line="67" selection-start-column="102" selection-end-line="67" selection-end-column="102" />
+          <folding>
+            <element signature="e#187#218#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -743,22 +749,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/module_peopleflow.py">
+    <entry file="file://$PROJECT_DIR$/modules/module_userstay.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
-          <caret line="45" column="28" lean-forward="false" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
+          <caret line="60" column="0" lean-forward="true" selection-start-line="60" selection-start-column="0" selection-end-line="61" selection-end-column="28" />
           <folding>
-            <element signature="e#186#205#0" expanded="true" />
+            <element signature="e#185#203#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/module_hotstation.py">
+    <entry file="file://$PROJECT_DIR$/modules/module_ticketway.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
-          <caret line="74" column="28" lean-forward="false" selection-start-line="74" selection-start-column="28" selection-end-line="74" selection-end-column="28" />
+          <caret line="61" column="28" lean-forward="false" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
           <folding>
-            <element signature="e#187#218#0" expanded="true" />
+            <marker date="1536030509178" expanded="true" signature="258:413" ph="..." />
           </folding>
         </state>
       </provider>
