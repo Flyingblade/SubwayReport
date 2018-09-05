@@ -135,7 +135,7 @@
         </div>
         <div class="title">{city}地铁运营数据</div>
         <h1>{type}分析报告</h1>
-        <div class="tip" style="margin-top:30px">北京邮电大学<br><br><br>2018/08/01</div>
+        <div class="tip" style="margin-top:30px">北京邮电大学<br><br><br>{date}</div>
         <div class="blank"></div>
         
         <!--基础分析报告-->
@@ -157,7 +157,7 @@
                             <tbody>
                               <tr>
                                 <td>{datetime}</td>
-                                <td>{datestart}-{dateend}</td>
+                                <td>{datestart}～{dateend}</td>
                                 <td>{Modules}</td>
                               </tr>                    
                             </tbody>
@@ -222,7 +222,7 @@
                     <div id="chart3" style="width:100%;height:400px;"></div>
                     <div id="chart4" style="width:100%;height:400px;"></div>
                     <div class="p">周末从{stations[0]}出发到各站点的乘客分布情况如图，可以看出乘客去往{st_0_wk_top3}等站点的可能性较大。<br>周末从{stations[1]}出发到各站点的乘客分布情况如图，可以看出乘客去往{st_1_wk_top3}等站点的可能性较大</div>
-                    <li>所有时间，以{stations_all}为起点的乘客终点分布情况如下</li>//todo
+                    <!--<li>所有时间，以{stations_all}为起点的乘客终点分布情况如下</li>//-->
                 </div>
             </div>
             

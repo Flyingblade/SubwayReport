@@ -1,32 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d01733ea-3644-4fb5-b316-47b36f5d4ba7" name="Default" comment="文本填充，修改了所有的module以及basic-repo.html">
-      <change beforePath="$PROJECT_DIR$/.idea/SubwayReport.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SubwayReport.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="d01733ea-3644-4fb5-b316-47b36f5d4ba7" name="Default" comment="修复部分变量显示不正确的问题">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/DataLoader.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/DataLoader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/json/module_details.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/module_details.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/json/module_hotstation.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/module_hotstation.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/json/module_peopleflow.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/module_peopleflow.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/json/module_ticketrate.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/module_ticketrate.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/json/module_ticketway.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/module_ticketway.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/json/module_userstay.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/module_userstay.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/module_dataanalize.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_dataanalize.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/module_details.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_details.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/module_hotstation.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_hotstation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/module_inout_analize.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_inout_analize.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/module_jamanalize.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_jamanalize.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/module_peopleflow.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_peopleflow.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/module_ticketrate.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_ticketrate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/module_ticketway.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_ticketway.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/module_usertimes.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_usertimes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/module_workholi_cmp.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_workholi_cmp.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/repo/basic-repo.html" beforeDir="false" afterPath="$PROJECT_DIR$/repo/basic-repo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/南宁_route.pk" beforeDir="false" afterPath="$PROJECT_DIR$/routes/南宁_route.pk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/广州_route.pk" beforeDir="false" afterPath="$PROJECT_DIR$/routes/广州_route.pk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/青岛_route.pk" beforeDir="false" afterPath="$PROJECT_DIR$/routes/青岛_route.pk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -64,46 +42,47 @@
     <session id="477071623">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="8" />
+          <entry key="project.closed" value="11" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.open.time.5" value="4" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.open.time.5" value="6" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="9" />
+          <entry key="project.opened" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="html" value="9" />
-          <entry key="json" value="32" />
-          <entry key="py" value="78" />
+          <entry key="html" value="19" />
+          <entry key="json" value="35" />
+          <entry key="py" value="83" />
           <entry key="txt" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="9" />
-          <entry key="JSON" value="32" />
+          <entry key="HTML" value="19" />
+          <entry key="JSON" value="35" />
           <entry key="PLAIN_TEXT" value="6" />
-          <entry key="Python" value="78" />
+          <entry key="Python" value="83" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="163" />
-          <entry key="html" value="37" />
+          <entry key="html" value="54" />
           <entry key="json" value="1" />
-          <entry key="py" value="3002" />
-          <entry key="txt" value="69" />
+          <entry key="py" value="3203" />
+          <entry key="txt" value="85" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="37" />
+          <entry key="HTML" value="54" />
           <entry key="JSON" value="1" />
-          <entry key="PLAIN_TEXT" value="69" />
-          <entry key="Python" value="3165" />
+          <entry key="PLAIN_TEXT" value="85" />
+          <entry key="Python" value="3366" />
         </counts>
       </usages-collector>
     </session>
@@ -112,12 +91,20 @@
     <favorites_list name="SubwayReport" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/modules/module_ticketway.py">
+        <entry file="file://$PROJECT_DIR$/repo/basic-repo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="64" selection-start-line="64" selection-end-line="64" />
+            <state relative-caret-position="333">
+              <caret line="224" column="69" selection-start-line="224" selection-start-column="69" selection-end-line="224" selection-end-column="69" />
+              <folding>
+                <element signature="n#style#0;n#div#2;n#div#2;n#div#3;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#4;n#div#2;n#div#3;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#5;n#div#2;n#div#3;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#2;n#div#4;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#4;n#div#2;n#div#4;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#script#0;n#body#0;n#html#0;n#!!top" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -153,6 +140,10 @@
       <find>M2_hotroutes</find>
       <find>M7_AM_busy_routes</find>
       <find>[时间段]</find>
+      <find>div</find>
+      <find>todo</find>
+      <find>2018-</find>
+      <find>df_suc</find>
     </findStrings>
     <replaceStrings>
       <replace>arr_tmp</replace>
@@ -188,22 +179,23 @@
         <option value="$PROJECT_DIR$/modules/module_userstay.py" />
         <option value="$PROJECT_DIR$/result/20180809_533131/json/module_newuseranalize.json" />
         <option value="$PROJECT_DIR$/json/module_ticketway.json" />
-        <option value="$PROJECT_DIR$/run.py" />
         <option value="$PROJECT_DIR$/modules/module_usertimes.py" />
         <option value="$PROJECT_DIR$/modules/module_inout_analize.py" />
         <option value="$PROJECT_DIR$/result/20180904_395735/json/module_inout_analize.json" />
         <option value="$PROJECT_DIR$/modules/module_peopleflow.py" />
         <option value="$PROJECT_DIR$/result/20180904_395735/json/module_ticketway.json" />
         <option value="$PROJECT_DIR$/result/20180904_395735/json/module_ticketrate.json" />
-        <option value="$PROJECT_DIR$/modules/module_ticketrate.py" />
         <option value="$PROJECT_DIR$/result/20180904_395735/json/module_hotstation.json" />
         <option value="$PROJECT_DIR$/modules/module_hotstation.py" />
         <option value="$PROJECT_DIR$/result/20180904_395735/json/module_jamanalize.json" />
         <option value="$PROJECT_DIR$/modules/module_workholi_cmp.py" />
         <option value="$PROJECT_DIR$/modules/module_jamanalize.py" />
         <option value="$PROJECT_DIR$/modules/module_details.py" />
-        <option value="$PROJECT_DIR$/repo/basic-repo.html" />
         <option value="$PROJECT_DIR$/modules/module_ticketway.py" />
+        <option value="$PROJECT_DIR$/result/20180904_847537/html/index.html" />
+        <option value="$PROJECT_DIR$/modules/module_ticketrate.py" />
+        <option value="$PROJECT_DIR$/run.py" />
+        <option value="$PROJECT_DIR$/repo/basic-repo.html" />
       </list>
     </option>
   </component>
@@ -272,7 +264,32 @@
             <path>
               <item name="SubwayReport" type="b2602c69:ProjectViewProjectNode" />
               <item name="SubwayReport" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SubwayReport" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SubwayReport" type="462c0819:PsiDirectoryNode" />
               <item name="repo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SubwayReport" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SubwayReport" type="462c0819:PsiDirectoryNode" />
+              <item name="result" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SubwayReport" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SubwayReport" type="462c0819:PsiDirectoryNode" />
+              <item name="result" type="462c0819:PsiDirectoryNode" />
+              <item name="20180904_560936" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SubwayReport" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SubwayReport" type="462c0819:PsiDirectoryNode" />
+              <item name="template_doc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SubwayReport" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
@@ -296,117 +313,6 @@
       <recent name="C:\Users\ZERO\PycharmProjects\SubwayReport\flask" />
     </key>
   </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/modules/module_ticketway.py</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
-  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -419,7 +325,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Unknown.SubwayReport673314686">
+  <component name="RunManager" selected="Unknown.SubwayReport306901909">
     <configuration name="DataLoader" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SubwayReport" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -486,7 +392,14 @@
       <option name="project" value="LOCAL" />
       <updated>1533819446962</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="文本填充，修改了所有的module以及basic-repo.html">
+      <created>1536066605373</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1536066605373</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -502,7 +415,7 @@
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49503547" visible="true" weight="0.17217484" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49503547" visible="true" weight="0.17697228" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.50496453" side_tool="true" weight="0.13539445" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -512,9 +425,9 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info active="true" anchor="bottom" id="TODO" order="6" visible="true" weight="0.32939914" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50479746" side_tool="true" weight="0.23927039" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50479746" side_tool="true" weight="0.23901394" />
       <window_info anchor="bottom" id="Python Console" order="8" weight="0.32939914" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49520257" weight="0.23927039" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49520257" weight="0.23901394" />
       <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.4968017" weight="0.32939914" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
@@ -524,6 +437,7 @@
       <window_info anchor="right" id="Database" order="3" weight="0.18230277" />
       <window_info anchor="right" id="Data View" order="4" weight="0.25" />
       <window_info anchor="right" id="SciView" order="5" />
+      <window_info anchor="right" x="0" y="0" width="434" height="866" id="Documentation" order="6" side_tool="true" weight="0.32995737" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -576,33 +490,10 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="修改了run入口和py文件" />
     <MESSAGE value="文本填充，修改了所有的module以及basic-repo.html" />
-    <option name="LAST_COMMIT_MESSAGE" value="文本填充，修改了所有的module以及basic-repo.html" />
+    <MESSAGE value="修复部分变量显示不正确的问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复部分变量显示不正确的问题" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/html/region.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="135" column="76" selection-start-line="135" selection-start-column="76" selection-end-line="135" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flask/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/flask/static/basic-repo.html" />
-    <entry file="file://$PROJECT_DIR$/flask/static/bootstrap.min.css" />
-    <entry file="file://$PROJECT_DIR$/flask/static/region.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="223" column="54" lean-forward="true" selection-start-line="223" selection-start-column="54" selection-end-line="223" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/TempletLoader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="597">
-          <caret line="33" column="23" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/flask/apprun.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="589">
@@ -636,13 +527,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/json/module_ticketrate.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="23" lean-forward="true" selection-start-column="23" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/json/module_userstay.json">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -667,9 +551,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/result/20180904_333491/json/module_ticketway.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/result/20180904_333491/json/module_ticketway.json" />
     <entry file="file://$PROJECT_DIR$/modules/module_dataanalize.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-101">
@@ -677,29 +559,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/result/20180904_548306/json/module_userstay.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/result/20180904_548306/json/module_ticketway.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/result/20180904_932207/json/module_usertimes.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/result/20180904_605031/json/module_dataanalize.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="62" selection-start-column="62" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/result/20180904_605031/json/module_basic.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="34" selection-start-column="34" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/result/20180904_548306/json/module_userstay.json" />
+    <entry file="file://$PROJECT_DIR$/result/20180904_548306/json/module_ticketway.json" />
+    <entry file="file://$PROJECT_DIR$/result/20180904_932207/json/module_usertimes.json" />
+    <entry file="file://$PROJECT_DIR$/result/20180904_605031/json/module_dataanalize.json" />
+    <entry file="file://$PROJECT_DIR$/result/20180904_605031/json/module_basic.json" />
     <entry file="file://$PROJECT_DIR$/templets/module_hotstation.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -709,16 +573,6 @@
     <entry file="file://$PROJECT_DIR$/templets/module_dataanalize.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/run.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-101">
-          <caret line="42" column="63" lean-forward="true" selection-start-line="42" selection-start-column="63" selection-end-line="42" selection-end-column="63" />
-          <folding>
-            <element signature="e#68#77#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/DataLoader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
@@ -726,79 +580,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/result/20180904_395735/json/module_inout_analize.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="27" column="21" lean-forward="true" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/result/20180904_395735/json/module_inout_analize.json" />
     <entry file="file://$PROJECT_DIR$/templets/module_inout_analize.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/templets/module_peopleflow.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/result/20180904_395735/json/module_ticketway.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="7" lean-forward="true" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/result/20180904_395735/json/module_ticketrate.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="28" column="10" lean-forward="true" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/result/20180904_395735/json/module_ticketway.json" />
+    <entry file="file://$PROJECT_DIR$/result/20180904_395735/json/module_ticketrate.json" />
     <entry file="file://$PROJECT_DIR$/modules/module_hotstation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="445">
           <caret line="81" column="47" selection-start-line="81" selection-start-column="23" selection-end-line="81" selection-end-column="47" />
-          <folding>
-            <element signature="e#187#218#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/result/20180904_395735/json/module_hotstation.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4851">
-          <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/result/20180904_395735/json/module_jamanalize.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="29" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="29" />
-          <folding>
-            <element signature="e#45#7124#0" />
-            <element signature="e#7135#12117#0" />
-            <element signature="e#12128#15201#0" />
-            <element signature="e#15212#17652#0" />
-            <element signature="e#17663#18640#0" />
-            <element signature="e#18689#26648#0" />
-            <element signature="e#26659#32386#0" />
-            <element signature="e#32397#36510#0" />
-            <element signature="e#36521#37089#0" />
-            <element signature="e#37100#37396#0" />
-            <element signature="e#37445#47582#0" />
-            <element signature="e#47593#53266#0" />
-            <element signature="e#53277#54869#0" />
-            <element signature="e#54880#55619#0" />
-            <element signature="e#55630#55927#0" />
-            <element signature="e#55976#66720#0" />
-            <element signature="e#66731#72648#0" />
-            <element signature="e#72659#74248#0" />
-            <element signature="e#74259#74496#0" />
-            <element signature="e#74507#74571#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/result/20180904_395735/json/module_hotstation.json" />
+    <entry file="file://$PROJECT_DIR$/result/20180904_395735/json/module_jamanalize.json" />
     <entry file="file://$PROJECT_DIR$/modules/module_userstay.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="684">
@@ -827,13 +626,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/module_ticketrate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="50" column="30" selection-start-line="50" selection-start-column="30" selection-end-line="50" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/module_peopleflow.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -855,20 +647,76 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/json/module_usertimes.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/module_ticketway.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1096">
+          <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files/Python36/Lib/site-packages/pdfkit/configuration.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="22" column="23" lean-forward="true" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files/Python36/Lib/site-packages/pdfkit/api.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/result/20180904_849014/html/index.html" />
+    <entry file="file://$PROJECT_DIR$/result/20180904_847537/json/module_ticketrate.json" />
+    <entry file="file://$PROJECT_DIR$/result/20180904_847537/html/index.html" />
+    <entry file="file://$PROJECT_DIR$/json/module_ticketrate.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="37" selection-start-column="37" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/module_ticketrate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="950">
+          <caret line="52" column="43" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/result/20180904_357618/html/index.html" />
+    <entry file="file://$PROJECT_DIR$/json/module_details.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1330" selection-start-column="1330" selection-end-column="1330" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/modules/module_details.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="549" column="30" selection-start-line="549" selection-start-column="30" selection-end-line="549" selection-end-column="30" />
+        <state relative-caret-position="493">
+          <caret line="393" column="43" lean-forward="true" selection-start-line="393" selection-start-column="43" selection-end-line="393" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="46" column="68" selection-start-line="46" selection-start-column="68" selection-end-line="46" selection-end-column="68" />
           <folding>
-            <element signature="e#183#201#0" expanded="true" />
+            <element signature="e#68#77#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/repo/basic-repo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1063">
-          <caret line="467" column="37" lean-forward="true" selection-start-line="467" selection-start-column="37" selection-end-line="467" selection-end-column="37" />
+        <state relative-caret-position="333">
+          <caret line="224" column="69" selection-start-line="224" selection-start-column="69" selection-end-line="224" selection-end-column="69" />
           <folding>
             <element signature="n#style#0;n#div#2;n#div#2;n#div#3;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#4;n#div#2;n#div#3;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -877,23 +725,6 @@
             <element signature="n#style#0;n#div#4;n#div#2;n#div#4;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#script#0;n#body#0;n#html#0;n#!!top" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/json/module_details.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="1330" selection-start-column="1330" selection-end-column="1330" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/json/module_usertimes.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/module_ticketway.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="64" selection-start-line="64" selection-end-line="64" />
         </state>
       </provider>
     </entry>

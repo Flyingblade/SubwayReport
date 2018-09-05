@@ -11,6 +11,7 @@ from datetime import datetime
 from common.ModuleLoader import ModuleLoader
 from common.DataLoader import DataLoader
 import json
+import pdfkit
 
 module_list = ["module_details", "module_dataanalize", "module_hotstation", "module_inout_analize", "module_jamanalize",
                "module_newuseranalize", "module_peopleflow", "module_ticketrate", "module_ticketway", "module_userstay",
@@ -39,10 +40,12 @@ if __name__ == "__main__":
         params['modules'] = sys.argv[4:]
         global_params = {'city': city, 'start': start_month, 'end': end_month, 'datestart': start_month,
                          'dateend': end_month, 'starttime': start_month, 'endtime': end_month,
-                         'date1': start_month, 'date2': end_month, 'modules': sys.argv[4:],
+                         'date1': start_month, 'date2': end_month, 'modules': sys.argv[4:], 'type':'测试',
                          'Modules': '<br />'.join(sys.argv[4:])}
         # 生成目录名
         today = datetime.now()
+        global_params['datetime'] = today.strftime("%Y-%m-%d %H:%M")
+        global_params['date'] = today.strftime("%Y-%m-%d")
         filename = '%04d%02d%02d_%06d' % (today.year, today.month, today.day, randint(0, 999999))
         while os.path.exists('result/' + filename):
             filename = '%04d%02d%02d_%06d' % (today.year, today.month, today.day, randint(0, 999999))
@@ -50,13 +53,14 @@ if __name__ == "__main__":
         os.makedirs('result/' + filename + '/json')
         os.makedirs('result/' + filename + '/html')
         # 读数据
-        loader = DataLoader(db_ip='10.109.247.63', db_port=3306, db_user='root', passwd='hadoop', city='广州',
-                            start_time=start_month, end_time=end_month, debug=True)
+        loader = DataLoader(db_ip='10.109.247.63', db_port=3306, db_user='root', passwd='hadoop', city=city,
+                            start_time=start_month, end_time=end_month, debug=False)
         with open('result/' + filename + '/json/module_basic.json', 'w', encoding='utf-8') as outf:
             json.dump(params, outf, ensure_ascii=False)
 
         # 进行分析
         df = loader.read_all()
+        print('load data success.')
         gc.collect()
         # 站点编号信息
         global_params['M0_6'], global_params['M0_7'], global_params['M0_8'] = loader.get_station_info()
@@ -80,6 +84,9 @@ if __name__ == "__main__":
             with open('repo/' + otherf, 'r', encoding='utf-8') as f1:
                 with open('result/' + filename + '/html/' + otherf, 'w', encoding='utf-8') as f2:
                     f2.write(f1.read())
+        # 生成pdf
+        # config = pdfkit.configuration(wkhtmltopdf=r'C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.exe')
+        # pdfkit.from_file('result/'+ filename + '/html/index.html', 'result/' + filename + '/html/index.pdf', configuration=config)
         print('job finished. Save to result/' + filename)
     else:
         print('args not enough.exit.')
