@@ -9,7 +9,7 @@ class Module(object):
     def __init__(self):
         from common.TempletLoader import TempletLoader
         self.__templete = TempletLoader('templets/module_dataanalize.txt')
-        self.name = ""
+        self.name = "module_dataanalize"
         self.__params = {}
         self.__data = {}
     def run(self, df, global_params=None):

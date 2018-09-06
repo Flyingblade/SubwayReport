@@ -131,7 +131,7 @@ class DataLoader(object):
         sql = self.sql_single_tk[:]
 
         if self.debug:
-            sql = sql[:-1] + " LIMIT 10000;"
+            sql = sql[:-1] + " LIMIT 100000;"
         current_str = self.current_time.strftime("%Y-%m-%d")
         end_str = self.end_time.strftime("%Y-%m-%d")
         df = read_sql(sql, conn, params=(current_str, end_str))

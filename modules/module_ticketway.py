@@ -15,7 +15,7 @@ class Module(object):
         from common.TempletLoader import TempletLoader
         self.__templete = TempletLoader('templets/module_ticketway.txt')
         self.__params = {}
-        self.name = ""
+        self.name = "module_ticketway"
 
     def run(self, df, global_params=None):
         # STATUS ==5 的是交易成功的
@@ -32,8 +32,12 @@ class Module(object):
 
         tmp = df_suc.groupby(['entry_station', 'exit_station']).ticket_num.sum().reset_index()
         starts = df_suc.groupby('entry_station').ticket_num.sum().sort_values(ascending=False)
+
+        df_suc.payment_type = df_suc.payment_type.fillna('0')
         df_suc.payment_type = df_suc.payment_type.astype(int)
+        df_suc.source = df_suc.source.fillna('5')
         df_suc.source = df_suc.source.astype(int)
+
         df_suc.payment_type = df_suc.payment_type.map(payment_type_dict)
         df_suc.source = df_suc.source.map(source_dict)
         df_suc = df_suc[df_suc.entry_station.isin(starts[:10].index.tolist())]

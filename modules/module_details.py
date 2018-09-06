@@ -369,11 +369,13 @@ class Module(object):
         from common.TempletLoader import TempletLoader
         self.__templete = TempletLoader('templets/module_details.txt')
         self.__params = {}
-        self.name = ""
+        self.name = "module_details"
 
     def run(self, df, global_params=None):
         # STATUS ==5 的是交易成功的
         df_suc = df[df['order_status'] == 5].copy()
+        df_suc = df_suc[~pd.isnull(df_suc.reg_date)]
+        df_suc.reg_date = df_suc.reg_date.fillna(df_suc.reg_date.min())
         df_suc['datetime'] = pd.to_datetime(df_suc['reg_date'], format='%Y-%m-%d %H:%M:%S')
         df_suc['year'] = df_suc['reg_date'].map(lambda x: x.year)
         df_suc['month'] = df_suc['reg_date'].map(lambda x: x.month)
@@ -387,9 +389,13 @@ class Module(object):
         single_ft = df_suc.groupby(['owner_id'])['reg_date'].min().reset_index()
         single_ft = single_ft.rename(index=str, columns={'reg_date': 'first_time'})
         df_suc = df_suc.merge(single_ft, on=['owner_id'], how='left')
+        df_suc = df_suc[~pd.isnull(df_suc.first_time)]
+        df_suc['first_time'] = df_suc['first_time'].astype(str)
         single_ft = df_suc.groupby('owner_id')['reg_date'].max().reset_index()
         single_ft = single_ft.rename(index=str, columns={'reg_date': 'last_time'})
         df_suc = df_suc.merge(single_ft, on=['owner_id'], how='left')
+        df_suc = df_suc[~pd.isnull(df_suc.last_time)]
+        df_suc['last_time'] = df_suc['last_time'].astype(str)
 
         df_suc['first_month'] = df_suc['first_time'].map(lambda x: x[0:7])
         df_suc['first_date_obj'] = df_suc['first_time'].map(lambda x: datetime.strptime(x, '%Y-%m-%d %H:%M:%S').date())

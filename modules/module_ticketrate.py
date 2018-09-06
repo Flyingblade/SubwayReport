@@ -16,7 +16,7 @@ class Module(object):
         from common.TempletLoader import TempletLoader
         self.__templete = TempletLoader('templets/module_ticketrate.txt')
         self.__params = {}
-        self.name = ""
+        self.name = "module_ticketrate"
 
     def run(self, df, global_params=None):
         # STATUS ==5 的是交易成功的

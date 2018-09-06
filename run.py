@@ -12,7 +12,9 @@ from common.ModuleLoader import ModuleLoader
 from common.DataLoader import DataLoader
 import json
 import pdfkit
+import warnings
 
+warnings.filterwarnings('ignore')
 module_list = ["module_details", "module_dataanalize", "module_hotstation", "module_inout_analize", "module_jamanalize",
                "module_newuseranalize", "module_peopleflow", "module_ticketrate", "module_ticketway", "module_userstay",
                "module_usertimes", "module_workholi_cmp"]
@@ -54,7 +56,7 @@ if __name__ == "__main__":
         os.makedirs('result/' + filename + '/html')
         # 读数据
         loader = DataLoader(db_ip='10.109.247.63', db_port=3306, db_user='root', passwd='hadoop', city=city,
-                            start_time=start_month, end_time=end_month, debug=False)
+                            start_time=start_month, end_time=end_month, debug=True)
         with open('result/' + filename + '/json/module_basic.json', 'w', encoding='utf-8') as outf:
             json.dump(params, outf, ensure_ascii=False)
 
@@ -65,11 +67,14 @@ if __name__ == "__main__":
         # 站点编号信息
         global_params['M0_6'], global_params['M0_7'], global_params['M0_8'] = loader.get_station_info()
         for module in modules:
+            time_start = time.clock()
             module.run(df, global_params=global_params)
             text = module.maketext(global_params=global_params)
             data = module.makedata()
             with open('result/' + filename + '/json/' + module.name + '.json', 'w', encoding='utf-8') as f_json:
                 f_json.write(data)
+            time_end = time.clock()
+            print(module.name, 'time cost:%.2f s'%(time_end - time_start))
         # html填写:
         f_html = open('result/' + filename + '/html/index.html', 'w', encoding='utf-8')
         with open('repo/basic-repo.html','r', encoding='utf-8') as f:

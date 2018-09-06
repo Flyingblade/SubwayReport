@@ -20,7 +20,7 @@ class Module(object):
         from common.TempletLoader import TempletLoader
         self.__templete = TempletLoader('templets/module_hotstation.txt')
         self.__params = {}
-        self.name = ""
+        self.name = "module_hotstation"
 
     def run(self, df, global_params=None):
         if global_params is None:

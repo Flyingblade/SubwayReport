@@ -12,7 +12,7 @@ class Module(object):
         self.__city_dict = {'广州': ['机场南', '广州东站'], }
         self.__params = {}
         self.__data = {}
-        self.name = ""
+        self.name = "module_inout_analize"
 
     def run(self, df, global_params=None):
         if global_params is None:

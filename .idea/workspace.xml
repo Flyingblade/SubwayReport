@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d01733ea-3644-4fb5-b316-47b36f5d4ba7" name="Default" comment="修复部分变量显示不正确的问题">
+    <list default="true" id="d01733ea-3644-4fb5-b316-47b36f5d4ba7" name="Default" comment="新增模块名称、运行计时，忽略warning">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/DataLoader.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/DataLoader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/module_dataanalize.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_dataanalize.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/module_details.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_details.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/module_hotstation.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_hotstation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/module_inout_analize.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_inout_analize.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/module_jamanalize.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_jamanalize.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/module_newuseranalize.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_newuseranalize.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/module_peopleflow.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_peopleflow.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/module_ticketrate.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_ticketrate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repo/basic-repo.html" beforeDir="false" afterPath="$PROJECT_DIR$/repo/basic-repo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/module_ticketway.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_ticketway.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/module_userstay.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_userstay.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/module_usertimes.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_usertimes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/module_workholi_cmp.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_workholi_cmp.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,30 +53,30 @@
     <session id="477071623">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="11" />
+          <entry key="project.closed" value="15" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.open.time.4" value="1" />
-          <entry key="project.open.time.5" value="6" />
+          <entry key="project.open.time.4" value="3" />
+          <entry key="project.open.time.5" value="8" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="12" />
+          <entry key="project.opened" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="html" value="19" />
-          <entry key="json" value="35" />
-          <entry key="py" value="83" />
+          <entry key="json" value="36" />
+          <entry key="py" value="103" />
           <entry key="txt" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="HTML" value="19" />
-          <entry key="JSON" value="35" />
+          <entry key="JSON" value="36" />
           <entry key="PLAIN_TEXT" value="6" />
-          <entry key="Python" value="83" />
+          <entry key="Python" value="103" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -73,16 +84,16 @@
           <entry key="Python Console" value="163" />
           <entry key="html" value="54" />
           <entry key="json" value="1" />
-          <entry key="py" value="3203" />
-          <entry key="txt" value="85" />
+          <entry key="py" value="3550" />
+          <entry key="txt" value="109" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="54" />
           <entry key="JSON" value="1" />
-          <entry key="PLAIN_TEXT" value="85" />
-          <entry key="Python" value="3366" />
+          <entry key="PLAIN_TEXT" value="109" />
+          <entry key="Python" value="3713" />
         </counts>
       </usages-collector>
     </session>
@@ -91,20 +102,24 @@
     <favorites_list name="SubwayReport" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/repo/basic-repo.html">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="224" column="69" selection-start-line="224" selection-start-column="69" selection-end-line="224" selection-end-column="69" />
+            <state relative-caret-position="304">
+              <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
               <folding>
-                <element signature="n#style#0;n#div#2;n#div#2;n#div#3;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#4;n#div#2;n#div#3;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#5;n#div#2;n#div#3;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#2;n#div#4;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#4;n#div#2;n#div#4;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#script#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#68#77#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/modules/module_ticketway.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="722">
+              <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
             </state>
           </provider>
         </entry>
@@ -144,6 +159,9 @@
       <find>todo</find>
       <find>2018-</find>
       <find>df_suc</find>
+      <find>self.name</find>
+      <find>if self.d</find>
+      <find>time</find>
     </findStrings>
     <replaceStrings>
       <replace>arr_tmp</replace>
@@ -174,28 +192,29 @@
         <option value="$PROJECT_DIR$/flask/__init__.py" />
         <option value="$PROJECT_DIR$/flask/apprun.py" />
         <option value="$PROJECT_DIR$/json/module_details.json" />
-        <option value="$PROJECT_DIR$/modules/module_dataanalize.py" />
-        <option value="$PROJECT_DIR$/common/DataLoader.py" />
-        <option value="$PROJECT_DIR$/modules/module_userstay.py" />
         <option value="$PROJECT_DIR$/result/20180809_533131/json/module_newuseranalize.json" />
         <option value="$PROJECT_DIR$/json/module_ticketway.json" />
-        <option value="$PROJECT_DIR$/modules/module_usertimes.py" />
-        <option value="$PROJECT_DIR$/modules/module_inout_analize.py" />
         <option value="$PROJECT_DIR$/result/20180904_395735/json/module_inout_analize.json" />
-        <option value="$PROJECT_DIR$/modules/module_peopleflow.py" />
         <option value="$PROJECT_DIR$/result/20180904_395735/json/module_ticketway.json" />
         <option value="$PROJECT_DIR$/result/20180904_395735/json/module_ticketrate.json" />
         <option value="$PROJECT_DIR$/result/20180904_395735/json/module_hotstation.json" />
-        <option value="$PROJECT_DIR$/modules/module_hotstation.py" />
         <option value="$PROJECT_DIR$/result/20180904_395735/json/module_jamanalize.json" />
-        <option value="$PROJECT_DIR$/modules/module_workholi_cmp.py" />
-        <option value="$PROJECT_DIR$/modules/module_jamanalize.py" />
-        <option value="$PROJECT_DIR$/modules/module_details.py" />
-        <option value="$PROJECT_DIR$/modules/module_ticketway.py" />
         <option value="$PROJECT_DIR$/result/20180904_847537/html/index.html" />
-        <option value="$PROJECT_DIR$/modules/module_ticketrate.py" />
-        <option value="$PROJECT_DIR$/run.py" />
         <option value="$PROJECT_DIR$/repo/basic-repo.html" />
+        <option value="$PROJECT_DIR$/modules/module_dataanalize.py" />
+        <option value="$PROJECT_DIR$/modules/module_details.py" />
+        <option value="$PROJECT_DIR$/modules/module_hotstation.py" />
+        <option value="$PROJECT_DIR$/modules/module_inout_analize.py" />
+        <option value="$PROJECT_DIR$/modules/module_newuseranalize.py" />
+        <option value="$PROJECT_DIR$/modules/module_peopleflow.py" />
+        <option value="$PROJECT_DIR$/modules/module_ticketrate.py" />
+        <option value="$PROJECT_DIR$/modules/module_userstay.py" />
+        <option value="$PROJECT_DIR$/modules/module_usertimes.py" />
+        <option value="$PROJECT_DIR$/modules/module_workholi_cmp.py" />
+        <option value="$PROJECT_DIR$/common/DataLoader.py" />
+        <option value="$PROJECT_DIR$/modules/module_jamanalize.py" />
+        <option value="$PROJECT_DIR$/run.py" />
+        <option value="$PROJECT_DIR$/modules/module_ticketway.py" />
       </list>
     </option>
   </component>
@@ -244,6 +263,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -279,12 +299,6 @@
             <path>
               <item name="SubwayReport" type="b2602c69:ProjectViewProjectNode" />
               <item name="SubwayReport" type="462c0819:PsiDirectoryNode" />
-              <item name="result" type="462c0819:PsiDirectoryNode" />
-              <item name="20180904_560936" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SubwayReport" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SubwayReport" type="462c0819:PsiDirectoryNode" />
               <item name="template_doc" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -295,7 +309,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -325,7 +338,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Unknown.SubwayReport306901909">
+  <component name="RunManager" selected="Unknown.SubwayReport1967411321">
     <configuration name="DataLoader" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SubwayReport" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -399,7 +412,14 @@
       <option name="project" value="LOCAL" />
       <updated>1536066605373</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="修复部分变量显示不正确的问题">
+      <created>1536148679124</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1536148679124</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -415,7 +435,7 @@
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49503547" visible="true" weight="0.17697228" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49503547" visible="true" weight="0.18336888" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.50496453" side_tool="true" weight="0.13539445" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -424,7 +444,7 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="TODO" order="6" visible="true" weight="0.32939914" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32939914" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50479746" side_tool="true" weight="0.23901394" />
       <window_info anchor="bottom" id="Python Console" order="8" weight="0.32939914" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49520257" weight="0.23901394" />
@@ -494,20 +514,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="修复部分变量显示不正确的问题" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/flask/apprun.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/json/module_newuseranalize.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/json/module_dataanalize.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
@@ -552,13 +558,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/result/20180904_333491/json/module_ticketway.json" />
-    <entry file="file://$PROJECT_DIR$/modules/module_dataanalize.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-101">
-          <caret line="36" column="44" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/result/20180904_548306/json/module_userstay.json" />
     <entry file="file://$PROJECT_DIR$/result/20180904_548306/json/module_ticketway.json" />
     <entry file="file://$PROJECT_DIR$/result/20180904_932207/json/module_usertimes.json" />
@@ -573,13 +572,6 @@
     <entry file="file://$PROJECT_DIR$/templets/module_dataanalize.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/DataLoader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="141" column="62" selection-start-line="141" selection-start-column="62" selection-end-line="141" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/result/20180904_395735/json/module_inout_analize.json" />
     <entry file="file://$PROJECT_DIR$/templets/module_inout_analize.txt">
       <provider selected="true" editor-type-id="text-editor" />
@@ -589,73 +581,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/result/20180904_395735/json/module_ticketway.json" />
     <entry file="file://$PROJECT_DIR$/result/20180904_395735/json/module_ticketrate.json" />
-    <entry file="file://$PROJECT_DIR$/modules/module_hotstation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="81" column="47" selection-start-line="81" selection-start-column="23" selection-end-line="81" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/result/20180904_395735/json/module_hotstation.json" />
     <entry file="file://$PROJECT_DIR$/result/20180904_395735/json/module_jamanalize.json" />
-    <entry file="file://$PROJECT_DIR$/modules/module_userstay.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="40" column="41" selection-start-line="40" selection-start-column="41" selection-end-line="40" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/module_newuseranalize.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/module_usertimes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/module_workholi_cmp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-342">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/module_peopleflow.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="49" column="80" selection-start-line="49" selection-start-column="80" selection-end-line="49" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/module_jamanalize.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="62" column="87" selection-start-line="62" selection-start-column="87" selection-end-line="62" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/module_inout_analize.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="69" column="105" lean-forward="true" selection-start-line="69" selection-start-column="105" selection-end-line="69" selection-end-column="105" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/json/module_usertimes.json">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/module_ticketway.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1096">
-          <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://C:/Program Files/Python36/Lib/site-packages/pdfkit/configuration.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -681,13 +610,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/module_ticketrate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="950">
-          <caret line="52" column="43" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/result/20180904_357618/html/index.html" />
     <entry file="file://$PROJECT_DIR$/json/module_details.json">
       <provider selected="true" editor-type-id="text-editor">
@@ -696,35 +618,121 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/module_details.py">
+    <entry file="file://$PROJECT_DIR$/repo/basic-repo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="393" column="43" lean-forward="true" selection-start-line="393" selection-start-column="43" selection-end-line="393" selection-end-column="43" />
+        <state relative-caret-position="333">
+          <caret line="224" column="69" selection-start-line="224" selection-start-column="69" selection-end-line="224" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/module_dataanalize.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="39" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/module_hotstation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="22" column="38" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/module_inout_analize.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="41" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/module_newuseranalize.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="28" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/module_peopleflow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="18" column="38" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/module_ticketrate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="18" column="38" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/module_userstay.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="38" column="36" selection-start-line="38" selection-start-column="36" selection-end-line="38" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/module_usertimes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="37" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/module_workholi_cmp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="24" lean-forward="true" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/DataLoader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="511">
+          <caret line="133" column="43" selection-start-line="133" selection-start-column="43" selection-end-line="133" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2018.2/system/python_stubs/-1120166012/time.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="228" column="4" selection-start-line="228" selection-start-column="4" selection-end-line="228" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/json/module_jamanalize.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/module_jamanalize.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="54" column="44" selection-start-line="54" selection-start-column="44" selection-end-line="54" selection-end-column="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="46" column="68" selection-start-line="46" selection-start-column="68" selection-end-line="46" selection-end-column="68" />
+        <state relative-caret-position="304">
+          <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
           <folding>
             <element signature="e#68#77#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/repo/basic-repo.html">
+    <entry file="file://$PROJECT_DIR$/modules/module_details.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="224" column="69" selection-start-line="224" selection-start-column="69" selection-end-line="224" selection-end-column="69" />
-          <folding>
-            <element signature="n#style#0;n#div#2;n#div#2;n#div#3;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#div#2;n#div#3;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#5;n#div#2;n#div#3;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#2;n#div#4;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#div#2;n#div#4;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#script#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
+        <state relative-caret-position="-1930">
+          <caret line="371" column="35" selection-start-line="371" selection-start-column="35" selection-end-line="371" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/module_ticketway.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="722">
+          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
         </state>
       </provider>
     </entry>
