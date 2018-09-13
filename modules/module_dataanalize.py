@@ -67,5 +67,8 @@ class Module(object):
         return self.__templete.format_templet(self.__params)
 
     def makedata(self):
+        # for each in self.__data:
+        #     print(each, self.__data[each], self.__data[each].dtype)
         import json
-        return json.dumps(self.__data,ensure_ascii=False)
+        from common.MyEncoder import MyEncoder
+        return json.dumps(dict(self.__data),ensure_ascii=False, cls=MyEncoder)

@@ -10,12 +10,15 @@ from random import randint
 from datetime import datetime
 from common.ModuleLoader import ModuleLoader
 from common.DataLoader import DataLoader
+from common import config
+from common.JobController import JobController
 import json
-import pdfkit
 import warnings
+import psutil
 
 warnings.filterwarnings('ignore')
 module_list = ["module_details", "module_dataanalize", "module_hotstation", "module_inout_analize", "module_jamanalize",
+# module_list = ["module_dataanalize", "module_hotstation", "module_inout_analize", "module_jamanalize",
                "module_newuseranalize", "module_peopleflow", "module_ticketrate", "module_ticketway", "module_userstay",
                "module_usertimes", "module_workholi_cmp"]
 
@@ -26,13 +29,30 @@ if __name__ == "__main__":
     # python run.py city start_year-month end_year-month module1 module2 ...
     print('input_params:', sys.argv)
     if len(sys.argv) > 3:
+        info = psutil.virtual_memory()
+        print('Initial', 'Memory cost：', psutil.Process(os.getpid()).memory_info().rss)
+
         city = sys.argv[1]
         start_month = sys.argv[2]
         end_month = sys.argv[3]
         if sys.argv[4] != 'all':
-            modules = ModuleLoader(module_dir, sys.argv[4:]).get_modules()
+            if sys.argv[-1] != 'debug':
+                modules = ModuleLoader(module_dir, sys.argv[4:]).get_modules()
+                debug = False
+                print('debug=False, will use all data.')
+            else:
+                modules = ModuleLoader(module_dir, sys.argv[4:-1]).get_modules()
+                debug = True
+                print('debug=True, will use 100000 data.')
         else:
             modules = ModuleLoader(module_dir, module_list).get_modules()
+            if sys.argv[-1] != 'debug':
+                debug = False
+                print('debug=False, will use all data.')
+            else:
+                debug = True
+                print('debug=True, will use 100000 data.')
+
         # 基础json
         params = {}
         params['city'] = city
@@ -42,27 +62,37 @@ if __name__ == "__main__":
         params['modules'] = sys.argv[4:]
         global_params = {'city': city, 'start': start_month, 'end': end_month, 'datestart': start_month,
                          'dateend': end_month, 'starttime': start_month, 'endtime': end_month,
-                         'date1': start_month, 'date2': end_month, 'modules': sys.argv[4:], 'type':'测试',
+                         'date1': start_month, 'date2': end_month, 'modules': sys.argv[4:], 'type':'测试版本',
                          'Modules': '<br />'.join(sys.argv[4:])}
         # 生成目录名
         today = datetime.now()
         global_params['datetime'] = today.strftime("%Y-%m-%d %H:%M")
         global_params['date'] = today.strftime("%Y-%m-%d")
         filename = '%04d%02d%02d_%06d' % (today.year, today.month, today.day, randint(0, 999999))
-        while os.path.exists('result/' + filename):
+        job = JobController(filename)
+        # 如果这个随机名被用过了
+        while os.path.exists('result/' + filename) or job.insert_db(city, start_month, end_month, global_params['modules']) == -1:
             filename = '%04d%02d%02d_%06d' % (today.year, today.month, today.day, randint(0, 999999))
+            job = JobController(filename)
+        # 创建目录
         os.makedirs('result/' + filename)
         os.makedirs('result/' + filename + '/json')
         os.makedirs('result/' + filename + '/html')
+        # 耗时测试
+        t_data = time.clock()
         # 读数据
-        loader = DataLoader(db_ip='10.109.247.63', db_port=3306, db_user='root', passwd='hadoop', city=city,
-                            start_time=start_month, end_time=end_month, debug=True)
+        loader = DataLoader(db_ip=config.db_ip, db_port=config.db_port, db_user=config.db_user, passwd=config.db_passwd, city=city,
+                            start_time=start_month, end_time=end_month, debug=debug)
         with open('result/' + filename + '/json/module_basic.json', 'w', encoding='utf-8') as outf:
             json.dump(params, outf, ensure_ascii=False)
-
         # 进行分析
         df = loader.read_all()
         print('load data success.')
+        print('load data %d rows, cost: %.2f s'%(df.shape[0], time.clock() - t_data))
+
+        info = psutil.virtual_memory()
+        print('After read', 'Memory cost：', psutil.Process(os.getpid()).memory_info().rss)
+
         gc.collect()
         # 站点编号信息
         global_params['M0_6'], global_params['M0_7'], global_params['M0_8'] = loader.get_station_info()
@@ -93,5 +123,6 @@ if __name__ == "__main__":
         # config = pdfkit.configuration(wkhtmltopdf=r'C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.exe')
         # pdfkit.from_file('result/'+ filename + '/html/index.html', 'result/' + filename + '/html/index.pdf', configuration=config)
         print('job finished. Save to result/' + filename)
+        job.update_status(1)
     else:
         print('args not enough.exit.')

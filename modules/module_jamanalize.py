@@ -89,5 +89,6 @@ class Module(object):
 
     def makedata(self):
         import json
-        return json.dumps(self.__data,ensure_ascii=False)
+        from common.MyEncoder import MyEncoder
+        return json.dumps(dict(self.__data), ensure_ascii=False, cls=MyEncoder)
         # return ''

@@ -570,4 +570,5 @@ class Module(object):
         return self.__templete.format_templet(self.__params)
 
     def makedata(self):
-        return json.dumps(self.__data, ensure_ascii=False)
+        from common.MyEncoder import MyEncoder
+        return json.dumps(dict(self.__data), ensure_ascii=False, cls=MyEncoder)
