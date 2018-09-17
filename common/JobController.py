@@ -52,8 +52,19 @@ class JobController(object):
             print('can not find job', self.__job_code)
             return -1
 
+    @staticmethod
+    def get_all_jobs():
+        from common import config
+        conn = pymysql.connect(host=config.db_ip, user=config.db_user, password=config.db_passwd, database="report",
+                               port=config.db_port, charset='utf8', cursorclass=pymysql.cursors.DictCursor)
+        sql = "SELECT * FROM job"
+        cur = conn.cursor()
+        cur.execute(sql)
+        ret = cur.fetchall()
+        return ret
+
 # if __name__ == '__main__':
-    # j = JobController('20180911_111455')
-    # j.insert_db('广州','2017-02','2017-03',['all'], 0)
-    # j.update_status(3)# 3 for test.
-    # print(j.get_job_info())
+#     j = JobController('20180911_369635')
+#     j.insert_db('广州','2017-02','2017-03',['all'], 0)
+#     # j.update_status(3)# 3 for test.
+#     print(j.get_job_info())
