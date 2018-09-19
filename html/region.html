@@ -34,7 +34,7 @@
             padding-bottom: 10px;
             padding-left: 130px;
         }
-        .span_display{
+        .span_display {
             display: flex;
             flex-wrap: wrap;
         }
@@ -43,6 +43,15 @@
             margin-right: 10px;
         }
         .btn_hide { display: none; }
+        .btn-default:focus { outline: 0; }
+        .btn-default::-moz-focus-inner { border-color: transparent; }
+        table th,td {
+            text-align: center;
+        }
+        .mfoot {
+          display: flex;
+          justify-content: center;
+        }
     </style>
   </head>
   <body>
@@ -81,15 +90,15 @@
                       <div class="circle blue-bg margin-right-15"></div>
                       <div class="label_font">城市</div>
                       <div class="templatemo-inline-block margin_left_60">
-                        <input type="radio" name="radio" id="gz" value="" checked>
+                        <input type="radio" name="radio" id="gz" value="广州" checked>
                         <label for="gz" class="font-weight-400"><span></span>广州</label>
                       </div>
                       <div class="templatemo-inline-block margin_left_60">
-                        <input type="radio" name="radio" id="qd" value="">
+                        <input type="radio" name="radio" id="qd" value="青岛">
                         <label for="qd" class="font-weight-400"><span></span>青岛</label>
                       </div>
                         <div class="templatemo-inline-block margin_left_60">
-                        <input type="radio" name="radio" id="nn" value="">
+                        <input type="radio" name="radio" id="nn" value="南宁">
                         <label for="nn" class="font-weight-400"><span></span>南宁</label>
                       </div>
                     </div>
@@ -124,9 +133,9 @@
                         <div class="label_font">分析业务</div>
                         <div class="col-lg-5 col-md-5 form-group" style="margin-left:20px">
                           <select id="business" class="form-control">
-                            <option value="single">单程票</option>
-                            <option value="pay_last">先享后付</option>
-                            <option value="pay_first">先付后享</option>
+                            <option value="单程票">单程票</option>
+                            <option value="先享后付">先享后付</option>
+                            <option value="先付后享">先付后享</option>
                           </select>
                         </div>
                     </div>
@@ -137,8 +146,8 @@
                         <div class="label_font">分析报告</div>
                         <div class="col-lg-5 col-md-5 form-group" style="margin-left:20px">
                           <select id="repo_select" class="form-control">
-                            <option value="basic_repo">基础分析报告</option>
-                            <option value="user_repo">用户分析报告</option>
+                            <option value="基础">基础分析报告</option>
+                            <option value="用户">用户分析报告</option>
                           </select>
                         </div>
                     </div>
@@ -148,26 +157,65 @@
                         <div class="circle blue-bg margin-right-15"></div>
                         <div class="label_font">分析模块</div>
                         <div id="b_repo" class="col-md-9 span_display" style="margin-left:20px">
-                            <button type="button" class="btn btn-default margin_10">整体数据统计</button>
-                            <button type="button" class="btn btn-default margin_10">进出站客流分析</button>
-                            <button type="button" class="btn btn-default margin_10">客流高峰期分析</button>
-                            <button type="button" class="btn btn-default margin_10">购票方式分析</button>
-                            <button type="button" class="btn btn-default margin_10">购票转化率分析</button>
-                            <button type="button" class="btn btn-default margin_10">热门站点线路分析</button>
-                            <button type="button" class="btn btn-default margin_10">上下班高峰期拥堵路段分析</button>
-                            <button type="button" class="btn btn-default margin_10">工作日/节假日客流对比分析</button>
+                            <button type="button" class="btn btn-default margin_10" value="0">整体数据统计</button>
+                            <button type="button" class="btn btn-default margin_10" value="1">进出站客流分析</button>
+                            <button type="button" class="btn btn-default margin_10" value="2">客流高峰期分析</button>
+                            <button type="button" class="btn btn-default margin_10" value="3">购票方式分析</button>
+                            <button type="button" class="btn btn-default margin_10" value="4">购票转化率分析</button>
+                            <button type="button" class="btn btn-default margin_10" value="5">热门站点线路分析</button>
+                            <button type="button" class="btn btn-default margin_10" value="6">上下班高峰期拥堵路段分析</button>
+                            <button type="button" class="btn btn-default margin_10" value="7">工作日/节假日客流对比分析</button>
                         </div>
                         <div id="u_repo" class="col-md-9 span_display btn_hide" style="margin-left:20px">
-                            <button type="button" class="btn btn-default margin_10">新增用户统计分析</button>
-                            <button type="button" class="btn btn-default margin_10">用户使用次数统计</button>
-                            <button type="button" class="btn btn-default margin_10">用户留存情况分析</button>
-                            <button type="button" class="btn btn-default margin_10">用户使用详情统计</button>
-                            <button type="button" class="btn btn-default margin_10">周末新增用户行为模式分析</button>
+                            <button type="button" class="btn btn-default margin_10" value="8">新增用户统计分析</button>
+                            <button type="button" class="btn btn-default margin_10" value="9">用户使用次数统计</button>
+                            <button type="button" class="btn btn-default margin_10" value="10">用户留存情况分析</button>
+                            <button type="button" class="btn btn-default margin_10" value="11">用户使用详情统计</button>
                         </div>
                     </div>
                   </div>
                   <div class="form-group">
-                    <button id="submit" type="submit" class="templatemo-blue-button">提交</button>
+                    <button id="submit" type="button" class="templatemo-blue-button">提交</button>
+                    <button id="read" type="button" class="templatemo-white-button" style="margin-left: 50px">读取任务状态</button>
+                  </div>
+                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h5 class="modal-title" id="myModalLabel">任务状态</h5>
+                            </div>
+                            <div class="modal-body" id="modal_content">
+                              <table class="table table-hover">
+                                 <thead>
+                                    <tr>
+                                       <th>任务编号</th>
+                                       <th>创建时间</th>
+                                       <th>分析模块</th>
+                                       <th>结果查询</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    <tr>
+                                       <td>20180906_602193</td>
+                                       <td>2018-09-16 08:00:23</td>
+                                       <td>全部模块分析</td>
+                                       <td><a href="http://10.108.120.225:5000/20180906_602193/html/index.htm">点此查看</a></td>
+                                    </tr>
+                                    <tr>
+                                       <td>20180906_602193</td>
+                                       <td>2018-09-16 08:00:23</td>
+                                       <td>全部模块分析</td>
+                                       <td><a href="http://10.108.120.225:5000/20180906_602193/html/index.htm">点此查看</a></td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                            </div>
+                            <div class="modal-footer mfoot">
+                                <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">关闭</button>
+                            </div>
+                          </div><!-- /.modal-content -->
+                        </div><!-- /.modal -->
                   </div>
                 </form>
               </div>
@@ -207,10 +255,10 @@
             var arr = new Array();
             $("#repo_select").change(function(){
                 var options = $("#repo_select").val();
-                if(options == "basic_repo"){
+                if(options == "基础"){
                     $("#b_repo").css("display","flex");
                     $("#u_repo").css("display","none");
-                }else if(options == "user_repo"){
+                }else if(options == "用户"){
                     $("#u_repo").css("display","flex");
                     $("#b_repo").css("display","none");
                 }
@@ -218,10 +266,10 @@
             $(".btn").click(function(){
                 if($(this).hasClass("btn-default")){
                     $(this).toggleClass("btn-info");
-                    arr.push();  //todo
+                    arr.push($(this).val());
                 }else if($(this).hasClass("btn-info")){
                     $(this).toggleClass("btn-default");
-                    var index = arr.indexOf("");//todo
+                    var index = arr.indexOf($(this).val());
                     if(index>-1){
                         arr.splice(index, 1);
                     }
@@ -233,7 +281,56 @@
                 var end_time = $("#time_end").val();
                 var business = $("#business").val();
                 var repo = $("#repo_select").val();
-
+                var module1 = "";
+                if(arr.length>0){
+                  for(var i=0;i<arr.length-1;i++){
+                    module1=module1+arr[i]+"+";
+                  }
+                  module1=module1+arr[arr.length-1];
+                }
+                var start1 = start_time.split("-");
+                var end1 = end_time.split("-");
+                if((start1[0]<=end1[0])&&(start1[1]<=end1[1])&&(module1!="")){
+                  $.ajax({
+                      type: 'POST',
+                      url: 'http://10.108.120.225:5000/submit',
+                      data:{
+                        'city' : city,
+                        'start': start_time,
+                        'end': end_time,
+                        'job': business,
+                        'type': repo,
+                        'modules': module1
+                      },
+                      success: function (data) {
+                          console.log(data);
+                          if(data.success==1){
+                            alert(data.message);
+                          }
+                      }
+                  });
+                }else if(module1==""){
+                  alert("请选择分析模块！");
+                }else{
+                  alert("起止时间不正确！");
+                }
+            });
+            $("#read").click(function(){
+                $.ajax({
+                  type: 'GET',
+                  url: 'http://10.108.120.225:5000/getjobs',
+                  success: function(data){
+                    console.log(data);
+                    $('#myModal').on('show.bs.modal', function(e){
+                        $(this).css('display', 'block');
+                        var modalHeight=$(window).height() / 2 - $('#myModal .modal-dialog').height() / 2;
+                        $(this).find('.modal-dialog').css({
+                            'margin-top': modalHeight
+                        });
+                    });
+                    $('#myModal').modal();
+                  }
+                });
             })
         });
     </script>
