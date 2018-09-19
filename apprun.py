@@ -9,16 +9,17 @@
 
 from flask import Flask
 from flask import request
+from flask import render_template
 import json
 import datetime
 import os
 from common.JobController import JobController
 app = Flask(__name__, static_url_path='/result',static_folder='result')
-
+# dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "html")
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    return '<h1>Home</h1>'
+    return render_template("html/region.html")
 
 
 @app.route('/submit', methods=['POST'])
