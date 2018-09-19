@@ -36,7 +36,7 @@ def submit():
             return json.dumps({'success':0,'message':'Wrong Parameters!'})
     if ret['city'] not in ['广州','青岛','南宁']:
         return json.dumps({'success': 0, 'message': 'Wrong City!'})
-    if datetime.datetime.strptime(ret['start'],'%m-%d') >= datetime.datetime.strptime(ret['end'],'%m-%d'):
+    if datetime.datetime.strptime(ret['start'],'%Y-%m') >= datetime.datetime.strptime(ret['end'],'%Y-%m'):
         return json.dumps({'success': 0, 'message': 'Wrong Start or End!'})
     if ret['job'] not in ['单程票']:
         return json.dumps({'success': 0, 'message': 'Job not supported now!'})
