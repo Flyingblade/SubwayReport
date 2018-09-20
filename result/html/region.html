@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Subway Data</title>
+    <meta name="description" content="">
+    <meta name="author" content="templatemo">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700' rel='stylesheet' type='text/css'>
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/templatemo-style.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <style>
+        .templatemo-site-header{height:27px}
+        .row_display{
+          display: flex;
+          align-items: center;
+        }
+        .label_font{
+          font-size: 1.2em;
+          font-weight: bold;
+        }
+        .form_center{
+          display: flex;
+          justify-content: center;
+        }
+        .margin_left_60{
+            margin-left: 60px;
+        }
+        .margin-30 { margin: 30px; }
+        .padding-form {
+            padding-bottom: 10px;
+            padding-left: 130px;
+        }
+        .span_display {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .span_display .margin_10 {
+            margin-bottom: 10px;
+            margin-right: 10px;
+        }
+        .btn_hide { display: none; }
+        .btn-default:focus { outline: 0; }
+        .btn-default::-moz-focus-inner { border-color: transparent; }
+        table th,td {
+            text-align: center;
+        }
+        .mfoot {
+          display: flex;
+          justify-content: center;
+        }
+    </style>
+  </head>
+  <body>
+    <!-- Main content -->
+    <div class="templatemo-content col-1">
+      <div class="templatemo-top-nav-container">
+        <div class="row">
+          <nav class="templatemo-top-nav col-lg-6 col-md-12">
+                <ul class="text-uppercase">
+                  <li><a href="guangzhou.html">广州</a></li>
+                  <li><a href="changsha.html">长沙</a></li>
+                  <li><a href="region.html" class="active">分析报告</a></li>
+               </ul>
+          </nav>
+               <ul class="nav navbar-top-links navbar-right">
+                      <a href="#"><i class="fa fa-facebook-official fa-lg" aria-hidden="true" style="margin-right:20px;color:black"></i></a>
+                      <a href="#"><i class="fa fa-twitter-square fa-lg" aria-hidden="true" style="margin-right:20px;color:black"></i></a>
+                      <a href="#"><i class="fa fa-wechat fa-lg" aria-hidden="true" style="margin-right:20px;color:black"></i></a>
+                      <a href="#"><i class="fa fa-weibo fa-lg" aria-hidden="true" style="margin-right:20px;color:black"></i></a>
+               </ul>
+        </div>
+      </div>
+
+      <div class="templatemo-content-container">
+         <div class="form_center">
+          <h2 style="color:white">定制地铁数据分析报告</h2>
+         </div>
+
+         <center>
+         <div style="width: 800px;margin-top: 20px;">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <form class="templatemo-login-form margin-30">
+                  <div class="form-group padding-form">
+                    <div class="row_display">
+                      <div class="circle blue-bg margin-right-15"></div>
+                      <div class="label_font">城市</div>
+                      <div class="templatemo-inline-block margin_left_60">
+                        <input type="radio" name="radio" id="gz" value="广州" checked>
+                        <label for="gz" class="font-weight-400"><span></span>广州</label>
+                      </div>
+                      <div class="templatemo-inline-block margin_left_60">
+                        <input type="radio" name="radio" id="qd" value="青岛">
+                        <label for="qd" class="font-weight-400"><span></span>青岛</label>
+                      </div>
+                        <div class="templatemo-inline-block margin_left_60">
+                        <input type="radio" name="radio" id="nn" value="南宁">
+                        <label for="nn" class="font-weight-400"><span></span>南宁</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group padding-form">
+                    <div class="row_display">
+                        <div class="circle orange-bg margin-right-15"></div>
+                        <div class="label_font">起始时间</div>
+                        <div class="col-md-5 form-group" style="margin-left:20px">
+                            <div class="input-group date form_date" data-date-format="yyyy-mm-dd">
+                                <input id="time_start" class="form-control" size="16" type="text" value="2017-03" readonly>
+                                <span class="input-group-addon"><span class="fa fa-calendar" id="timepicker1"></span></span>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="form-group padding-form">
+                    <div class="row_display">
+                        <div class="circle green-bg margin-right-15"></div>
+                        <div class="label_font">结束时间</div>
+                        <div class="col-md-5 form-group" style="margin-left:20px">
+                            <div class="input-group date form_date" data-date-format="yyyy-mm-dd">
+                                <input id="time_end" class="form-control" size="16" type="text" value="2017-04" readonly>
+                                <span class="input-group-addon"><span class="fa fa-calendar" id="timepicker2"></span></span>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="form-group padding-form">
+                    <div class="row_display">
+                        <div class="circle pink-bg margin-right-15"></div>
+                        <div class="label_font">分析业务</div>
+                        <div class="col-lg-5 col-md-5 form-group" style="margin-left:20px">
+                          <select id="business" class="form-control">
+                            <option value="单程票">单程票</option>
+                            <option value="先享后付">先享后付</option>
+                            <option value="先付后享">先付后享</option>
+                          </select>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="form-group padding-form">
+                    <div class="row_display">
+                        <div class="circle yellow-bg margin-right-15"></div>
+                        <div class="label_font">分析报告</div>
+                        <div class="col-lg-5 col-md-5 form-group" style="margin-left:20px">
+                          <select id="repo_select" class="form-control">
+                            <option value="基础">基础分析报告</option>
+                            <option value="用户">用户分析报告</option>
+                          </select>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="form-group padding-form">
+                    <div class="row_display">
+                        <div class="circle blue-bg margin-right-15"></div>
+                        <div class="label_font">分析模块</div>
+                        <div id="b_repo" class="col-md-9 span_display" style="margin-left:20px">
+                            <button type="button" class="btn btn-default margin_10" value="0">整体数据统计</button>
+                            <button type="button" class="btn btn-default margin_10" value="1">进出站客流分析</button>
+                            <button type="button" class="btn btn-default margin_10" value="2">客流高峰期分析</button>
+                            <button type="button" class="btn btn-default margin_10" value="3">购票方式分析</button>
+                            <button type="button" class="btn btn-default margin_10" value="4">购票转化率分析</button>
+                            <button type="button" class="btn btn-default margin_10" value="5">热门站点线路分析</button>
+                            <button type="button" class="btn btn-default margin_10" value="6">上下班高峰期拥堵路段分析</button>
+                            <button type="button" class="btn btn-default margin_10" value="7">工作日/节假日客流对比分析</button>
+                        </div>
+                        <div id="u_repo" class="col-md-9 span_display btn_hide" style="margin-left:20px">
+                            <button type="button" class="btn btn-default margin_10" value="8">新增用户统计分析</button>
+                            <button type="button" class="btn btn-default margin_10" value="9">用户使用次数统计</button>
+                            <button type="button" class="btn btn-default margin_10" value="10">用户留存情况分析</button>
+                            <button type="button" class="btn btn-default margin_10" value="11">用户使用详情统计</button>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <button id="submit" type="button" class="templatemo-blue-button">提交</button>
+                    <button id="read" type="button" class="templatemo-white-button" style="margin-left: 50px">读取任务状态</button>
+                  </div>
+                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h5 class="modal-title" id="myModalLabel">任务状态</h5>
+                            </div>
+                            <div class="modal-body" id="modal_content">
+                              <table id="task_table" class="table table-hover">
+                                 <thead>
+                                    <tr>
+                                       <th>任务编号</th>
+                                       <th>创建时间</th>
+                                       <th>分析模块</th>
+                                       <th>结果查询</th>
+                                    </tr>
+                                 </thead>
+                              </table>
+                            </div>
+                            <div class="modal-footer mfoot">
+                                <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">关闭</button>
+                            </div>
+                          </div><!-- /.modal-content -->
+                        </div><!-- /.modal -->
+                  </div>
+                </form>
+              </div>
+            </div>
+         </div>
+         </center>
+
+         <center>
+            <footer>
+              <p style="color:white">Copyright &copy; 2084 Company Name
+              | Designed by <a href="http://www.templatemo.com" target="_parent">templatemo</a></p>
+            </footer>
+         </center>
+      </div>
+    </div>
+    <!-- JS -->
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="js/echarts.js"></script>
+    <script src="js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
+    <script src="js/jquery-migrate-1.2.1.min.js"></script> <!--  jQuery Migrate Plugin -->
+    <script type="text/javascript" src="js/templatemo-script.js"></script>      <!-- Templatemo Script -->
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+    <script type="text/javascript">
+        $('.form_date').datetimepicker({
+             language: 'zh-CN',
+             format: 'yyyy-mm',
+             weekStart: 1,
+             autoclose: true,
+             startView: 3,
+             minView: 3,
+             forceParse: false,
+        });
+        $(document).ready(function(){
+            var base_url = "http://127.0.0.1:5000/";
+            var arr = new Array();
+            $("#repo_select").change(function(){
+                var options = $("#repo_select").val();
+                if(options == "基础"){
+                    $("#b_repo").css("display","flex");
+                    $("#u_repo").css("display","none");
+                }else if(options == "用户"){
+                    $("#u_repo").css("display","flex");
+                    $("#b_repo").css("display","none");
+                }
+            });
+            $(".btn").click(function(){
+                if($(this).hasClass("btn-default")){
+                    $(this).toggleClass("btn-info");
+                    arr.push($(this).val());
+                }else if($(this).hasClass("btn-info")){
+                    $(this).toggleClass("btn-default");
+                    var index = arr.indexOf($(this).val());
+                    if(index>-1){
+                        arr.splice(index, 1);
+                    }
+                }
+            });
+            $("#submit").click(function(){
+                var city = $("input[type='radio']:checked").val();
+                var start_time = $("#time_start").val();
+                var end_time = $("#time_end").val();
+                var business = $("#business").val();
+                var repo = $("#repo_select").val();
+                var module1 = "";
+                if(arr.length>0){
+                  for(var i=0;i<arr.length-1;i++){
+                    module1=module1+arr[i]+"+";
+                  }
+                  module1=module1+arr[arr.length-1];
+                }
+                var start1 = start_time.split("-");
+                var end1 = end_time.split("-");
+                if((start1[0]<=end1[0])&&(start1[1]<end1[1])&&(module1!="")){
+                  $.ajax({
+                      type: 'POST',
+                      url: base_url + 'submit',
+                      data:{
+                        'city' : city,
+                        'start': start_time,
+                        'end': end_time,
+                        'job': business,
+                        'type': repo,
+                        'modules': module1
+                      },
+                      success: function (data) {
+                          console.log(data);
+                          if(data.success==1){
+                            alert(data.message);
+                          }
+                      }
+                  });
+                }else if(module1==""){
+                  alert("请选择分析模块！");
+                }else{
+                  alert("起止时间不正确！");
+                }
+            });
+            $("#read").click(function(){
+                $.ajax({
+                  type: 'GET',
+                  url: base_url + 'getjobs',
+                  success: function(data){
+                    var json_data = JSON.parse(data);
+                    console.log(json_data);
+                    var html = "<tbody>";
+                    for(var i=0; i<json_data.length; i++){
+                        if(json_data[i].modules.length>1){
+                            html = html + "<tr><td rowspan='"+ json_data[i].modules.length + "'>"
+                                + json_data[i].job_id + "</td><td rowspan='"+ json_data[i].modules.length + "'>"
+                                + json_data[i].insert_time + "</td><td>"
+                                + json_data[i].modules[0] + "</td><td rowspan='"+ json_data[i].modules.length + "'><a href='"
+                                + base_url + json_data[i].result_path + "'>点此查看</a></td></tr>";
+                            for(var j=1; j<json_data[i].modules.length; j++){
+                                html = html + "<tr><td>" + json_data[i].modules[j] + "</td></tr>";
+                            }
+                        }else {
+                            html = html + "<tr><td>" + json_data[i].job_id + "</td><td>" + json_data[i].insert_time + "</td><td>"
+                                + json_data[i].modules[0] + "</td><td><a href='" + base_url + json_data[i].result_path + "'>点此查看</a></td></tr>";
+                        }
+                    }
+                    html = html + "</tbody>";
+                    $("#task_table").append(html);
+                    $('#myModal').on('show.bs.modal', function(e){
+                        $(this).css('display', 'block');
+                        var modalHeight=$(window).height() / 2 - $('#myModal .modal-dialog').height() / 2;
+                        $(this).find('.modal-dialog').css({
+                            'margin-top': modalHeight
+                        });
+                    });
+                    $('#myModal').modal();
+                  }
+                });
+            })
+        });
+    </script>
+
+  </body>
+</html>

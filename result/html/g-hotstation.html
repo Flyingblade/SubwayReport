@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+    <title>Subway Data</title>
+    <meta name="description" content="">
+    <meta name="author" content="templatemo">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700' rel='stylesheet' type='text/css'>
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/templatemo-style.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="js/echarts.js"></script>
+    <style>
+        .templatemo-site-header{
+            height:27px
+        }
+        #r-result {
+            font-size: 14px;
+            line-height: 20px;
+        }
+    </style>
+  </head>
+  <body>  
+    <!-- Left column -->
+    <div class="templatemo-flex-row">
+      <div class="templatemo-sidebar">
+        <header class="templatemo-site-header">
+          <i class="fa fa-subway fa-2x" aria-hidden="true" style="color:white;margin-right:20px"></i><h1 style="margin-bottom:15px">SUBWAY</h1>
+        </header>
+        <div class="profile-photo-container">
+          <img src="images/bg.jpeg" alt="Profile Photo" class="img-responsive">  
+          <div class="profile-photo-overlay"></div>
+        </div>      
+        <!-- Search box -->
+        <form class="templatemo-search-form" role="search">
+          <div class="input-group">
+              <button type="submit" class="fa fa-search"></button>
+              <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">           
+          </div>
+        </form>
+        <div class="mobile-menu-icon">
+            <i class="fa fa-bars"></i>
+        </div>
+        <nav class="templatemo-left-nav">          
+          <ul>
+            <li><a href="guangzhou.html"><i class="fa fa-home fa-fw fa-lg"></i>主页</a></li>
+            <li><a href="g-inandout.html"><i class="fa fa-area-chart fa-lg"></i>进出站客流趋势</a></li>
+            <li><a href="g-stations.html"><i class="fa fa-bar-chart fa-lg"></i>进出站客流对比</a></li>
+            <li><a href="g-lines.html"><i class="fa fa-line-chart fa-lg"></i>地铁线路日客流</a></li>
+            <li><a href="g-startend.html"><i class="fa fa-dot-circle-o fa-lg"></i>起终点客流分析</a></li>       
+            <li><a href="g-hotstation.html" class="active"><i class="fa fa-fire fa-lg"></i>热门站点及线路展示</a></li>    
+            <li><a href="g-ticket.html"><i class="fa fa-pie-chart fa-lg"></i>购票方式</a></li>           
+            <li><a href="g-routes.html"><i class="fa fa-street-view fa-lg"></i>乘客群体画像</a></li>
+            <li><a href="index.html" target="_blank"><i class="fa fa-clock-o fa-lg" ></i>实时客流预警</a></li>
+            <li><a href="mailto:somebody@qq.com"><i class="fa fa-envelope fa-lg"></i>联系我们</a></li>
+          </ul>  
+        </nav>
+      </div>
+        
+      <!-- Main content --> 
+      <div class="templatemo-content col-1" style="background:#2F4F4F">
+        <div class="templatemo-top-nav-container">
+          <div class="row">
+            <nav class="templatemo-top-nav col-lg-6 col-md-12">
+                  <ul class="text-uppercase">
+                    <li><a href="guangzhou.html" class="active">广州</a></li>
+                    <li><a href="changsha.html">长沙</a></li>
+                    <li><a href="region.html">分析报告</a></li>
+                 </ul>
+            </nav>
+                 <ul class="nav navbar-top-links navbar-right">
+                        <a href="#"><i class="fa fa-facebook-official fa-lg" aria-hidden="true" style="margin-right:20px;color:black"></i></a>
+                        <a href="#"><i class="fa fa-twitter-square fa-lg" aria-hidden="true" style="margin-right:20px;color:black"></i></a>
+                        <a href="#"><i class="fa fa-wechat fa-lg" aria-hidden="true" style="margin-right:20px;color:black"></i></a>
+                        <a href="#"><i class="fa fa-weibo fa-lg" aria-hidden="true" style="margin-right:20px;color:black"></i></a>
+                 </ul>
+          </div>
+        </div>
+          
+        <div class="templatemo-content-container">
+           <div>
+            <h1 style="color:white">Subway Data</h1><br/>
+            <h4 style="color:white">热门站点及线路展示<hr></h4>
+           </div>
+               
+           <div class="col-md-12">
+             <div class="row">
+                <div class="form-group col-md-4" style="margin-top:15px">
+                    <label for="dtp_input2" class="col-md-3 control-label" style="color:white;line-height:30px">日期：</label>
+                    <div class="input-group date form_date col-md-7" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                    <input id="time" class="form-control" size="16" type="text" value="2017-03-10" readonly>
+                    <span class="input-group-addon"><span class="fa fa-calendar" style="color:white"></span></span>
+                    </div>
+                </div>
+                <div class="btn-group" style="margin-top:15px;margin-left:20px">
+				<button class="btn btn-primary" id="num">TOP n</button>
+                <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span class="caret"></span></button>
+				<ul class="dropdown-menu">
+					    <li><a id="top-1">1</a></li>
+                        <li><a id="top-2">2</a></li>
+                        <li><a id="top-3">3</a></li>
+                        <li><a id="top-4">4</a></li>
+                        <li><a id="top-5">5</a></li>
+                        <li><a id="top-6">6</a></li>
+                        <li><a id="top-7">7</a></li>
+                        <li><a id="top-8">8</a></li>
+                        <li><a id="top-9">9</a></li>
+                        <li><a id="top-10">10</a></li>
+                        <li><a id="top-11">11</a></li>
+                        <li><a id="top-12">12</a></li>
+                        <li><a id="top-13">13</a></li>
+                        <li><a id="top-14">14</a></li>
+                        <li><a id="top-15">15</a></li>
+                        <li><a id="top-16">16</a></li>
+                        <li><a id="top-17">17</a></li>
+                        <li><a id="top-18">18</a></li>
+                        <li><a id="top-19">19</a></li>
+                        <li><a id="top-20">20</a></li>
+				</ul>
+			    </div>
+                <input type="button" id="submit" class="btn btn-primary" style="margin-top:15px;margin-left:50px" value="热门站点/线路展示" onclick="getdata()"/> 
+             </div>
+               <div class="row" style="margin-bottom:100px">
+                <div id="l-map" class="col-md-10" style="min-width:350px;width:85%;height:600px;float:left;margin-top:15px"></div>
+                <div id="r-result" class="col-md-2" style="min-width:140px;width:15%;color:white;margin-top:15px"></div>
+               </div>
+           </div>
+        </div> 
+          <center>
+          <footer>
+            <p style="color:white">Copyright &copy; 2084 Company Name 
+            | Designed by <a href="http://www.templatemo.com" target="_parent">templatemo</a></p>
+          </footer>         
+          </center>
+      </div>
+    </div>        
+  </body>
+</html>  
+      <!-- JS -->
+    <script src="js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
+    <script src="js/jquery-migrate-1.2.1.min.js"></script> <!--  jQuery Migrate Plugin -->
+    <script type="text/javascript" src="js/templatemo-script.js"></script>      <!-- Templatemo Script -->
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+    <script type="text/javascript">
+        $('.form_date').datetimepicker({
+            language:  'zh-CN',
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('a[id*="top"]').click(function(){
+               $('#num').text("TOP "+$(this).text());    
+            });
+        });
+    </script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=5r5Yuqvnb9NQGoiGLszs9SvMT32r1bBn"></script>
+    <script type="text/javascript">
+                var map = new BMap.Map("l-map");
+                map.addControl(new BMap.NavigationControl());               // 添加平移缩放控件
+                map.addControl(new BMap.ScaleControl());                    // 添加比例尺控件
+                map.addControl(new BMap.OverviewMapControl());              //添加缩略地图控件
+                map.enableScrollWheelZoom();                            //启用滚轮放大缩小
+                map.addControl(new BMap.MapTypeControl());          //添加地图类型控件
+                map.disable3DBuilding();
+                map.centerAndZoom("广州", 11);
+                map.enableScrollWheelZoom(true);
+                map.setMapStyle({style:'grayscale'});
+                var starts = [];//热门线路起点站
+                var ends = [];//热门线路终点站
+                var adds = [];//热门站点
+                var index = 0;
+                var myGeo = new BMap.Geocoder();
+                var JUD = 0;
+        var transit = new BMap.TransitRoute(map, {
+            renderOptions: {map: map}, onSearchComplete: function (result) {
+                if (transit.getStatus() == BMAP_STATUS_SUCCESS) {
+                    var firstPlan = result.getPlan(0);
+                    for (var i = 0; i < firstPlan.getNumLines(); i++) {
+                        var line = firstPlan.getLine(i);
+                        map.addOverlay(new BMap.Polyline(line.getPath(),{lineColor: "red"}));
+                    }
+                    if (JUD == 1) {
+                        document.getElementById("r-result").innerHTML += "</br>热门线路:</br>";
+                        for (var j = 0; j < starts.length; j++)
+                            document.getElementById("r-result").innerHTML += j + 1 + ":" + starts[j] + "---" + ends[j] + "</br>";
+                        JUD = 2;
+                    }
+                }
+            }
+        });
+        function getdata(){
+            JUD = 0;
+            index = 0;
+            starts = [];
+            ends = [];
+            adds = [];
+            var topn = $('#num').text();
+            var strs = new Array(); 
+            strs = topn.split(" "); 
+            topn = strs[strs.length-1];
+            var urls = ['http://10.108.120.225:5000/api/top_routes','http://10.108.120.225:5000/api/top_stations'];
+            if($('#time').val().length==0)alert("请选择日期");
+                    else if($('#num').text()=="TOP n")alert("请选择具体排名");
+                    else{ 
+                       $.ajax({
+                        type: 'GET',
+                        url: urls[0],
+                        async:false,
+                        dataType: 'jsonp', //希望服务器返回json格式的数据
+                        data:{  'city' : "广州", 
+                                'date':$('#time').val(),
+                                'topn':topn    
+                             },
+                        jsonp: "callback",
+                        jsonpCallback: "successCallback",//回调方法
+                        success: function (data) {
+                            //console.log(data);
+                            $('.abc').remove();
+                            for(var i=0;i<data.data.length;i++)
+                              { starts.push(data.data[i].StationStart);
+                                ends.push(data.data[i].StationEnd); }
+                            $.ajax({
+                            type: 'GET',
+                            url: urls[1],
+                            dataType: 'jsonp', //希望服务器返回json格式的数据
+                            data:{  'city' : "广州", 
+                                    'date':$('#time').val(),
+                                    'topn':topn    
+                                 },
+                            jsonp: "callback",
+                            jsonpCallback: "successCallback",//回调方法
+                            success: function (data) {
+                                 for(var i=0;i<data.data.length;i++)
+                                 adds.push(data.data[i].Station);
+                                 bdGEO();
+                            }
+                          });
+                        }
+                      });      
+                    }
+    
+        }
+        function bdGEO() {
+            var add = adds[index];
+            if (JUD == 0) {
+                document.getElementById("r-result").innerHTML = "</br>热门站点:</br>";
+                JUD = 1;
+            }
+            if (adds[index] != null)
+                document.getElementById("r-result").innerHTML += index + 1 + ":" + adds[index] + "</br>";
+                geocodeSearch(add);
+                index++;
+            if (index == adds.length) {
+                for (var j = 0; j < starts.length; j++) 
+                { transit.search(starts[j], ends[j]); }
+            }
+        }
+                        
+        function geocodeSearch(add) {
+            if (index < adds.length) {
+                setTimeout(window.bdGEO, 400);
+            }
+            myGeo.getPoint(add, function (point) {
+                if (point) {
+                    var address = new BMap.Point(point.lng, point.lat);
+                    addMarker(address, index + ":" + add);
+                }
+            }, "广州市");
+        }
+        // 编写自定义函数,创建标注
+        function ComplexCustomOverlay(point, text, mouseoverText) {
+            this._point = point;
+            this._text = text;
+            this._overText = mouseoverText;
+        }
+        ComplexCustomOverlay.prototype = new BMap.Overlay();
+        ComplexCustomOverlay.prototype.initialize = function (map) {
+            this._map = map;
+            var div = this._div = document.createElement("div");
+            div.style.position = "absolute";
+            div.style.zIndex = BMap.Overlay.getZIndex(this._point.lat);
+            div.style.backgroundColor = "#EE5D5B";
+            div.style.border = "1px solid #BC3B3A";
+            div.style.color = "white";
+            div.style.height = "18px";
+            div.style.padding = "2px";
+            div.style.lineHeight = "18px";
+            div.style.whiteSpace = "nowrap";
+            div.style.MozUserSelect = "none";
+            div.style.fontSize = "12px";
+            div.setAttribute("class","abc");
+            var span = this._span = document.createElement("span");
+            div.appendChild(span);
+            span.appendChild(document.createTextNode(this._text));
+            var that = this;
+            var arrow = this._arrow = document.createElement("div");
+            arrow.style.background = "url(http://map.baidu.com/fwmap/upload/r/map/fwmap/static/house/images/label.png) no-repeat";
+            arrow.style.position = "absolute";
+            arrow.style.width = "11px";
+            arrow.style.height = "10px";
+            arrow.style.top = "22px";
+            arrow.style.left = "10px";
+            arrow.style.overflow = "hidden";
+            div.appendChild(arrow);
+
+            div.onmouseover = function () {
+                this.style.backgroundColor = "#6BADCA";
+                this.style.borderColor = "#0000ff";
+                this.getElementsByTagName("span")[0].innerHTML = that._overText;
+                arrow.style.backgroundPosition = "0px -20px";
+            };
+
+            div.onmouseout = function () {
+                this.style.backgroundColor = "#EE5D5B";
+                this.style.borderColor = "#BC3B3A";
+                this.getElementsByTagName("span")[0].innerHTML = that._text;
+                arrow.style.backgroundPosition = "0px 0px";
+            };
+            map.getPanes().labelPane.appendChild(div);
+            return div;
+        };
+        ComplexCustomOverlay.prototype.draw = function () {
+            var map = this._map;
+            var pixel = map.pointToOverlayPixel(this._point);
+            this._div.style.left = pixel.x - parseInt(this._arrow.style.left) + "px";
+            this._div.style.top = pixel.y - 30 + "px";
+        };
+        function addMarker(point, label) {
+            var myCompOverlay = new ComplexCustomOverlay(point, label, label);
+            map.addOverlay(myCompOverlay);
+        }
+    </script>
+
+

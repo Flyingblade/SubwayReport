@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+    <title>Subway Data</title>
+    <meta name="description" content="">
+    <meta name="author" content="templatemo">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700' rel='stylesheet' type='text/css'>
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/templatemo-style.css" rel="stylesheet">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="js/echarts.js"></script>
+    <style>
+        .templatemo-site-header{height:27px}  
+    </style>
+  </head>
+  <body>  
+    <!-- Left column -->
+    <div class="templatemo-flex-row">
+      <div class="templatemo-sidebar">
+        <header class="templatemo-site-header">
+          <i class="fa fa-subway fa-2x" aria-hidden="true" style="color:white;margin-right:20px"></i><h1 style="margin-bottom:15px">SUBWAY</h1>
+        </header>
+        <div class="profile-photo-container">
+          <img src="images/bg.jpeg" alt="Profile Photo" class="img-responsive">  
+          <div class="profile-photo-overlay"></div>
+        </div>      
+        <!-- Search box -->
+        <form class="templatemo-search-form" role="search">
+          <div class="input-group">
+              <button type="submit" class="fa fa-search"></button>
+              <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">           
+          </div>
+        </form>
+        <div class="mobile-menu-icon">
+            <i class="fa fa-bars"></i>
+        </div>
+        <nav class="templatemo-left-nav">          
+          <ul>
+            <li><a href="changsha.html" class="active"><i class="fa fa-home fa-fw fa-lg"></i>主页</a></li>
+            <li><a href="c-ticket.html"><i class="fa fa-ticket fa-lg"></i>地铁充值</a></li>
+            <li><a href="c-method.html"><i class="fa fa-credit-card fa-lg"></i>用卡类型</a></li>
+            <li><a href="mailto:somebody@qq.com"><i class="fa fa-envelope fa-lg"></i>联系我们</a></li>
+          </ul>  
+        </nav>
+      </div>
+        
+      <!-- Main content --> 
+      <div class="templatemo-content col-1 light-gray-bg" style="background:#2F4F4F">
+        <div class="templatemo-top-nav-container">
+          <div class="row">
+            <nav class="templatemo-top-nav col-lg-6 col-md-12">
+                  <ul class="text-uppercase">
+                    <li><a href="guangzhou.html">广州</a></li>
+                    <li><a href="changsha.html" class="active">长沙</a></li>
+                    <li><a href="region.html">分析报告</a></li>
+                 </ul>
+            </nav>
+                 <ul class="nav navbar-top-links navbar-right">
+                        <a href="#"><i class="fa fa-facebook-official fa-lg" aria-hidden="true" style="margin-right:20px;color:black"></i></a>
+                        <a href="#"><i class="fa fa-twitter-square fa-lg" aria-hidden="true" style="margin-right:20px;color:black"></i></a>
+                        <a href="#"><i class="fa fa-wechat fa-lg" aria-hidden="true" style="margin-right:20px;color:black"></i></a>
+                        <a href="#"><i class="fa fa-weibo fa-lg" aria-hidden="true" style="margin-right:20px;color:black"></i></a>
+                 </ul>
+          </div>
+        </div>
+          
+        <div class="templatemo-content-container" style ="min-height:700px">
+           <div>
+            <h1 style="color:white">Subway Data</h1> 
+           </div>   
+           <div class="col-md-12" style="margin-top:40px">           
+                <div class="templatemo-flex-row">
+                    <div class="templatemo-content-widget white-bg col-1">
+                      <i class="fa fa-times"></i>
+                      <div class="square"></div>
+                      <a href="c-ticket.html">
+                      <h2 class="templatemo-inline-block">地铁充值</h2></a><hr>
+                      <div class="templatemo-flex-row">              
+                          <div id="first" class="col-1" style="width:inherit;height:300px;"></div>
+                      </div>     
+                    </div>
+                    <div class="templatemo-content-widget white-bg col-1">
+                      <i class="fa fa-times"></i>
+                      <div class="square"></div>
+                      <a href="c-method.html">
+                      <h2 class="templatemo-inline-block">用卡类型</h2></a><hr>
+                      <div id="second" class="col-1" style="width:inherit;height:300px;"></div> 
+                    </div>
+                </div>  
+           </div>
+        </div> 
+          
+          <center>
+          <footer>
+            <p style="color:white">Copyright &copy; 2084 Company Name 
+            | Designed by <a href="http://www.templatemo.com" target="_parent">templatemo</a></p>
+          </footer>         
+          </center>         
+        
+      </div>
+    </div>
+    <!-- JS -->
+    <script src="js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
+    <script src="js/jquery-migrate-1.2.1.min.js"></script> <!--  jQuery Migrate Plugin -->
+    <script type="text/javascript" src="js/templatemo-script.js"></script>      <!-- Templatemo Script -->
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                    type: 'GET',
+                    url: 'http://10.108.120.225:5000/api/recharge_day',
+                    dataType: 'jsonp', //希望服务器返回json格式的数据
+                    data:{  'city' : "长沙", 
+                            'time_start':'2017-03-08',
+                            'time_end':'2017-03-20'  
+                         },
+                    jsonp: "callback",
+                    jsonpCallback: "successCallback",//回调方法
+                    success: function (data) {
+                        //console.log(data);
+                        var color = ['#ffb980','#ff715e'];
+                        var date = [];
+                        var order_sum = [];
+                        var order_suc = [];
+                        var recharge_sum = [];
+                        var recharge_suc = [];
+                        for(var i=0;i<data.data.length;i++)
+                            {
+                                var spt = data.data[i].date.split("-");
+                                date.push(spt[1]+"-"+spt[2]);
+                                order_sum.push(data.data[i].order_sum);
+                                order_suc.push(data.data[i].order_suc);
+                                recharge_sum.push(data.data[i].recharge_sum/100);
+                                recharge_suc.push(data.data[i].recharge_suc/100);
+                            }
+                        var option1 = {
+                                baseOption: {
+                                    timeline: {
+                                        axisType: 'category',
+                                        autoPlay: true,
+                                        playInterval: 3000,
+                                        data: ['订单金额','订单数']
+                                    },
+                                    tooltip: {
+                                        trigger: 'axis',
+                                        axisPointer: {type: 'cross'}
+                                    },
+                                    calculable : true,
+                                    grid: {
+                                        top: '25%',
+                                        bottom: '25%',
+                                        left: '15%'
+                                    },
+                                    xAxis: [
+                                        {
+                                            type:'category',
+                                            data:date,
+                                            splitLine: {show: false},
+                                            boundaryGap : false
+                                        }
+                                    ],
+                                    yAxis: {splitArea: {show: true,
+                                                        areaStyle: {color: ['rgba(250,250,250,0.3)','rgba(200,200,200,0)']}}
+                                    },
+                                    series: [
+                                        {
+                                            name: '最大值', 
+                                            type: 'line',
+                                            smooth: true,
+                                            symbol: 'diamond',
+                                            symbolSize: 8,
+                                            markPoint: {
+                                                data: [ {type: 'max',name: '最大值'},
+                                                        {type: 'min',name: '最小值'}
+                                                ]
+                                            },
+                                            itemStyle:{normal:{color: color[0]}},
+                                            label: {normal: {show: true,
+                                                             position: 'bottom'}},
+                                            lineStyle:{normal:{width:3}}
+                                        },
+                                        {       
+                                            name: '最小值', 
+                                            type: 'line',
+                                            smooth: true,
+                                            symbol: 'triangle',
+                                            symbolSize: 8,
+                                            markPoint: {
+                                                data: [
+                                                    {type: 'max', name: '最大值'},
+                                                    {type: 'min', name: '最小值'}
+                                                ]
+                                            },
+                                            itemStyle:{normal:{color: color[1]}},
+                                            label: {normal: {show: true,
+                                                             position: 'bottom'}},
+                                            lineStyle:{normal:{width:3}}
+                                        }
+                                    ]
+                            },
+                                options: [
+                                    {
+                                        title: {
+                                            text: '长沙地铁订单金额走势',
+                                            textStyle:{color:'#2f4f4f'},
+                                            left:'center'
+                                        },
+                                        legend: {
+                                            data:["订单金额","支付金额"],
+                                            top:"25px"
+                                        },
+                                        yAxis: {
+                                            name: "（万元）"
+                                        },
+                                        series: [
+                                            {
+                                                name:"订单金额",
+                                                data: recharge_sum
+                                            },
+                                            {
+                                                name:"支付金额",
+                                                data: recharge_suc
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        title: {
+                                            text: '长沙地铁订单数走势',
+                                            textStyle:{color:'#2f4f4f'},
+                                            left:'center'
+                                        },
+                                        yAxis:{
+                                          name:"（个）"  
+                                        },
+                                        legend: {
+                                            data:["充值订单数","支付订单数"],
+                                            top:"25px"
+                                        },
+                                        series: [
+                                            {
+                                                name:"充值订单数",
+                                                data: order_sum
+                                            },
+                                            {
+                                                name:"支付订单数",
+                                                data: order_suc
+                                            }
+                                        ]
+                                    }
+                                ]
+                        };
+                        $.ajax({
+                            type: 'GET',
+                            url: 'http://10.108.120.225:5000/api/card_type_days',
+                            dataType: 'jsonp', //希望服务器返回json格式的数据
+                            data:{  'city' : "长沙", 
+                                    'time': '2017-03-10' 
+                                 },
+                            jsonp: "callback",
+                            jsonpCallback: "successCallback",//回调方法
+                            success: function (data) {
+                                //console.log(data);
+                                var color = ['#efa18d','#919e8b','#d7ab82','#61a0a8','#cc7e63'];
+                                var cardtype = [];
+                                var nums = [];
+                                var itemstyle = [];
+                                for(var i=0;i<data.data.length;i++)
+                                    {
+                                        cardtype.push(data.data[i].cardtype);
+                                        nums.push(data.data[i].UserCount);
+                                        itemstyle[i] = {normal:{color:color[i]}};
+                                    }
+                                var option2 = {
+                                        title: {
+                                            text: '长沙地铁用卡类型分布',
+                                            textStyle:{color:'#2F4F4F'},
+                                            left:'center'
+                                        },
+                                        legend: {
+                                            x: 'center',
+                                            top: '40px',
+                                            data: cardtype,
+                                        },
+                                        tooltip: {trigger: 'item'},    
+                                        series: [
+                                            {
+                                                name: '用卡类型',
+                                                type: 'pie',
+                                                center: ['50%', '64%'],
+                                                radius: '40%',
+                                                data: [
+                                                    {name: cardtype[0], value: nums[0], itemStyle: itemstyle[0]},
+                                                    {name: cardtype[1], value: nums[1], itemStyle: itemstyle[1]},
+                                                    {name: cardtype[2], value: nums[2], itemStyle: itemstyle[2]},
+                                                    {name: cardtype[3], value: nums[3], itemStyle: itemstyle[3]},
+                                                    {name: cardtype[4], value: nums[4], itemStyle: itemstyle[4]}
+                                                ],
+                                                itemStyle:{normal:{label:{show: true, 
+                                                                          formatter: '{d}%'}} 
+                                                },
+                                                labelLine :{normal: {lineStyle: {show: true}}},
+                                                label: {normal:{textStyle: {fontWeight: 'bold',
+                                                                            fontSize: 14}}}
+                                            }
+                                        ]
+                                    };                        
+                                var Chart2 = echarts.init(document.getElementById('second'));
+                                    Chart2.setOption(option2);   
+                            }
+                        });
+                        var Chart1 = echarts.init(document.getElementById('first'));
+                            Chart1.setOption(option1);
+                    }
+            });
+            window.onresize = function () {
+                Chart1.resize();
+                Chart2.resize();
+            }
+        });
+    </script>
+  </body>
+</html>
