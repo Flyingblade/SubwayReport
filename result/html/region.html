@@ -179,23 +179,40 @@
                     <button id="read" type="button" class="templatemo-white-button" style="margin-left: 50px">读取任务状态</button>
                   </div>
                   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
+                        <div class="modal-dialog" style="width:50%;height:600px;overflow-y:scroll">
                           <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                 <h5 class="modal-title" id="myModalLabel">任务状态</h5>
                             </div>
                             <div class="modal-body" id="modal_content">
-                              <table id="task_table" class="table table-hover">
-                                 <thead>
-                                    <tr>
-                                       <th>任务编号</th>
-                                       <th>创建时间</th>
-                                       <th>分析模块</th>
-                                       <th>结果查询</th>
-                                    </tr>
-                                 </thead>
-                              </table>
+                                <table id="task_table" class="table table-bordered table-responsive">
+                                      <thead>
+                                           <tr>
+                                               <th>任务编号</th>
+                                               <th>创建时间</th>
+                                               <th>分析模块</th>
+                                               <th>结果查询</th>
+                                           </tr>
+                                      </thead>
+                                      <!--<tbody>-->
+                                          <!--<tr>-->
+                                              <!--<td rowspan="4" align="center">1</td>-->
+                                              <!--<td rowspan="4" align="center">2</td>-->
+                                              <!--<td>3</td>-->
+                                              <!--<td rowspan="4" align="center">4</td>-->
+                                          <!--</tr>-->
+                                          <!--<tr>-->
+                                              <!--<td>3</td>-->
+                                          <!--</tr>-->
+                                          <!--<tr>-->
+                                              <!--<td>3</td>-->
+                                          <!--</tr>-->
+                                          <!--<tr>-->
+                                              <!--<td>3</td>-->
+                                          <!--</tr>-->
+                                      <!--</tbody>-->
+                                </table>
                             </div>
                             <div class="modal-footer mfoot">
                                 <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">关闭</button>
@@ -238,7 +255,7 @@
              forceParse: false,
         });
         $(document).ready(function(){
-            var base_url = "http://127.0.0.1:5000/";
+            var base_url = "http://" + document.domain +":5000/";
             var arr = new Array();
             $("#repo_select").change(function(){
                 var options = $("#repo_select").val();
@@ -291,8 +308,8 @@
                       },
                       success: function (data) {
                           console.log(data);
-                          if(data.success==1){
-                            alert(data.message);
+                          if((JSON.parse(data)).success==1){
+                            alert((JSON.parse(data)).message);
                           }
                       }
                   });
