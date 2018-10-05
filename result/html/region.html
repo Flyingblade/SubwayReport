@@ -52,6 +52,28 @@
           display: flex;
           justify-content: center;
         }
+        .span1 {
+        	height: 33px;
+        	border-radius: 5px;
+        	padding: 0 10px;
+        	white-space: nowrap;
+        	line-height: 33px;
+        	text-align: center;
+        	cursor: pointer;
+        	background: #fff;
+        }
+        .span2 {
+        	border: 1px solid #ccc;
+        	color: #000;
+        }
+        .span3 {
+        	border: 1px solid #5bc0de;
+        	background: #5bc0de;
+        	color: #fff;
+        }
+        .span1:hover {
+        	border: 2px solid #5bc0de;
+        }
     </style>
   </head>
   <body>
@@ -157,20 +179,20 @@
                         <div class="circle blue-bg margin-right-15"></div>
                         <div class="label_font">分析模块</div>
                         <div id="b_repo" class="col-md-9 span_display" style="margin-left:20px">
-                            <button type="button" class="btn btn-default margin_10" value="0">整体数据统计</button>
-                            <button type="button" class="btn btn-default margin_10" value="1">进出站客流分析</button>
-                            <button type="button" class="btn btn-default margin_10" value="2">客流高峰期分析</button>
-                            <button type="button" class="btn btn-default margin_10" value="3">购票方式分析</button>
-                            <button type="button" class="btn btn-default margin_10" value="4">购票转化率分析</button>
-                            <button type="button" class="btn btn-default margin_10" value="5">热门站点线路分析</button>
-                            <button type="button" class="btn btn-default margin_10" value="6">上下班高峰期拥堵路段分析</button>
-                            <button type="button" class="btn btn-default margin_10" value="7">工作日/节假日客流对比分析</button>
+                            <span id="00" class="span1 span2 margin_10" data-val="0">整体数据统计</span>
+                            <span id="01" class="span1 span2 margin_10" data-val="1">进出站客流分析</span>
+                            <span id="02" class="span1 span2 margin_10" data-val="2">客流高峰期分析</span>
+                            <span id="03" class="span1 span2 margin_10" data-val="3">购票方式分析</span>
+                            <span id="04" class="span1 span2 margin_10" data-val="4">购票转化率分析</span>
+                            <span id="05" class="span1 span2 margin_10" data-val="5">热门站点线路分析</span>
+                            <span id="06" class="span1 span2 margin_10" data-val="6">上下班高峰期拥堵路段分析</span>
+                            <span id="07" class="span1 span2 margin_10" data-val="7">工作日/节假日客流对比分析</span>
                         </div>
                         <div id="u_repo" class="col-md-9 span_display btn_hide" style="margin-left:20px">
-                            <button type="button" class="btn btn-default margin_10" value="8">新增用户统计分析</button>
-                            <button type="button" class="btn btn-default margin_10" value="9">用户使用次数统计</button>
-                            <button type="button" class="btn btn-default margin_10" value="10">用户留存情况分析</button>
-                            <button type="button" class="btn btn-default margin_10" value="11">用户使用详情统计</button>
+                            <span id="10" class="span1 span2 margin_10" data-val="8">新增用户统计分析</span>
+                            <span id="11" class="span1 span2 margin_10" data-val="9">用户使用次数统计</span>
+                            <span id="12" class="span1 span2 margin_10" data-val="10">用户留存情况分析</span>
+                            <span id="13" class="span1 span2 margin_10" data-val="11">用户使用详情统计</span>
                         </div>
                     </div>
                   </div>
@@ -195,23 +217,6 @@
                                                <th>结果查询</th>
                                            </tr>
                                       </thead>
-                                      <!--<tbody>-->
-                                          <!--<tr>-->
-                                              <!--<td rowspan="4" align="center">1</td>-->
-                                              <!--<td rowspan="4" align="center">2</td>-->
-                                              <!--<td>3</td>-->
-                                              <!--<td rowspan="4" align="center">4</td>-->
-                                          <!--</tr>-->
-                                          <!--<tr>-->
-                                              <!--<td>3</td>-->
-                                          <!--</tr>-->
-                                          <!--<tr>-->
-                                              <!--<td>3</td>-->
-                                          <!--</tr>-->
-                                          <!--<tr>-->
-                                              <!--<td>3</td>-->
-                                          <!--</tr>-->
-                                      <!--</tbody>-->
                                 </table>
                             </div>
                             <div class="modal-footer mfoot">
@@ -256,7 +261,7 @@
         });
         $(document).ready(function(){
             var base_url = "http://" + document.domain +":5000/";
-            var arr = new Array();
+            var obj = { key: "", val: "" };
             $("#repo_select").change(function(){
                 var options = $("#repo_select").val();
                 if(options == "基础"){
@@ -267,16 +272,11 @@
                     $("#b_repo").css("display","none");
                 }
             });
-            $(".btn").click(function(){
-                if($(this).hasClass("btn-default")){
-                    $(this).toggleClass("btn-info");
-                    arr.push($(this).val());
-                }else if($(this).hasClass("btn-info")){
-                    $(this).toggleClass("btn-default");
-                    var index = arr.indexOf($(this).val());
-                    if(index>-1){
-                        arr.splice(index, 1);
-                    }
+            $(".span1").click(function(){
+                if($(this).hasClass("span2")){
+                    $(this).toggleClass("span3");
+                }else if($(this).hasClass("span3")){
+                    $(this).toggleClass("span2");
                 }
             });
             $("#submit").click(function(){
@@ -286,14 +286,25 @@
                 var business = $("#business").val();
                 var repo = $("#repo_select").val();
                 var module1 = "";
-                if(arr.length>0){
-                  for(var i=0;i<arr.length-1;i++){
-                    module1=module1+arr[i]+"+";
-                  }
-                  module1=module1+arr[arr.length-1];
-                }
+              	if(repo=="基础"){
+              		for(var i=0;i<8;i++){
+                  		if($("#0"+i).hasClass("span3")){
+	                  		module1=module1+$("#0"+i).attr("data-val")+"+";
+	                  	}
+              		}
+              	} else if(repo=="用户"){
+              		for(var i=0;i<4;i++){
+                  		if($("#1"+i).hasClass("span3")){
+	                  		module1=module1+$("#1"+i).attr("data-val")+"+";
+	                  	}
+              		}
+              	}
+              	if(module1.substr(-1) == "+"){
+              		module1 = module1.slice(0, module1.length - 1);
+              	}
                 var start1 = start_time.split("-");
                 var end1 = end_time.split("-");
+                console.log(module1);
                 if((start1[0]<=end1[0])&&(start1[1]<end1[1])&&(module1!="")){
                   $.ajax({
                       type: 'POST',
