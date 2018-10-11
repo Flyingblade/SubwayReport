@@ -331,6 +331,7 @@
                 }
             });
             $("#read").click(function(){
+            	console.log(base_url);
                 $.ajax({
                   type: 'GET',
                   url: base_url + 'getjobs',
@@ -343,14 +344,22 @@
                             html = html + "<tr><td rowspan='"+ json_data[i].modules.length + "'>"
                                 + json_data[i].job_id + "</td><td rowspan='"+ json_data[i].modules.length + "'>"
                                 + json_data[i].insert_time + "</td><td>"
-                                + json_data[i].modules[0] + "</td><td rowspan='"+ json_data[i].modules.length + "'><a href='"
-                                + base_url + json_data[i].result_path + "'>点此查看</a></td></tr>";
+                                + json_data[i].modules[0] + "</td><td rowspan='"+ json_data[i].modules.length + "'>";
+                            if(json_data[i].status == 0){
+                            	html = html + "运行中</td></tr>";
+                            }else {
+                            	html = html + "<a href='" + base_url + json_data[i].result_path + "'>点此查看</a></td></tr>";
+                            }
                             for(var j=1; j<json_data[i].modules.length; j++){
                                 html = html + "<tr><td>" + json_data[i].modules[j] + "</td></tr>";
                             }
                         }else {
-                            html = html + "<tr><td>" + json_data[i].job_id + "</td><td>" + json_data[i].insert_time + "</td><td>"
-                                + json_data[i].modules[0] + "</td><td><a href='" + base_url + json_data[i].result_path + "'>点此查看</a></td></tr>";
+                            html = html + "<tr><td>" + json_data[i].job_id + "</td><td>" + json_data[i].insert_time + "</td><td>" + json_data[i].modules[0] + "</td><td>";
+                            if(json_data[i].status == 0){
+                            	html = html + "运行中</td></tr>";
+                            }else {
+                            	html = html + "<a href='" + base_url + json_data[i].result_path + "'>点此查看</a></td></tr>";
+                            }
                         }
                     }
                     html = html + "</tbody>";
