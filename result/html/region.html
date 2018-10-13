@@ -260,7 +260,7 @@
              forceParse: false,
         });
         $(document).ready(function(){
-            var base_url = "http://" + document.domain +":5000/";
+            var base_url = "http://" + document.domain +":5000/"; //测试：http://127.0.0.1:5000/result/html/region.html
             var obj = { key: "", val: "" };
             $("#repo_select").change(function(){
                 var options = $("#repo_select").val();
@@ -348,7 +348,7 @@
                             if(json_data[i].status == 0){
                             	html = html + "运行中</td></tr>";
                             }else {
-                            	html = html + "<a href='" + base_url + json_data[i].result_path + "'>点此查看</a></td></tr>";
+                            	html = html + "<a href='" + base_url + "result/" + json_data[i].result_path + "'>点此查看</a></td></tr>";
                             }
                             for(var j=1; j<json_data[i].modules.length; j++){
                                 html = html + "<tr><td>" + json_data[i].modules[j] + "</td></tr>";
@@ -358,7 +358,7 @@
                             if(json_data[i].status == 0){
                             	html = html + "运行中</td></tr>";
                             }else {
-                            	html = html + "<a href='" + base_url + json_data[i].result_path + "'>点此查看</a></td></tr>";
+                            	html = html + "<a href='" + base_url + "result/" + json_data[i].result_path + "'>点此查看</a></td></tr>";
                             }
                         }
                     }
